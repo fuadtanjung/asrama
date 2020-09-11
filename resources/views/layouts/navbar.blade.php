@@ -1,87 +1,56 @@
 @extends('layouts.app')
 
 @section('navbar')
-    <nav class="navbar navbar-default top-navbar" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
-
-            <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
-        </div>
-
-        <ul class="nav navbar-top-links navbar-right">
-            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>  {{ Auth::user()->name }}</b> <i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-        <ul id="dropdown1" class="dropdown-content">
-            <li>
-                <a  href="{{ route('login.logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+    <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+        <a class="navbar-brand" href="{{ route('home') }}">Asrama</a>
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+        <ul class="navbar-nav align-items-center ml-auto">
+            <li class="nav-item dropdown no-caret mr-2 dropdown-user">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"/></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <a class="dropdown-item" href="{{ route ('login.logout') }}">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
+                </div>
             </li>
         </ul>
     </nav>
-    @if(auth()->user()->role->nama == "pembina")
-    <nav class="navbar-default navbar-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="main-menu">
-                <li>
-                    <a class="active-menu waves-effect waves-dark" href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="ui-elements.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI Elements</a>
-                </li>
-                <li>
-                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">Second Level Link</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Link</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level"><li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sidenav shadow-right sidenav-light">
+                <div class="sidenav-menu">
+                    <div class="nav accordion" id="accordionSidenav">
+                        <div class="sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="{{ route ('home')}}">
+                            <div class="nav-link-icon"><i class="fa fa-home"></i></div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="{{ url ('fakultas')}}">
+                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                            Fakultas
+                        </a>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
-@endif
-    <div id="page-wrapper">
-        <div class="header">
-            <h1 class="page-header">
-                Dashboard
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Dashboard</a></li>
-                <li class="active">Data</li>
-            </ol>
-        </div>
-        <div id="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            @yield('content')
+
+        <div id="layoutSidenav_content">
+            <main>
+                @yield('content')
+            </main>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &#xA9; Your Website 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &#xB7;
+                            <a href="#!">Terms &amp; Conditions</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         </div>
     </div>
 @endsection

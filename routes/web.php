@@ -26,9 +26,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['checkRole:pembina']], function () {
         Route::group(['prefix' => 'fakultas'], function(){
-            Route::get('/','BerandaController@index');
-            Route::get('data', 'BerandaController@ajaxTable');
-            Route::get('data1', 'InformasiController@ajaxTable');
+            Route::get('/','FakultasController@index');
+            Route::get('data', 'FakultasController@ajaxTable');
+            Route::post('input', 'FakultasController@input');
+            Route::post('edit/{id}', 'FakultasController@edit');
+            Route::post('change/{id}', 'FakultasController@changeStatus');
+            Route::post('delete/{id}', 'FakultasController@delete');
         });
     });
 });

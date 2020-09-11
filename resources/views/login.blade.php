@@ -7,12 +7,11 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/izitoast/css/iziToast.min.css') }}">
-    <link href="{{ asset('assets/css/custom-styles.css') }}" rel="stylesheet" />
-
+    <link href="{{ asset('css/custom-styles.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/izitoast/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('plugins/izitoast/js/iziToast.min.js') }}"></script>
 </head>
 <body>
     <br><br><br><br><br>
