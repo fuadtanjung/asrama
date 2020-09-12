@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jurusan extends Model
 {
-    protected $table = 'jurusan';
+    protected $table = 'jurusans';
     protected $primaryKey = 'id';
     public $timestamps= false;
     protected $fillable = [

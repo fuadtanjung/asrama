@@ -39,6 +39,10 @@
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
                                 Golongan Darah
                             </a>
+                            <a class="nav-link" href="{{ url ('jalurmasuk')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Jalur Masuk
+                            </a>
                             @endif
                     </div>
                 </div>

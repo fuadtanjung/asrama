@@ -21,7 +21,7 @@ class JurusanController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_jurusan' => 'required|unique:jurusan',
+            'nama_jurusan' => 'required|unique:jurusans',
             'fakultas' => 'required:jurusan',
         ], $pesan);
     }

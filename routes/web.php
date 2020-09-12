@@ -51,6 +51,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete/{id}', 'GoldarController@delete');
         });
 
+        Route::group(['prefix' => 'jalurmasuk'], function(){
+            Route::get('/','JalurMasukController@index');
+            Route::get('data', 'JalurMasukController@ajaxTable');
+            Route::post('input', 'JalurMasukController@input');
+            Route::post('edit/{id}', 'JalurMasukController@edit');
+            Route::post('delete/{id}', 'JalurMasukController@delete');
+        });
+
 
     });
 });
