@@ -25,13 +25,32 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['checkRole:pembina']], function () {
+
         Route::group(['prefix' => 'fakultas'], function(){
             Route::get('/','FakultasController@index');
             Route::get('data', 'FakultasController@ajaxTable');
             Route::post('input', 'FakultasController@input');
             Route::post('edit/{id}', 'FakultasController@edit');
-            Route::post('change/{id}', 'FakultasController@changeStatus');
             Route::post('delete/{id}', 'FakultasController@delete');
         });
+
+        Route::group(['prefix' => 'jurusan'], function(){
+            Route::get('/','JurusanController@index');
+            Route::get('data', 'JurusanController@ajaxTable');
+            Route::post('input', 'JurusanController@input');
+            Route::post('edit/{id}', 'JurusanController@edit');
+            Route::post('delete/{id}', 'JurusanController@delete');
+            Route::get('listfakultas', 'JurusanController@listFakultas');
+        });
+
+        Route::group(['prefix' => 'goldar'], function(){
+            Route::get('/','GoldarController@index');
+            Route::get('data', 'GoldarController@ajaxTable');
+            Route::post('input', 'GoldarController@input');
+            Route::post('edit/{id}', 'GoldarController@edit');
+            Route::post('delete/{id}', 'GoldarController@delete');
+        });
+
+
     });
 });

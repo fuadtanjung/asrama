@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/plugins/izitoast/css/iziToast.min.css') }}">
-    <link href="{{ asset('css/custom-styles.css') }}" rel="stylesheet" />
-    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('plugins/izitoast/js/iziToast.min.js') }}"></script>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('plugins/izitoast/css/iziToast.min.css') }}">
+
 </head>
 <body>
     <br><br><br><br><br>
@@ -68,14 +64,12 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="register" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Register</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="staticBackdropLabel">Static Backdrop Modal</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
                     <form id="form_daftar"  action="{{ route('register') }}" method="post">
@@ -95,14 +89,16 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" aksi="input" id="submit_pengguna">Daftar</button>
-                </div>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button" data-dismiss="modal" aksi="input" id="submit_pengguna">Simpan</button></div>
             </div>
         </div>
     </div>
 </body>
-<script src="{{ asset('assets/js/jquery-1.10.2.js')}}"></script>
+<script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+<script src="{{ url('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('plugins/izitoast/js/iziToast.min.js') }}"></script>
     <script type="text/javascript">
         function resetFormdaftar() {
             $("#form_daftar")[0].reset();
@@ -126,7 +122,7 @@
                     var pesan = JSON.parse(response);
                     if(pesan.error != null){
                         iziToast.error({
-                            title: 'Error notice',
+                            title: 'Gagal',
                             position: 'topRight',
                             message: pesan.error,
                         });

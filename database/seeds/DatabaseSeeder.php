@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             JalurMasukSeeder::class,
             StatuRumahSeeder::class,
             TugasSeeder::class,
+            FakultasSeeder::class,
         ]);
     }
 }

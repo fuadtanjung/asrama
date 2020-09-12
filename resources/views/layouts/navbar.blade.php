@@ -3,7 +3,7 @@
 @section('navbar')
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <a class="navbar-brand" href="{{ route('home') }}">Asrama</a>
-        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i class="fa fa-bars"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-2 dropdown-user">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"/></a>
@@ -26,10 +26,20 @@
                             <div class="nav-link-icon"><i class="fa fa-home"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="{{ url ('fakultas')}}">
-                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                            Fakultas
-                        </a>
+                        @if ( auth()->user()->role->nama == "pembina")
+                            <a class="nav-link" href="{{ url ('fakultas')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Fakultas
+                            </a>
+                            <a class="nav-link" href="{{ url ('jurusan')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Jurusan
+                            </a>
+                            <a class="nav-link" href="{{ url ('goldar')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Golongan Darah
+                            </a>
+                            @endif
                     </div>
                 </div>
             </nav>

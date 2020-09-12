@@ -42,7 +42,7 @@ class CreateMahasiswasTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('jurusan_id')->references('id')->on('jurusan')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('status_rumah_id')->references('id')->on('status_rumahs')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('goldar_id')->references('id')->on('goldars')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

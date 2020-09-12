@@ -13,7 +13,7 @@ class CreateJurusansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jurusans', function (Blueprint $table) {
+        Schema::create('jurusan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jurusan');
             $table->unsignedBigInteger('fakultas_id');

@@ -18,7 +18,7 @@
 <body class="nav-fixed">
     @yield('navbar')
 <!-- Scripts -->
-    <script src="{{ url('js/jquery-1.10.2.js') }}"></script>
+    <script src="{{ url('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/script.js') }}"></script>
     <script src="{{ url('plugins/izitoast/js/iziToast.min.js') }}"></script>
