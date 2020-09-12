@@ -1,17 +1,17 @@
 @extends('layouts.navbar')
 
 @section('content')
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header">Fakultas</div>
+    <div  class="container mt-1">
+        <div class="card" style="width: 70%">
+            <div class="card-header">Jalur Masuk</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_jalur">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
-            <div class="card-body">
-                <table class="table table-striped table-bordered table-hover" id="datatable" width="50%">
+            <div class="card-body" style="margin-right: 10%">
+                <table class="table table-hover table-green-soft" id="datatable">
                     <thead>
                     <tr>
                         <th>Nama Jalur Masuk</th>
@@ -24,7 +24,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Static Backdrop Modal</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Jalur Masuk</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
@@ -34,12 +34,12 @@
                                     <label for="exampleFormControlInput1">
                                         Nama Jalur Masuk
                                     </label>
-                                    <input class="form-control form-control-solid" id="nama_jalur" name="nama_jalur" type="text" placeholder="Nama Jalur Masuk">
+                                    <input class="form-control form-control-solid" id="nama_jalur" name="nama_jalur" type="text">
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                            <button class="btn btn-outline-danger legitRipple" type="button" data-dismiss="modal">
                                 Close
                             </button>
                             <button class="btn btn-primary" type="button" id="submit_jalur" aksi="input">Submit
@@ -65,16 +65,6 @@
                                 '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
                         }
                     }
-                ],
-                columnDefs: [
-                    {
-                        width: "20px",
-                        targets: [0]
-                    },
-                    {
-                        width: "20px",
-                        targets: [1]
-                    },
                 ],
             });
         }

@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="532f897d-1d2e-4d06-b9e5-c5da89db5562" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/JalurMasukController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/jalur_masuk.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JurusanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JurusanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jurusan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jurusan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_122338_create_jurusans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_122338_create_jurusans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/fakultas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/fakultas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/goldar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/goldar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/jalur_masuk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/jalur_masuk.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/jurusan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/jurusan.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +194,7 @@
       <workItem from="1599896566143" duration="8696000" />
       <workItem from="1599915754916" duration="3001000" />
       <workItem from="1599922057695" duration="258000" />
-      <workItem from="1599928347039" duration="1667000" />
+      <workItem from="1599928347039" duration="4357000" />
     </task>
     <servers />
   </component>
