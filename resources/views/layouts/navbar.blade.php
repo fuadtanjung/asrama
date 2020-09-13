@@ -43,6 +43,18 @@
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
                                 Jalur Masuk
                             </a>
+                            <a class="nav-link" href="{{ url ('gedung')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Gedung
+                            </a>
+                            <a class="nav-link" href="{{ url ('ruangan')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Ruangan
+                            </a>
+                            <a class="nav-link" href="{{ url ('tugas')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Tugas
+                            </a>
                             @endif
                     </div>
                 </div>

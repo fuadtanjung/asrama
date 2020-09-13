@@ -59,6 +59,30 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete/{id}', 'JalurMasukController@delete');
         });
 
+        Route::group(['prefix' => 'gedung'], function(){
+            Route::get('/','GedungController@index');
+            Route::get('data', 'GedungController@ajaxTable');
+            Route::post('input', 'GedungController@input');
+            Route::post('edit/{id}', 'GedungController@edit');
+            Route::post('delete/{id}', 'GedungController@delete');
+        });
+
+        Route::group(['prefix' => 'ruangan'], function(){
+            Route::get('/','RuanganController@index');
+            Route::get('data', 'RuanganController@ajaxTable');
+            Route::post('input', 'RuanganController@input');
+            Route::post('edit/{id}', 'RuanganController@edit');
+            Route::post('delete/{id}', 'RuanganController@delete');
+            Route::get('listgedung', 'RuanganController@listGedung');
+        });
+
+        Route::group(['prefix' => 'tugas'], function(){
+            Route::get('/','TugasController@index');
+            Route::get('data', 'TugasController@ajaxTable');
+            Route::post('input', 'TugasController@input');
+            Route::post('edit/{id}', 'TugasController@edit');
+            Route::post('delete/{id}', 'TugasController@delete');
+        });
 
     });
 });

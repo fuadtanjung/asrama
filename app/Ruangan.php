@@ -8,6 +8,7 @@ class Ruangan extends Model
 {
     protected $table = 'ruangans';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
         'nama_ruangan'
     ];
