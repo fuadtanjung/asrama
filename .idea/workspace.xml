@@ -2,14 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="532f897d-1d2e-4d06-b9e5-c5da89db5562" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/GedungController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RuanganController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/ruangan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/tugas.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PengalamanorganisasiController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RiwayatpenyakitController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/tempusdominus-bootstrap-4.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery.datetimepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/tempusdominus-bootstrap-4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/tugas_bulanan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Ruangan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Ruangan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pengalaman_organisasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pengalaman_organisasi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Riwayat_penyakit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Riwayat_penyakit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DendaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DendaSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GoldarSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GoldarSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/JalurMasukSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/JalurMasukSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/StatuRumahSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/StatusRumahSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TugasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TugasSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -164,14 +188,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\asrama\public\assets\img\waves" />
+      <recent name="C:\laragon\www\asrama\public\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\asrama\public\css" />
       <recent name="C:\laragon\www\asrama\public\js" />
       <recent name="C:\laragon\www\asrama\public\assets\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\asrama\public\assets\img\waves" />
-      <recent name="C:\laragon\www\asrama\public\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -201,6 +225,13 @@
       <workItem from="1599922057695" duration="258000" />
       <workItem from="1599928347039" duration="4601000" />
       <workItem from="1599983548224" duration="7479000" />
+      <workItem from="1600005162158" duration="96000" />
+      <workItem from="1600075203415" duration="11541000" />
+      <workItem from="1600143176467" duration="1116000" />
+      <workItem from="1600148298391" duration="20175000" />
+      <workItem from="1600242736029" duration="22053000" />
+      <workItem from="1600312468169" duration="4266000" />
+      <workItem from="1600320561137" duration="7065000" />
     </task>
     <servers />
   </component>
@@ -211,6 +242,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="309" y="47" key="#Inspections" timestamp="1600077332101">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="309" y="47" key="#Inspections/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600077332101" />
     <state x="434" y="193" key="#Notifications" timestamp="1599853736160">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -219,10 +254,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="452" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599846435721" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599994398915">
+    <state x="460" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600180494815">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599994398915" />
+    <state x="460" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600180494815" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600313782655">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600313782655" />
     <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1599854080441">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

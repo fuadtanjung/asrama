@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             GedungSeeder::class,
             GoldarSeeder::class,
             JalurMasukSeeder::class,
-            StatuRumahSeeder::class,
+            StatusRumahSeeder::class,
             TugasSeeder::class,
             FakultasSeeder::class,
         ]);

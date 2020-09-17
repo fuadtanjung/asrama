@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Goldar;
+
 class GoldarSeeder extends Seeder
 {
     /**
@@ -11,17 +11,18 @@ class GoldarSeeder extends Seeder
      */
     public function run()
     {
-        Goldar::create([
-            'nama_goldar' => 'A',
-        ]);
-        Goldar::create([
-            'nama_goldar' => 'B',
-        ]);
-        Goldar::create([
-            'nama_goldar' => 'AB',
-        ]);
-        Goldar::create([
+        DB::table('goldars')->insert([
             'nama_goldar' => 'O',
         ]);
+        DB::table('goldars')->insert([
+            'nama_goldar' => 'AB',
+        ]);
+        DB::table('goldars')->insert([
+            'nama_goldar' => 'B',
+        ]);
+        DB::table('goldars')->insert([
+            'nama_goldar' => 'A',
+        ]);
+
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Fakultas;
+
 class FakultasSeeder extends Seeder
 {
     /**
@@ -11,16 +11,16 @@ class FakultasSeeder extends Seeder
      */
     public function run()
     {
-        Fakultas::create([
+        DB::table('fakultas')->insert([
             'nama_fakultas' => 'Teknologi Informasi'
         ]);
-        Fakultas::create([
+        DB::table('fakultas')->insert([
             'nama_fakultas' => 'Ekonomi'
         ]);
-        Fakultas::create([
+        DB::table('fakultas')->insert([
             'nama_fakultas' => 'Hukum'
         ]);
-        Fakultas::create([
+        DB::table('fakultas')->insert([
             'nama_fakultas' => 'teknik'
         ]);
     }

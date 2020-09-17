@@ -84,5 +84,42 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete/{id}', 'TugasController@delete');
         });
 
+        Route::group(['prefix' => 'tugasbulanan'], function(){
+            Route::get('/','TugasBulananController@index');
+            Route::get('data', 'TugasBulananController@ajaxTable');
+            Route::post('input', 'TugasBulananController@input');
+            Route::post('edit/{id}', 'TugasBulananController@edit');
+            Route::post('delete/{id}', 'TugasBulananController@delete');
+            Route::get('listtugas', 'TugasBulananController@listTugas');
+        });
+
+    });
+
+    Route::group(['middleware' => ['checkRole:mahasiswa']], function () {
+
+        Route::group(['prefix' => 'mahasiswa'], function(){
+            Route::get('/','MahasiswaController@index');
+            Route::post('input', 'MahasiswaController@input');
+            Route::get('listjurusan', 'MahasiswaController@listJurusan');
+            Route::get('liststatusrumah', 'MahasiswaController@listStatusrumah');
+            Route::get('listjalurmasuk', 'MahasiswaController@listJalurmasuk');
+            Route::get('listgoldar', 'MahasiswaController@listGoldar');
+        });
+
+        Route::group(['prefix' => 'riwayatpenyakit'], function(){
+            Route::get('/','RiwayatpenyakitController@index');
+            Route::get('data', 'RiwayatpenyakitController@ajaxTable');
+            Route::post('input', 'RiwayatpenyakitController@input');
+            Route::post('edit/{id}', 'RiwayatpenyakitController@edit');
+            Route::post('delete/{id}', 'RiwayatpenyakitController@delete');
+        });
+
+        Route::group(['prefix' => 'pengalamanorganisasi'], function(){
+            Route::get('/','PengalamanorganisasiController@index');
+            Route::get('data', 'PengalamanorganisasiController@ajaxTable');
+            Route::post('input', 'PengalamanorganisasiController@input');
+            Route::post('edit/{id}', 'PengalamanorganisasiController@edit');
+            Route::post('delete/{id}', 'PengalamanorganisasiController@delete');
+        });
     });
 });

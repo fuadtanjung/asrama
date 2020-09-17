@@ -19,13 +19,14 @@ class CreateMahasiswasTable extends Migration
             $table->unsignedBigInteger('status_rumah_id');
             $table->unsignedBigInteger('jalur_masuk_id');
             $table->unsignedBigInteger('goldar_id');
-            $table->string('nim',9);
+            $table->string('nim',12);
+            $table->string('nama');
             $table->string('no_hp',13);
             $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');
             $table->string('tempat_lahir',30);
             $table->string('alamat',50);
-            $table->boolean('bidik_misi');
+            $table->string('bidik_misi');
             $table->string('asal_sekolah',50);
             $table->string('agama',25);
             $table->string('shalat_wajib',25);

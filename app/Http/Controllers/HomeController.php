@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mahasiswa;
 use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->get();
+        return view('home',['asrama'=>$mahasiswa]);
     }
 
 }

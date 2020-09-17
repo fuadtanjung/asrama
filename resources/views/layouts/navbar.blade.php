@@ -55,6 +55,24 @@
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
                                 Tugas
                             </a>
+                            <a class="nav-link" href="{{ url ('tugasbulanan')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Tugas Bulanan
+                            </a>
+                        @endif
+                            @if ( auth()->user()->role->nama == "mahasiswa")
+                        <a class="nav-link" href="{{ url ('mahasiswa')}}">
+                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                            Profile
+                        </a>
+                        <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">
+                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                            Riwayat Penyakit
+                        </a>
+                        <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
+                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                            Pengalaman Organisasi
+                        </a>
                             @endif
                     </div>
                 </div>

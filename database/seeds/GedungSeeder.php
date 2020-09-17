@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Gedung;
+
 class GedungSeeder extends Seeder
 {
     /**
@@ -11,25 +11,25 @@ class GedungSeeder extends Seeder
      */
     public function run()
     {
-        Gedung::create([
+        DB::table('gedungs')->insert([
             'nama_gedung' => 'hijau',
             'jenis_kelamin' => 'laki-laki',
         ]);
-        Gedung::create([
-            'nama_gedung' => 'oren',
-            'jenis_kelamin' => 'laki-laki',
-        ]);
-        Gedung::create([
-            'nama_gedung' => 'rpx',
+        DB::table('gedungs')->insert([
+            'nama_gedung' => 'roesma',
             'jenis_kelamin' => 'perempuan',
         ]);
-        Gedung::create([
+        DB::table('gedungs')->insert([
             'nama_gedung' => 'msyaff',
             'jenis_kelamin' => 'perempuan',
         ]);
-        Gedung::create([
-            'nama_gedung' => 'roesma',
+        DB::table('gedungs')->insert([
+            'nama_gedung' => 'rpx',
             'jenis_kelamin' => 'perempuan',
+        ]);
+        DB::table('gedungs')->insert([
+            'nama_gedung' => 'oren',
+            'jenis_kelamin' => 'laki-laki',
         ]);
     }
 }

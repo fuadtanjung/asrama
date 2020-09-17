@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Denda;
+
 class DendaSeeder extends Seeder
 {
     /**
@@ -11,7 +11,8 @@ class DendaSeeder extends Seeder
      */
     public function run()
     {
-        Denda::create([
+
+        DB::table('dendas')->insert([
             'nama_denda' => 'denda sholat subuh',
             'denda' => '12000'
         ]);

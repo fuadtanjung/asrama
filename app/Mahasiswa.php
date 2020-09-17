@@ -9,7 +9,7 @@ class Mahasiswa extends Model
     protected $table = 'mahasiswas';
     protected $primaryKey = 'user_id';
     protected $fillable = [
-        'nim','no_hp','jenis_kelamin','tanggal_lahir','tempat_lahir',
+        'nim','nama','no_hp','jenis_kelamin','tanggal_lahir','tempat_lahir',
         'alamat','bidik_misi','asal_sekolah','agama','shalat_wajib','hafalan',
         'nama_ayah','nama_ibu','pekerjaan_ayah','pekerjaan_ibu','pendapatan_ayah',
         'pendapatan_ibu','no_hp_ortu','anak_ke','total_saudara'

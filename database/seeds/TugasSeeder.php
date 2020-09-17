@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Tugas;
+
+
 class TugasSeeder extends Seeder
 {
     /**
@@ -11,10 +12,11 @@ class TugasSeeder extends Seeder
      */
     public function run()
     {
-        Tugas::create([
+
+        DB::table('tugas')->insert([
             'nama_tugas' => 'Hafalan Surah Al-Mulk'
         ]);
-        Tugas::create([
+        DB::table('tugas')->insert([
             'nama_tugas' => 'Tulis Kaligrafi alquran surat juz 30'
         ]);
     }

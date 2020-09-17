@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengalaman_organisasi extends Model
 {
-    protected $table = 'pengalaaman_oraganisasis';
+    protected $table = 'pengalaman_organisasis';
     protected $primaryKey = 'id';
+    public $timestamps= false;
     protected $fillable = [
         'nama_organisasi','mulai','akhir','jabatan'
     ];

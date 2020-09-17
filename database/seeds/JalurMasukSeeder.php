@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Jalur_masuk;
+
 class JalurMasukSeeder extends Seeder
 {
     /**
@@ -11,11 +11,11 @@ class JalurMasukSeeder extends Seeder
      */
     public function run()
     {
-        Jalur_masuk::create([
-            'nama_jalur' => 'SNMPTN',
-        ]);
-        Jalur_masuk::create([
+        DB::table('jalur_masuks')->insert([
             'nama_jalur' => 'SBMPTN',
+        ]);
+        DB::table('jalur_masuks')->insert([
+            'nama_jalur' => 'SNMPTN',
         ]);
     }
 }
