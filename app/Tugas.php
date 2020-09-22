@@ -14,6 +14,6 @@ class Tugas extends Model
     ];
 
     public function tugas_bulanan(){
-        return $this->belongsTo(Tugas_bulanan::class);
+        return $this->hasMany(Tugas_bulanan::class,'tugas_id');
     }
 }

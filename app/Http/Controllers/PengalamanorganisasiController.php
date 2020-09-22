@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pengalaman_organisasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
 class PengalamanorganisasiController extends Controller
@@ -31,10 +32,10 @@ class PengalamanorganisasiController extends Controller
         if($validasi->passes()){
             $pengalaman_organisasi = new Pengalaman_organisasi();
             $pengalaman_organisasi->nama_organisasi = $request->nama_organisasi;
-            $pengalaman_organisasi->mulai = $request->mulai;
-            $pengalaman_organisasi->akhir = $request->akhir;
+            $pengalaman_organisasi->mulai =Carbon::parse($request->mulai);
+            $pengalaman_organisasi->akhir = Carbon::parse($request->akhir);
             $pengalaman_organisasi->jabatan = $request->jabatan;
-            $pengalaman_organisasi->mahasiswa_id = $request->id;
+            $pengalaman_organisasi->mahasiswa_id = auth()->user()->mahasiswa->user_id;
             if($pengalaman_organisasi->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Pengalaman Organisasi"));
             }else{
@@ -52,13 +53,16 @@ class PengalamanorganisasiController extends Controller
     }
 
     public function ajaxTable(){
-        $pengalaman_organisasi = Pengalaman_organisasi::get();
+        $pengalaman_organisasi = Pengalaman_organisasi::where('mahasiswa_id',auth()->user()->mahasiswa->user_id)->get();
         return Datatables::of($pengalaman_organisasi)->toJson();
     }
 
     public function edit($id, Request $request){
-        $pengalaman_organisasi = Pengalaman_organisasi::where('id', $id)->first();
-        $pengalaman_organisasi->nama_penyakit = $request->nama_penyakit;
+        $pengalaman_organisasi = Pengalaman_organisasi::where('mahasiswa_id', $id)->first();
+        $pengalaman_organisasi->nama_organisasi = $request->nama_organisasi;
+        $pengalaman_organisasi->mulai =Carbon::parse($request->mulai);
+        $pengalaman_organisasi->akhir = Carbon::parse($request->akhir);
+        $pengalaman_organisasi->jabatan = $request->jabatan;
         if($pengalaman_organisasi->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Pengalaman Organisasi"));
         }else{
@@ -67,7 +71,7 @@ class PengalamanorganisasiController extends Controller
     }
 
     public function delete($id){
-        $pengalaman_organisasi = Pengalaman_organisasi::where('id', $id)->first();
+        $pengalaman_organisasi = Pengalaman_organisasi::where('mahasiswa_id', $id)->first();
         if($pengalaman_organisasi->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Pengalaman Organisasi"));
         }else{

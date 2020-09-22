@@ -10,7 +10,7 @@ class Pengalaman_organisasi extends Model
     protected $primaryKey = 'id';
     public $timestamps= false;
     protected $fillable = [
-        'nama_organisasi','mulai','akhir','jabatan'
+       'nama_organisasi','mulai','akhir','jabatan'
     ];
 
     public function mahasiswa(){

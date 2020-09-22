@@ -91,4 +91,6 @@ class TugasBulananController extends Controller
         $tugas = Tugas::all();
         return json_encode($tugas);
     }
+
+
 }

@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa_tagihan extends Model
 {
     protected $table = 'mahasiswa_tagihans';
+    protected $primaryKey = 'mahasiswa_id';
+    public $timestamps= false;
     protected $fillable = [
-        'keterangan'
+        'keterangan','bulan'
     ];
 
     public function mahasiswa(){

@@ -26,6 +26,27 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['checkRole:pembina']], function () {
 
+        Route::group(['prefix' => 'data'], function(){
+            Route::get('/','DataController@index')->name('datamahasiswa');
+            Route::get('detailmahasiswa/{id}','DataController@detailmahasiswa')->name('detailmahasiswa');
+            Route::get('tagihanmahasiswa/{id}', 'DataController@tagihanmahasiswa')->name('tagihanmahasiswa');
+        });
+
+        Route::group(['prefix' => 'tugasbulananmahasiswa'], function() {
+            Route::get('datatugasbulanan/{id}', 'TugasBulananMahasiswaController@data')->name('tugasbulanan');
+            Route::post('inputtugasbulanan', 'TugasBulananMahasiswaController@inputtugasbulanan');
+            Route::post('edittugasbulanan/{id}', 'TugasBulananMahasiswaController@edittugasbulanan');
+            Route::post('hapustugasbulanan/{id}', 'TugasBulananMahasiswaController@hapustugasbulanan');
+            Route::get('listtugas', 'TugasBulananMahasiswaController@listTugas');
+        });
+
+        Route::group(['prefix' => 'tagihan'], function() {
+            Route::get('datatagihanmahasiswa', 'TagihanMahasiswaController@ajaxTable');
+            Route::post('inputtagihanmahasiswa', 'TagihanMahasiswaController@input');
+            Route::post('edittagihanmahasiswa/{id}', 'TagihanMahasiswaController@edit');
+            Route::post('hapustagihanmahasiswa/{id}', 'TagihanMahasiswaController@delete');
+        });
+
         Route::group(['prefix' => 'fakultas'], function(){
             Route::get('/','FakultasController@index');
             Route::get('data', 'FakultasController@ajaxTable');

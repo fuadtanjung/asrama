@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card" style="width: 70%">
+        <div class="card" style="width: 90%">
             <div class="card-header">Pengalaman Organisasi</div>
             <br>
             <div class="container-sm">
@@ -10,7 +10,7 @@
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
-            <div class="card-body" style="margin-right: 10%">
+            <div class="card-body">
                 <table class="table table-hover table-green-soft" id="datatable">
                     <thead>
                     <tr>
@@ -72,6 +72,7 @@
             </div>
         </div>
     </div>
+{{--    <input type="text" value="{{ date('d-m-Y',strtotime(auth()->user()->mahasiswa->pengalaman_organisasi->mulai))}}">--}}
 @endsection
 
 @section('script')
@@ -84,7 +85,7 @@
             $('#datatable').dataTable({
                 "ajax": "{{ url('/pengalamanorganisasi/data') }}",
                 "columns": [
-                    { "data": "nama_organiasi" },
+                    { "data": "nama_organisasi" },
                     { "data": "mulai" },
                     { "data": "akhir" },
                     { "data": "jabatan" },
@@ -165,7 +166,7 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_pengalaman= $("#submit_pengalaman").attr("idpengalman");
+                    var id_pengalaman= $("#submit_pengalaman").attr("idpengalaman");
                     $.ajax({
                         url: "{{ url('/pengalamanorganisasi/edit') }}/"+id_pengalaman,
                         type: "post",
@@ -235,7 +236,7 @@
                 $('#akhir').val(data.akhir);
                 $('#jabatan').val(data.jabatan);
                 $("#submit_pengalaman").attr("aksi","edit");
-                $('#submit_pengalaman').attr("idpengalaman",data.id);
+                $('#submit_pengalaman').attr("idpengalaman",data.mahasiswa_id);
                 $('#input_pengalaman').modal('toggle');
             } );
 

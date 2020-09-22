@@ -52,7 +52,7 @@ class RiwayatpenyakitController extends Controller
     }
 
     public function edit($id, Request $request){
-        $riwayat_penyakit = Riwayat_penyakit::where('id', $id)->first();
+        $riwayat_penyakit = Riwayat_penyakit::where('mahasiswa_id', $id)->first();
         $riwayat_penyakit->nama_penyakit = $request->nama_penyakit;
         if($riwayat_penyakit->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Riwayat Penyakit"));
@@ -69,4 +69,7 @@ class RiwayatpenyakitController extends Controller
             return json_encode(array("error"=>"Gagal Menghapus Data Riwayat Penyakit"));
         }
     }
+    
+
+    
 }

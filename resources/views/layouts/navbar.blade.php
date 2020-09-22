@@ -27,36 +27,46 @@
                             Dashboard
                         </a>
                         @if ( auth()->user()->role->nama == "pembina")
+                            <div class="sidenav-menu-heading">Data Mahasiswa</div>
+                            <a class="nav-link" href="{{ route ('datamahasiswa')}}">
+                                <div class="nav-link-icon"><i class="fa fa-table"></i></div>
+                                Mahasiswa
+                            </a>
+                            <div class="sidenav-menu-heading">Fakultas dan Jurusan</div>
                             <a class="nav-link" href="{{ url ('fakultas')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
                                 Fakultas
                             </a>
                             <a class="nav-link" href="{{ url ('jurusan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
                                 Jurusan
                             </a>
+
+                            <div class="sidenav-menu-heading">Kelola Data</div>
                             <a class="nav-link" href="{{ url ('goldar')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-user-md"></i></div>
                                 Golongan Darah
                             </a>
                             <a class="nav-link" href="{{ url ('jalurmasuk')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-filter"></i></div>
                                 Jalur Masuk
                             </a>
+                            <div class="sidenav-menu-heading">Gedung Asrama</div>
                             <a class="nav-link" href="{{ url ('gedung')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-building"></i></div>
                                 Gedung
                             </a>
                             <a class="nav-link" href="{{ url ('ruangan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-bed"></i></div>
                                 Ruangan
                             </a>
+                            <div class="sidenav-menu-heading">Tugas</div>
                             <a class="nav-link" href="{{ url ('tugas')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
                                 Tugas
                             </a>
                             <a class="nav-link" href="{{ url ('tugasbulanan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
                                 Tugas Bulanan
                             </a>
                         @endif
@@ -74,6 +84,13 @@
                             Pengalaman Organisasi
                         </a>
                             @endif
+                    </div>
+                </div>
+
+                <div class="sidenav-footer">
+                    <div class="sidenav-footer-content">
+                        <div class="sidenav-footer-subtitle">Logged in as:</div>
+                        <div class="sidenav-footer-title">{{ auth()->user()->name }}</div>
                     </div>
                 </div>
             </nav>

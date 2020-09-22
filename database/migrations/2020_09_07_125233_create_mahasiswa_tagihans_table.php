@@ -14,7 +14,7 @@ class CreateMahasiswaTagihansTable extends Migration
     public function up()
     {
         Schema::create('mahasiswa_tagihans', function (Blueprint $table) {
-            $table->date('bulan');
+            $table->string('bulan');
             $table->unsignedBigInteger('mahasiswa_id');
             $table->string('keterangan');
 

@@ -3,10 +3,12 @@
 @section('content')
     <div class="container mt-1">
         <div class="card" style="width: 70%">
-            <div class="card-header">Riwayat Penyakit</div>
+            @foreach( $tagihanmahasiswa as $tagihan)
+                <div class="card-header">Tagihan Mahasiswa {{ $tagihan->nama}}</div>
+            @endforeach
             <br>
             <div class="container-sm">
-                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_penyakit">
+                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tagihan">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
@@ -14,27 +16,37 @@
                 <table class="table table-hover table-green-soft" id="datatable">
                     <thead>
                     <tr>
-                        <th>Nama Penyakit</th>
+                        <th>Bulan</th>
+                        <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
                 </table>
             </div>
-            <div class="modal fade" id="input_penyakit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="input_tagihan" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Riwayat Penyakit</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Tagihan</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
-                            <form id="form_penyakit" method="post">
+                            <form id="form_tagihan" method="post">
                                 @csrf
+                                @foreach( $tagihanmahasiswa as $tagihan)
+                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $tagihan->user_id}}" hidden>
+                                @endforeach
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
-                                        Nama Penyakit
+                                        Bulan
                                     </label>
-                                    <input class="form-control form-control-solid" id="nama_penyakit" name="nama_penyakit" type="text" placeholder="Nama Penyakit">
+                                    <input type="text" class="form-control monthpicker datetimepicker-input" data-toggle="datetimepicker" data-target=".monthpicker" name="bulan" id="bulan"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">
+                                        Keterangan
+                                    </label>
+                                    <textarea  class="form-control" name="keterangan" id="keterangan" ></textarea>
                                 </div>
                             </form>
                         </div>
@@ -42,7 +54,7 @@
                             <button class="btn btn-outline-danger legitRipple" type="button" data-dismiss="modal">
                                 Close
                             </button>
-                            <button class="btn btn-primary" type="button" id="submit_penyakit" aksi="input">Submit
+                            <button class="btn btn-primary" type="button" id="submit_tagihan" aksi="input">Submit
                             </button>
                         </div>
                     </div>
@@ -56,9 +68,10 @@
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/riwayatpenyakit/data') }}",
+                "ajax": "{{ url('/tagihan/datatagihanmahasiswa') }}",
                 "columns": [
-                    { "data": "nama_penyakit" },
+                    { "data": "bulan" },
+                    { "data": "keterangan" },
                     {
                         render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
@@ -66,32 +79,22 @@
                         }
                     }
                 ],
-                columnDefs: [
-                    {
-                        width: "20px",
-                        targets: [0]
-                    },
-                    {
-                        width: "20px",
-                        targets: [1]
-                    },
-                ],
             });
         }
 
-        function resetFormPenyakit() {
-            $("#form_penyakit")[0].reset();
+        function resetFormTagihan() {
+            $("#form_tagihan")[0].reset();
         }
 
         $(window).on('load', function () {
             loadData();
-            $('#submit_penyakit').click(function () {
-                var aksi = $("#submit_penyakit").attr("aksi");
+            $('#submit_tagihan').click(function () {
+                var aksi = $("#submit_tagihan").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('/riwayatpenyakit/input') }}",
+                        url: "{{ url('tagihan/inputtagihanmahasiswa') }}",
                         type: "post",
-                        data: new FormData($('#form_penyakit')[0]),
+                        data: new FormData($('#form_tagihan')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -119,8 +122,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormPenyakit();
-                                $('#input_penyakit').modal('toggle');
+                                resetFormTagihan();
+                                $('#input_tagihan').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
                             }else {
@@ -146,11 +149,11 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_penyakit= $("#submit_penyakit").attr("idpenyakit");
+                    var id_tagihan= $("#submit_tagihan").attr("idtagihan");
                     $.ajax({
-                        url: "{{ url('/riwayatpenyakit/edit') }}/"+id_penyakit,
+                        url: "{{ url('tagihan/edittagihanmahasiswa/') }}/"+id_tagihan,
                         type: "post",
-                        data: new FormData($('#form_penyakit')[0]),
+                        data: new FormData($('#form_tagihan')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -177,8 +180,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormPenyakit();
-                                $('#input_penyakit').modal('toggle');
+                                resetFormTagihan();
+                                $('#input_tagihan').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
 
@@ -191,7 +194,7 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                $('#submit_penyakit').attr("data-aksi","input");
+                                $('#submit_tagihan').attr("data-aksi","input");
                             }
                         },
                         fail: function () {
@@ -211,10 +214,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_penyakit').val(data.nama_penyakit);
-                $("#submit_penyakit").attr("aksi","edit");
-                $('#submit_penyakit').attr("idpenyakit",data.mahasiswa_id);
-                $('#input_penyakit').modal('toggle');
+                $('#bulan').val(data.bulan);
+                $('#keterangan').val(data.keterangan);
+                $("#submit_tagihan").attr("aksi","edit");
+                $('#submit_tagihan').attr("idtagihan",data.mahasiswa_id);
+                $('#input_tagihan').modal('toggle');
             } );
 
             $('#datatable tbody').on('click', '#delete', function (e) {
@@ -233,7 +237,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/riwayatpenyakit/delete/') }}/" + data.id,
+                                url: "{{ url('tagihan/hapustagihanmahasiswa/') }}/" + data.mahasiswa_id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
@@ -278,11 +282,15 @@
                 });
             });
 
-            $('#input_penyakit').on('hidden.bs.modal', function () {
-                resetFormPenyakit();
-                $("#submit_penyakit").attr("aksi","input");
-                $('#submit_penyakit').removeAttr("idpenyakit");
+            $('#input_tagihan').on('hidden.bs.modal', function () {
+                resetFormTagihan();
+                $("#submit_tagihan").attr("aksi","input");
+                $('#submit_tagihan').removeAttr("idtagihan");
             });
+        })
+
+        $(document).ready(function(){
+            setMonthPicker()
         })
     </script>
 @endsection
