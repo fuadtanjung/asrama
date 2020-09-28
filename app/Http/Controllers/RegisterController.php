@@ -30,7 +30,7 @@ class RegisterController extends Controller
             $user->nim = $request->nim;
             $user->role_id = $role;
             $user->password = bcrypt($request->password);
-
+            $user->remember_token = Str::random(30);
 
             $user->save();
 

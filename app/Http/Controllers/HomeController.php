@@ -26,5 +26,4 @@ class HomeController extends Controller
         $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->get();
         return view('home',['asrama'=>$mahasiswa]);
     }
-
 }

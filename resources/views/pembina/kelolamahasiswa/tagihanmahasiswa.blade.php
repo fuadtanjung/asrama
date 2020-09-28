@@ -67,7 +67,7 @@
 @section('script')
     <script type="text/javascript">
         function loadData() {
-            $('#datatable').dataTable({
+            $('#datatable').DataTable({
                 "ajax": "{{ url('/tagihan/datatagihanmahasiswa') }}",
                 "columns": [
                     { "data": "bulan" },

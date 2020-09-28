@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mahasiswa;
+
 use App\Mahasiswa_tagihan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -11,7 +11,7 @@ class TagihanMahasiswaController extends Controller
 {
 
     public function ajaxTable(){
-        $tagihan = Mahasiswa_tagihan::all();
+        $tagihan = Mahasiswa_tagihan::with('mahasiswa')->where('mahasiswa_id')->get();
         return Datatables::of($tagihan)->toJson();
     }
 

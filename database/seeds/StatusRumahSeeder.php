@@ -14,16 +14,16 @@ class StatusRumahSeeder extends Seeder
     public function run()
     {
         DB::table('status_rumahs')->insert([
-            'nama_status' => 'rumah_keluarga',
+            'nama_status' => 'Rumah Keluarga',
         ]);
         DB::table('status_rumahs')->insert([
-            'nama_status' => 'rumah_sendiri',
+            'nama_status' => 'Rumah Sendiri',
         ]);
         DB::table('status_rumahs')->insert([
-            'nama_status' => 'kontrak',
+            'nama_status' => 'Kontrak',
         ]);
         DB::table('status_rumahs')->insert([
-            'nama_status' => 'rumah_warisan',
+            'nama_status' => 'Rumah Warisan',
         ]);
     }
 }

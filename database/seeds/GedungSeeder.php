@@ -13,7 +13,7 @@ class GedungSeeder extends Seeder
     {
         DB::table('gedungs')->insert([
             'nama_gedung' => 'hijau',
-            'jenis_kelamin' => 'laki-laki',
+            'jenis_kelamin' => 'perempuan',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'roesma',
@@ -21,7 +21,7 @@ class GedungSeeder extends Seeder
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'msyaff',
-            'jenis_kelamin' => 'perempuan',
+            'jenis_kelamin' => 'laki-laki',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'rpx',
@@ -29,7 +29,7 @@ class GedungSeeder extends Seeder
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'oren',
-            'jenis_kelamin' => 'laki-laki',
+            'jenis_kelamin' => 'perempuan',
         ]);
     }
 }

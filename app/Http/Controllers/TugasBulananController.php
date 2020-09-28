@@ -58,10 +58,10 @@ class TugasBulananController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $tugas_bulanan = Tugas_bulanan::where('id', $id)->first();
+            $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->first();
             $tugas_bulanan->tahun = $request->tahun;
             $tugas_bulanan->bulan = $request->bulan;
-            $tugas_bulanan->nama_tugas = $request->nama_tugas;
+            $tugas_bulanan->tugas_id = $request->tugas;
             if ($tugas_bulanan->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Tugas Bulanan"));
             } else {
@@ -79,11 +79,11 @@ class TugasBulananController extends Controller
     }
 
     public function delete($id){
-        $tugas_bulanan = Tugas_bulanan::where('id', $id)->first();
+        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->first();
         if($tugas_bulanan->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Tugas_Bulanan"));
+            return json_encode(array("success"=>"Berhasil Menghapus Data Tugas Bulanan"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Tugas_Bulanan"));
+            return json_encode(array("error"=>"Gagal Menghapus Data Tugas Bulanan"));
         }
     }
 

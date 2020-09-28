@@ -10,8 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class FakultasController extends Controller
 {
     public function index(){
-        $fakultas = Fakultas::all();
-        return view('pembina.fakultas',compact('fakultas'));
+        return view('pembina.fakultas');
     }
 
     protected function  validasiData($data){

@@ -6,21 +6,43 @@ use App\Mahasiswa;
 use App\Tugas_bulanan;
 use App\Tugas_bulanan_mahasiswa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
 class TugasBulananMahasiswaController extends Controller
 {
-
     public function data($id){
         $mahasiswa = Mahasiswa::join('tugas_bulanan_mahasiswas', 'mahasiswas.user_id', '=', 'tugas_bulanan_mahasiswas.mahasiswa_id')
             ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
             ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
-            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.keterangan','mahasiswas.*')
+            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.*','mahasiswas.*')
             ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$id)
             ->get();
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
-        return view('pembina.kelolamahasiswa.tugasbulananmahasiswa',['tugasbulanan'=>$mahasiswa,'namamahasiswa'=>$nama]);
+        return view ('pembina.kelolamahasiswa.tugasbulananmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
+
+    }
+
+    public function ajaxtable($mahasiswa){
+        $mahasiswas = Mahasiswa::join('tugas_bulanan_mahasiswas', 'mahasiswas.user_id', '=', 'tugas_bulanan_mahasiswas.mahasiswa_id')
+            ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
+            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
+            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.*','mahasiswas.*')
+            ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$mahasiswa)
+            ->get();
+        $no = 1;
+        $arraydata = [];
+        foreach ($mahasiswas as $data){
+            $arraydata[]= [
+                "no" => $no,
+                "tugas_bulanan_id" => $data->tugas_bulanan_id,
+                "nama_tugas"=>$data->nama_tugas,
+                "bulan"=>$data->bulan,
+                "tahun"=>$data->tahun,
+                "keterangan"=>$data->keterangan,
+                ];
+            $no++;
+        }
+        return DataTables::of($arraydata)->toJson();
     }
 
 //    public function datatugasbulanan($id){
@@ -44,7 +66,6 @@ class TugasBulananMahasiswaController extends Controller
             'tahun' => 'required:tugas_bulanan_mahasiswa',
             'bulan' => 'required:tugas_bulanan_mahasiswa',
             'keterangan' => 'required:tugas_bulanan_mahasiswa',
-
         ], $pesan);
     }
 
@@ -97,8 +118,8 @@ class TugasBulananMahasiswaController extends Controller
         }
     }
 
-    public function hapustugasbulanan($id){
-        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('mahasiswa_id', $id)->first();
+    public function delete($id){
+        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->first();
         if($tugas_bulanan_mahasiswa->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data tugas_bulanan_mahasiswa"));
         }else{

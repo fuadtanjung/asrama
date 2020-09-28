@@ -22,7 +22,6 @@ class MahasiswaController extends Controller
 //            ->join('goldars','mahasiswas.goldar_id','=','goldars.id')
 //            ->select('jurusans.nama_jurusan','mahasiswas.*','jalur_masuks.nama_jalur','goldars.nama_goldar','status_rumahs.nama_status')
 //            ->get();
-
         return view('mahasiswa.profile');
     }
 

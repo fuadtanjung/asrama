@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card" style="width: 70%">
+        <div class="card">
 
-            <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama}}</div>
+            <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama }}</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tugasbulananmhs">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
-            <div class="card-body" style="margin-right: 10%">
+            <div class="card-body">
                 <table class="table table-hover table-green-soft" id="datatable">
                     <thead>
                     <tr>
@@ -24,19 +24,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($tugasbulanan as $tugas)
-                    <tr>
-                        <td>{{ $loop->iteration}}</td>
-                        <td>{{ $tugas->nama_tugas }}</td>
-                        <td>{{ $tugas->bulan }}</td>
-                        <td>{{ $tugas->tahun }}</td>
-                        <td>{{ $tugas->keterangan }}</td>
+{{--                    @foreach($tugasbulanan as $tugas)--}}
+{{--                    <tr>--}}
+{{--                        <td>{{ $loop->iteration}}</td>--}}
+{{--                        <td>{{ $tugas->nama_tugas }}</td>--}}
+{{--                        <td>{{ $tugas->bulan }}</td>--}}
+{{--                        <td>{{ $tugas->tahun }}</td>--}}
+{{--                        <td>{{ $tugas->keterangan }}</td>--}}
 {{--                        <td>--}}
 {{--                        <a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a>--}}
 {{--                        <a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>--}}
 {{--                        </td>--}}
-                    </tr>
-                    @endforeach
+{{--                    </tr>--}}
+{{--                    @endforeach--}}
                     </tbody>
                 </table>
             </div>
@@ -50,9 +50,7 @@
                         <div class="modal-body">
                             <form id="form_tugasbulananmhs" method="post">
                                 @csrf
-                                @foreach( $tugasbulanan as $tugas)
-                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $tugas->user_id}}" hidden>
-                                @endforeach
+                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Nama Tugas
@@ -101,13 +99,22 @@
 
 @section('script')
     <script type="text/javascript">
-
-
         function loadData() {
+            var id =  "{{ $id }}";
             $('#datatable').dataTable({
+                "ajax" : {
+                    "url" : "{{ url('/tugasbulananmahasiswa/datatugasbulanans/') }}/" + id,
+                    "type" : "GET",
+                    "datatype" : 'json'
+                },
                 "columns": [
-                    {  "data": "aksi",
-                        render: function (aksi) {
+                    {"data" : "no"},
+                    { "data": "nama_tugas" },
+                    { "data": "tahun" },
+                    { "data": "bulan" },
+                    { "data": "keterangan" },
+                    {
+                        render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
                                 '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
                         }
@@ -337,7 +344,5 @@
                 $('#submit_tugasbulananmhs').removeAttr("idtugasbulanan");
             });
         })
-
-
     </script>
 @endsection

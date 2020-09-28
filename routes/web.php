@@ -34,9 +34,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'tugasbulananmahasiswa'], function() {
             Route::get('datatugasbulanan/{id}', 'TugasBulananMahasiswaController@data')->name('tugasbulanan');
+            Route::get('datatugasbulanans/{id}', 'TugasBulananMahasiswaController@ajaxtable');
             Route::post('inputtugasbulanan', 'TugasBulananMahasiswaController@inputtugasbulanan');
             Route::post('edittugasbulanan/{id}', 'TugasBulananMahasiswaController@edittugasbulanan');
-            Route::post('hapustugasbulanan/{id}', 'TugasBulananMahasiswaController@hapustugasbulanan');
+            Route::post('hapustugasbulanan/{id}', 'TugasBulananMahasiswaController@delete');
             Route::get('listtugas', 'TugasBulananMahasiswaController@listTugas');
         });
 
@@ -45,6 +46,18 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('inputtagihanmahasiswa', 'TagihanMahasiswaController@input');
             Route::post('edittagihanmahasiswa/{id}', 'TagihanMahasiswaController@edit');
             Route::post('hapustagihanmahasiswa/{id}', 'TagihanMahasiswaController@delete');
+        });
+
+        Route::group(['prefix' => 'pembina'], function(){
+            Route::get('/','PembinaController@index');
+            Route::post('input', 'PembinaController@input');
+        });
+
+        Route::group(['prefix' => 'akunpembina'], function(){
+            Route::get('/','AkunPembinaController@index');
+            Route::post('input', 'AkunPembinaController@input');
+            Route::get('data', 'AkunPembinaController@ajaxTable');
+
         });
 
         Route::group(['prefix' => 'fakultas'], function(){
@@ -107,6 +120,15 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'tugasbulanan'], function(){
             Route::get('/','TugasBulananController@index');
+            Route::get('data', 'TugasBulananController@ajaxTable');
+            Route::post('input', 'TugasBulananController@input');
+            Route::post('edit/{id}', 'TugasBulananController@edit');
+            Route::post('delete/{id}', 'TugasBulananController@delete');
+            Route::get('listtugas', 'TugasBulananController@listTugas');
+        });
+
+        Route::group(['prefix' => 'absensholat'], function () {
+            Route::get('/', 'TugasBulananController@index');
             Route::get('data', 'TugasBulananController@ajaxTable');
             Route::post('input', 'TugasBulananController@input');
             Route::post('edit/{id}', 'TugasBulananController@edit');

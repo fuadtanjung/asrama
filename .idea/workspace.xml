@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="532f897d-1d2e-4d06-b9e5-c5da89db5562" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/data/mahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/datamahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/detailmahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tagihanmahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tugasbulananmahasiswa.blade.php" afterDir="false" />
+    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PembinaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/profilpembina.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PengalamanorganisasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengalamanorganisasiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RiwayatpenyakitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RiwayatpenyakitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Pengalaman_organisasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pengalaman_organisasi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tugas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/StatusRumahSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/StatusRumahSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tagihanmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tagihanmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tugasbulananmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/tugas_bulanan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/tugas_bulanan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,19 +42,7 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Blade" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="fakultas" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -142,6 +132,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
@@ -159,38 +150,20 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1hB84huyT7zm7iuPILV78O0yyWI" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1i7ZKdfEeWWo2GneFhLFoWCmoEM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\asrama\public\css" />
-      <recent name="C:\laragon\www\asrama\public\js" />
-      <recent name="C:\laragon\www\asrama\public\assets\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\asrama\public\assets\img\waves" />
-      <recent name="C:\laragon\www\asrama\public\js" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -201,116 +174,23 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="532f897d-1d2e-4d06-b9e5-c5da89db5562" name="Default Changelist" comment="" />
-      <created>1599472936628</created>
+      <changelist id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="" />
+      <created>1601260531264</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1599472936628</updated>
-      <workItem from="1599472937831" duration="16239000" />
-      <workItem from="1599533795104" duration="10888000" />
-      <workItem from="1599561390076" duration="15552000" />
-      <workItem from="1599623211993" duration="19416000" />
-      <workItem from="1599711538164" duration="624000" />
-      <workItem from="1599712920569" duration="2233000" />
-      <workItem from="1599808520219" duration="36805000" />
-      <workItem from="1599853335784" duration="768000" />
-      <workItem from="1599896566143" duration="8696000" />
-      <workItem from="1599915754916" duration="3001000" />
-      <workItem from="1599922057695" duration="258000" />
-      <workItem from="1599928347039" duration="4601000" />
-      <workItem from="1599983548224" duration="7479000" />
-      <workItem from="1600005162158" duration="96000" />
-      <workItem from="1600075203415" duration="11541000" />
-      <workItem from="1600143176467" duration="1116000" />
-      <workItem from="1600148298391" duration="20175000" />
-      <workItem from="1600242736029" duration="22053000" />
-      <workItem from="1600312468169" duration="4266000" />
-      <workItem from="1600320561137" duration="7440000" />
-      <workItem from="1600328594667" duration="5396000" />
-      <workItem from="1600416093305" duration="31000" />
-      <workItem from="1600416160976" duration="1494000" />
-      <workItem from="1600426779231" duration="6321000" />
-      <workItem from="1600492854355" duration="25964000" />
-      <workItem from="1600602339005" duration="4645000" />
-      <workItem from="1600690058329" duration="167000" />
-      <workItem from="1600690252826" duration="1106000" />
-      <workItem from="1600691395560" duration="1565000" />
-      <workItem from="1600694860252" duration="7177000" />
-      <workItem from="1600749510710" duration="6315000" />
+      <updated>1601260531264</updated>
+      <workItem from="1601260532634" duration="2234000" />
+      <workItem from="1601275335945" duration="7695000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="309" y="47" key="#Inspections" timestamp="1600696400920">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1601277011342">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="309" y="47" key="#Inspections/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600696400920" />
-    <state x="434" y="193" key="#Notifications" timestamp="1599853736160">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="434" y="193" key="#Notifications/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853736160" />
-    <state x="452" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599846435721">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="452" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599846435721" />
-    <state x="460" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600180494815">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="460" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600180494815" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600751484259">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600697720458" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1600751484259" />
-    <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1599854080441">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="306" y="0" key="CommitChangelistDialog2/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599854080441" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599853282054">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853282054" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599853282054">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853282054" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599853282053">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853282053" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599853282054">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853282054" />
-    <state x="179" y="0" width="998" height="708" key="SettingsEditor" timestamp="1600701187006">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="179" y="0" width="998" height="708" key="SettingsEditor/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600701187006" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1599853928743">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599853928743" />
-    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599854068990">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599854068990" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1600697008739">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600697008739" />
-    <state x="410" y="127" width="672" height="445" key="search.everywhere.popup" timestamp="1600700183083">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="410" y="127" width="672" height="445" key="search.everywhere.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1600700183083" />
-    <state x="405" y="281" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599836971219">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="405" y="281" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1599836971219" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1601277011342" />
   </component>
 </project>

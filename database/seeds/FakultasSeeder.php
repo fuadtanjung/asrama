@@ -21,7 +21,19 @@ class FakultasSeeder extends Seeder
             'nama_fakultas' => 'Hukum'
         ]);
         DB::table('fakultas')->insert([
-            'nama_fakultas' => 'teknik'
+            'nama_fakultas' => 'Teknik'
+        ]);
+        DB::table('fakultas')->insert([
+            'nama_fakultas' => 'Peternakan'
+        ]);
+        DB::table('fakultas')->insert([
+            'nama_fakultas' => 'Ilmu Budaya'
+        ]);
+        DB::table('fakultas')->insert([
+            'nama_fakultas' => 'Ilmu Sosial dan Politik'
+        ]);
+        DB::table('fakultas')->insert([
+            'nama_fakultas' => 'Keperawatan'
         ]);
     }
 }

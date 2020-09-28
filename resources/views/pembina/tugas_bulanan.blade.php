@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card" style="width: 70%">
+        <div class="card" style="width: 95%">
             <div class="card-header">Tugas Bulanan</div>
             <br>
             <div class="container-sm">
@@ -241,7 +241,7 @@
                 $('#tahun').val(data.tahun);
                 $('#bulan').val(data.bulan);
                 $("#submit_tugas_bulanan").attr("aksi","edit");
-                $('#submit_tugas_bulanan').attr("idtugasbulanan",data.id);
+                $('#submit_tugas_bulanan').attr("idtugasbulanan",data.tugas_id);
                 $('#input_tugas_bulanan').modal('toggle');
             } );
 
@@ -261,7 +261,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.id,
+                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.tugas_id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

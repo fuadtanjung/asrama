@@ -22,13 +22,13 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col">
                     <h2 class="text-primary">Selamat Datang Di Aplikasi Asrama.</h2>
-                    <p class="text-gray-700">Aplikasi ini digunakan oleh Pembina agar memudahkan segala urusan antara
-                        Mahasiswa Asrama dan Pembina Asram. </p>
+                    <p class="text-gray-700">Aplikasi ini digunakan agar memudahkan segala urusan antara
+                        Mahasiswa Asrama dan Pembina Asrama. </p>
 
                     @if ( auth()->user()->role->nama == "mahasiswa" && $asrama->isEmpty())
                     <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal"
                         data-target="#input_mahasiswa">
-                        Profile <i class="fa fa-arrow-right" style="margin-left: 7px"></i>
+                        Isi Dulu Profile <i class="fa fa-arrow-right" style="margin-left: 7px"></i>
                     </button>
                     @endif
                 </div>
@@ -49,7 +49,8 @@
                         aria-hidden="true">×</span></button>
                     </div>
             <div class="modal-body">
-                <form id="form_mahasiswa" method="post"> 
+                <form id="form_mahasiswa" method="post">
+                    @csrf
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4">
@@ -67,7 +68,7 @@
                             <div class="col-sm-3" id="tanggal">
                                 <label>No. Hp</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm" id="kontak"
-                                    name="kontak">
+                                    name="kontak" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -77,7 +78,7 @@
                             <div class="col-sm-4">
                                 <label>Tempat Lahir</label>
                                 <input type="text" class="form-control  form-control-solid form-control-sm"
-                                    id="tempat_lahir" name="tempat_lahir">
+                                    id="tempat_lahir" name="tempat_lahir" autocomplete="off">
                             </div>
                             <div class="col-sm-4">
                                 <label> Tanggal Lahir</label>
@@ -88,13 +89,13 @@
                                     <input type="text"
                                         class="form-control datepicker datetimepicker-input form-control-solid"
                                         data-toggle="datetimepicker" data-target=".datepicker" id="tanggal_lahir"
-                                        name="tanggal_lahir" />
+                                        name="tanggal_lahir" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <label>Jenis Kelamin</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="jenis_kelamin"
-                                    name="jenis_kelamin">
+                                    name="jenis_kelamin" autocomplete="off">
                                     <option value="laki-laki">Laki - Laki</option>
                                     <option value="perempuan">Perempuan</option>
                                 </select>
@@ -108,28 +109,28 @@
                             <div class="col-sm-3">
                                 <label>Jurusan</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="jurusan"
-                                    name="jurusan">
+                                    name="jurusan" autocomplete="off">
                                     <option value="">Pilih Jurusan</option>
                                 </select>
                             </div>
                             <div class="col-sm-3">
                                 <label>Status Rumah</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="status_rumah"
-                                    name="status_rumah">
+                                    name="status_rumah" autocomplete="off">
                                     <option value="">Pilih Status Rumah</option>
                                 </select>
                             </div>
                             <div class="col-sm-3" id="tanggal">
                                 <label>Jalur Masuk</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="jalur_masuk"
-                                    name="jalur_masuk">
+                                    name="jalur_masuk" autocomplete="off">
                                     <option value="">Pilih Jalur Masuk</option>
                                 </select>
                             </div>
                             <div class="col-sm-3" id="tanggal">
                                 <label>Golongan Darah</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="goldar"
-                                    name="goldar">
+                                    name="goldar" autocomplete="off">
                                     <option value="">Pilih Golongan Darah</option>
                                 </select>
                             </div>
@@ -141,12 +142,12 @@
                             <div class="col-sm-5">
                                 <label>Alamat</label>
                                 <textarea class="form-control  form-control-solid form-control-sm" name="alamat"
-                                    id="alamat"></textarea>
+                                    id="alamat" autocomplete="off"></textarea>
                             </div>
                             <div class="col-sm-2">
                                 <label>Bidik Misi</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="bidik_misi"
-                                    name="bidik_misi">
+                                    name="bidik_misi" autocomplete="off">
                                     <option value="ya">Ya</option>
                                     <option value="tidak">Tidak</option>
                                 </select>
@@ -154,7 +155,7 @@
                             <div class="col-sm-5">
                                 <label>Asal Sekolah</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="asal_sekolah" name="asal_sekolah" />
+                                    id="asal_sekolah" name="asal_sekolah" autocomplete="off"/>
                             </div>
                         </div>
                     </div>
@@ -164,7 +165,7 @@
                             <div class="col-sm-4">
                                 <label>Agama</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="agama"
-                                    name="agama">
+                                    name="agama" autocomplete="off">
                                     <option value="islam">Islam</option>
                                     <option value="kristen">Kristen</option>
                                     <option value="khatolik">Khatolik</option>
@@ -175,8 +176,8 @@
                             <div class="col-sm-4">
                                 <label>Shalat Wajib</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="shalat_wajib"
-                                    name="shalat_wajib">
-                                    <option value=""> Tidak </option>
+                                    name="shalat_wajib" autocomplete="off">
+                                    <option value="Tidak"> Tidak </option>
                                     <option value="selalu">Selalu</option>
                                     <option value="bolong-bolong">Bolong - bolong</option>
                                     <option value="jarang">Jarang</option>
@@ -185,8 +186,8 @@
                             <div class="col-sm-4">
                                 <label>Hafalan Quran</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="hafalan"
-                                    name="hafalan">
-                                    <option value=""> Tidak Ada </option>
+                                    name="hafalan" autocomplete="off">
+                                    <option value="Tidak Ada"> Tidak Ada </option>
                                     <option value="<1 juz"> <1 Juz </option>
                                     <option value="1 - 3 juz"> 1 - 3 Juz</option>
                                     <option value=">3 Juz"> >3 Juz </option>
@@ -200,12 +201,12 @@
                             <div class="col-sm-6">
                                 <label>Nama Ayah</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="nama_ayah" name="nama_ayah" />
+                                    id="nama_ayah" name="nama_ayah" autocomplete="off"/>
                             </div>
                             <div class="col-sm-6">
                                 <label>Nama Ibu</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm" id="nama_ibu"
-                                    name="nama_ibu" />
+                                    name="nama_ibu" autocomplete="off"/>
                             </div>
                         </div>
                     </div>
@@ -214,12 +215,12 @@
                             <div class="col-sm-6">
                                 <label>Pekerjaan Ayah</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="pekerjaan_ayah" name="pekerjaan_ayah" />
+                                    id="pekerjaan_ayah" name="pekerjaan_ayah" autocomplete="off"/>
                             </div>
                             <div class="col-sm-6">
                                 <label>Pekerjaan Ibu</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="pekerjaan_ibu" name="pekerjaan_ibu" />
+                                    id="pekerjaan_ibu" name="pekerjaan_ibu" autocomplete="off" />
                             </div>
                         </div>
                     </div>
@@ -228,8 +229,8 @@
                             <div class="col-sm-6">
                                 <label>Pendapatan Ayah</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="pendapatan_ayah"
-                                    name="pendapatan_ayah">
-                                    <option value=""> Tidak Ada </option>
+                                    name="pendapatan_ayah" autocomplete="off">
+                                    <option value="Tidak Ada"> Tidak Ada </option>
                                     <option value="<1 juta">
                                         <1 Juta </option> <option value="1 - 3 juta"> 1 - 2 Juta
                                     </option>
@@ -240,8 +241,8 @@
                             <div class="col-sm-6">
                                 <label>Pekerjaan Ibu</label>
                                 <select class="form-control  form-control-solid form-control-sm" id="pendapatan_ibu"
-                                    name="pendapatan_ibu">
-                                    <option value=""> Tidak Ada </option>
+                                    name="pendapatan_ibu" autocomplete="off">
+                                    <option value="Tidak Ada"> Tidak Ada </option>
                                     <option value="<1 juta">
                                         <1 Juta </option> <option value="1 - 3 juta"> 1 - 2 Juta
                                     </option>
@@ -257,17 +258,17 @@
                             <div class="col-sm-4">
                                 <label>No. Hp Orang Tua</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="kontak_orang_tua" name="kontak_orang_tua" />
+                                    id="kontak_orang_tua" name="kontak_orang_tua" autocomplete="off"/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Anak Ke</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm" id="anak_ke"
-                                    name="anak_ke" />
+                                    name="anak_ke" autocomplete="off" />
                             </div>
                             <div class="col-sm-4">
                                 <label>Jumlah Saudara</label>
                                 <input type="text" class="form-control form-control-solid form-control-sm"
-                                    id="jumlah_saudara" name="jumlah_saudara" />
+                                    id="jumlah_saudara" name="jumlah_saudara" autocomplete="off"/>
                             </div>
                         </div>
                     </div>

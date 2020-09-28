@@ -32,6 +32,10 @@
                                 <div class="nav-link-icon"><i class="fa fa-table"></i></div>
                                 Mahasiswa
                             </a>
+                            <a class="nav-link" href="{{ route ('datamahasiswa')}}">
+                                <div class="nav-link-icon"><i class="fa fa-table"></i></div>
+                                Absen Sholat
+                            </a>
                             <div class="sidenav-menu-heading">Fakultas dan Jurusan</div>
                             <a class="nav-link" href="{{ url ('fakultas')}}">
                                 <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
@@ -69,21 +73,33 @@
                                 <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
                                 Tugas Bulanan
                             </a>
+                            <div class="sidenav-menu-heading">Profile</div>
+                            <a class="nav-link" href="{{ url ('pembina')}}">
+                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
+                                Profile
+                            </a>
+                            <div class="sidenav-menu-heading">Akun</div>
+                            <a class="nav-link" href="{{ url ('akunpembina')}}">
+                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
+                                Akun Pembina
+                            </a>
                         @endif
-                            @if ( auth()->user()->role->nama == "mahasiswa")
-                        <a class="nav-link" href="{{ url ('mahasiswa')}}">
-                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                            Profile
-                        </a>
-                        <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">
-                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                            Riwayat Penyakit
-                        </a>
-                        <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
-                            <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                            Pengalaman Organisasi
-                        </a>
-                            @endif
+
+                        @if ( auth()->user()->role->nama == "mahasiswa" && empty(auth()->user()->mahasiswa)== false)
+                            <a class="nav-link" href="{{ url ('mahasiswa')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Profile
+                            </a>
+                            <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Riwayat Penyakit
+                            </a>
+                            <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Pengalaman Organisasi
+                            </a>
+                        @endif
+
                     </div>
                 </div>
 
