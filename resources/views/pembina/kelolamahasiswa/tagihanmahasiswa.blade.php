@@ -3,9 +3,7 @@
 @section('content')
     <div class="container mt-1">
         <div class="card" style="width: 70%">
-            @foreach( $tagihanmahasiswa as $tagihan)
-                <div class="card-header">Tagihan Mahasiswa {{ $tagihan->nama}}</div>
-            @endforeach
+                <div class="card-header">Tagihan Mahasiswa {{ $namamahasiswa->nama}}</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tagihan">
@@ -33,9 +31,7 @@
                         <div class="modal-body">
                             <form id="form_tagihan" method="post">
                                 @csrf
-                                @foreach( $tagihanmahasiswa as $tagihan)
-                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $tagihan->user_id}}" hidden>
-                                @endforeach
+                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Bulan
@@ -67,8 +63,13 @@
 @section('script')
     <script type="text/javascript">
         function loadData() {
+            var id =  "{{ $id }}";
             $('#datatable').DataTable({
-                "ajax": "{{ url('/tagihan/datatagihanmahasiswa') }}",
+                "ajax" : {
+                    "url" : "{{ url('tagihanmahasiswa/data/') }}/" + id,
+                    "type" : "GET",
+                    "datatype" : 'json'
+                },
                 "columns": [
                     { "data": "bulan" },
                     { "data": "keterangan" },
@@ -92,7 +93,7 @@
                 var aksi = $("#submit_tagihan").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('tagihan/inputtagihanmahasiswa') }}",
+                        url: "{{ url('tagihanmahasiswa/input') }}",
                         type: "post",
                         data: new FormData($('#form_tagihan')[0]),
                         async: false,
@@ -151,7 +152,7 @@
                 }else if(aksi=="edit"){
                     var id_tagihan= $("#submit_tagihan").attr("idtagihan");
                     $.ajax({
-                        url: "{{ url('tagihan/edittagihanmahasiswa/') }}/"+id_tagihan,
+                        url: "{{ url('tagihanmahasiswa/edit/') }}/"+id_tagihan,
                         type: "post",
                         data: new FormData($('#form_tagihan')[0]),
                         async: false,
@@ -237,7 +238,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('tagihan/hapustagihanmahasiswa/') }}/" + data.mahasiswa_id,
+                                url: "{{ url('tagihanmahasiswa/delete/') }}/" + data.mahasiswa_id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

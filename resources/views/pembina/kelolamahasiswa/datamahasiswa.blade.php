@@ -39,20 +39,20 @@
                             <td>{{ $a -> nim }}</td>
                             <td>{{ $a -> nama }}</td>
                             <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-teal dropdown-toggle btn-sm" id="dropdownFadeInUp" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>
+                                <a class="btn btn-outline-red btn-sm legitRipple" href="{{ route('detailmahasiswa',[$a -> user_id]) }}">Detail</a>
+                                    <button class="btn btn-teal dropdown-toggle btn-sm" id="dropdownFadeInUp" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px">Check Out</button>
                                     <div class="dropdown-menu animated--fade-in-up" aria-labelledby="dropdownFadeInUp">
-                                        <a class="dropdown-item" href="{{ route('detailmahasiswa',[$a -> user_id]) }}">Detail</a>
                                         <a class="dropdown-item" href="{{ route('tugasbulanan',[$a -> user_id]) }}">Tugas Bulanan</a>
-                                        <a class="dropdown-item" href="{{ route('tagihanmahasiswa',[$a -> user_id]) }}">Tagihan Mahasiswa </a>
+                                        <a class="dropdown-item" href="{{ route('tagihan',[$a -> user_id]) }}">Tagihan Mahasiswa </a>
                                     </div>
-                                </div>
+
                             </td>
                         </tr>
                         @endforeach
                         </tbody>
                 </table>
             </div>
+        </div>
 @endsection
 
 @section('script')

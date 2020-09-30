@@ -2,35 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PembinaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/profilpembina.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FakultasSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GedungSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/GoldarSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/GoldarSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/JalurMasukSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/JalurMasukSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/JurusanSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/JurusanSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/StatusRumahSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/StatusRumahSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TugasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TugasSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/datamahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/datamahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/detailmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/detailmahasiswa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tagihanmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tagihanmahasiswa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/tugasbulananmahasiswa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/tugas_bulanan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/tugas_bulanan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +172,9 @@
       <option name="presentableId" value="Default" />
       <updated>1601260531264</updated>
       <workItem from="1601260532634" duration="2234000" />
-      <workItem from="1601275335945" duration="7695000" />
+      <workItem from="1601275335945" duration="9108000" />
+      <workItem from="1601375169152" duration="118000" />
+      <workItem from="1601424836142" duration="6718000" />
     </task>
     <servers />
   </component>
@@ -188,6 +182,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601425473040">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1601425473040" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1601277011342">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

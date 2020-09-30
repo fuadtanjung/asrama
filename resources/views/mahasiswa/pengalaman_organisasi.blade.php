@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card" style="width: 90%">
+        <div class="card">
             <div class="card-header">Pengalaman Organisasi</div>
             <br>
             <div class="container-sm">

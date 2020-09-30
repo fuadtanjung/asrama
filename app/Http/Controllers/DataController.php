@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mahasiswa;
+use App\Pengalaman_organisasi;
+use App\Riwayat_penyakit;
 use App\Tugas;
 use App\Tugas_bulanan;
 use App\Tugas_bulanan_mahasiswa;
@@ -19,7 +21,9 @@ class DataController extends Controller
 
     public function detailmahasiswa($id){
         $mahasiswa = Mahasiswa::where('user_id',$id)->get();
-        return view('pembina.kelolamahasiswa.detailmahasiswa',['detailmahasiswa'=>$mahasiswa]);
+        $pengalaman = Pengalaman_organisasi::where('mahasiswa_id',$id)->get();
+        $riwayat_penyakit = Riwayat_penyakit::where('mahasiswa_id',$id)->get();
+        return view('pembina.kelolamahasiswa.detailmahasiswa',compact('mahasiswa','pengalaman','riwayat_penyakit'));
     }
 
 //    {{--TUGAS BULANAN--}}

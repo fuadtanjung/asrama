@@ -103,7 +103,7 @@
             var id =  "{{ $id }}";
             $('#datatable').dataTable({
                 "ajax" : {
-                    "url" : "{{ url('/tugasbulananmahasiswa/datatugasbulanans/') }}/" + id,
+                    "url" : "{{ url('/tugasbulananmahasiswa/data/') }}/" + id,
                     "type" : "GET",
                     "datatype" : 'json'
                 },
@@ -133,7 +133,7 @@
                 var aksi = $("#submit_tugasbulananmhs").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('tugasbulananmahasiswa/inputtugasbulanan') }}",
+                        url: "{{ url('tugasbulananmahasiswa/input') }}",
                         type: "post",
                         data: new FormData($('#form_tugasbulananmhs')[0]),
                         async: false,
@@ -192,7 +192,7 @@
                 }else if(aksi=="edit"){
                     var id_tugasbulananmhs= $("#submit_tugasbulananmhs").attr("idtugasbulananmhs");
                     $.ajax({
-                        url: "{{ url('tugasbulananmahasiswa/edittugasbulanan/') }}/"+id_tugasbulananmhs,
+                        url: "{{ url('tugasbulananmahasiswa/edit/') }}/"+id_tugasbulananmhs,
                         type: "post",
                         data: new FormData($('#form_tugasbulananmhs')[0]),
                         async: false,
@@ -280,7 +280,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('tugasbulananmahasiswa/hapustugasbulanan/') }}/" + data.tugas_bulanan_id,
+                                url: "{{ url('tugasbulananmahasiswa/delete/') }}/" + data.tugas_bulanan_id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

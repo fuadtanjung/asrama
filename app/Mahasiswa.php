@@ -31,7 +31,7 @@ class Mahasiswa extends Model
         return $this->belongsTo(Status_rumah::class,'status_rumah_id','id');
     }
 
-    public function pengalaman_organisasi(){
+    public function pengalamanorganisasi(){
         return $this->hasMany(Pengalaman_organisasi::class,'mahasiswa_id');
     }
 

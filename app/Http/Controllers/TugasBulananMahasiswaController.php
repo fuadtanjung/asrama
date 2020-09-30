@@ -10,13 +10,13 @@ use Yajra\DataTables\DataTables;
 
 class TugasBulananMahasiswaController extends Controller
 {
-    public function data($id){
-        $mahasiswa = Mahasiswa::join('tugas_bulanan_mahasiswas', 'mahasiswas.user_id', '=', 'tugas_bulanan_mahasiswas.mahasiswa_id')
-            ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
-            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
-            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.*','mahasiswas.*')
-            ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$id)
-            ->get();
+    public function index($id){
+//        $mahasiswa = Mahasiswa::join('tugas_bulanan_mahasiswas', 'mahasiswas.user_id', '=', 'tugas_bulanan_mahasiswas.mahasiswa_id')
+//            ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
+//            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
+//            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.*','mahasiswas.*')
+//            ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$id)
+//            ->get();
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
         return view ('pembina.kelolamahasiswa.tugasbulananmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
 
@@ -44,17 +44,6 @@ class TugasBulananMahasiswaController extends Controller
         }
         return DataTables::of($arraydata)->toJson();
     }
-
-//    public function datatugasbulanan($id){
-//        $tugas_bulanan_mahasiswa = DB::table('tugas_bulanan_mahasiswas')
-//            ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
-//            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
-//            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.keterangan')
-//            ->where('mahasiswa_id',$id)
-//            ->get();
-//        dd($tugas_bulanan_mahasiswa);
-//        return Datatables::of($tugas_bulanan_mahasiswa)->toJson();
-//    }
     protected function  validasiData($data){
         $pesan = [
             'required' => ':attribute tidak boleh kosong',

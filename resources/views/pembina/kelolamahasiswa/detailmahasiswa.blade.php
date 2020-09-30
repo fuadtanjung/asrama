@@ -1,35 +1,62 @@
 @extends('layouts.navbar')
 
 @section('content')
-    <div class="container mt-4">
-    <div class="row">
-        <div class="col-xl-6">
-            <!-- Profile picture card-->
-            @foreach($detailmahasiswa as $b)
-            <div class="card">
-                <div class="card-header">Pengalaman Organisasi</div>
-                <div class="card-body">
-                    <!-- Profile picture image-->
-                   <table>
-                       <thead class="table table-bordered">
-                       <tr>
-                       <th>Nama Organisasi</th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       <tr>
-{{--                           <td>{{ $b->pengalaman_organisasi->nama_organisasi}}</td>--}}
-                       </tr>
-                       </tbody>
-                   </table>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-xl-7">
+                <div class="card mb-4">
+                    <div class="card-header">Pengalaman Organisasi</div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-sm" id="pengalaman">
+                           <thead>
+                          <tr>
+                              <th>No</th>
+                              <th>Nama Organisasi</th>
+                              <th>Mulai</th>
+                              <th>Akhir</th>
+                              <th>Jabatan</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                               @foreach( $pengalaman as $c)
+                                   <td>{{ $loop -> iteration}}.</td>
+                                   <td>{{ $c->nama_organisasi}}</td>
+                                   <td>{{ $c->mulai}}</td>
+                                   <td>{{ $c->akhir}}</td>
+                                   <td>{{ $c->jabatan}}</td>
+                               @endforeach
+                           </tbody>
+                       </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5">
+                <div class="card mb-4">
+                    <div class="card-header">Riwayat Penyakit</div>
+                    <div class="card-body">
+                       <table class="table table-bordered table-sm" id="pengalaman">
+                           <thead>
+                           <tr>
+                               <th>No.</th>
+                               <th>Nama Penyakit</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                               @foreach( $riwayat_penyakit as $d)
+                                   <td>{{ $loop -> iteration }}.</td>
+                                   <td>{{ $d->nama_penyakit}}</td>
+                               @endforeach
+                           </tbody>
+                       </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-6">
             <div class="card">
                 <div class="card-header">Profile Mahasiswa</div>
                 <div class="card-body">
                     <form>
+                        @foreach($mahasiswa as $b)
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -191,7 +218,17 @@
                     </form>
                 </div>
             </div>
-        </div>
     </div>
-    </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready( function () {
+            $('#pengalaman').DataTable({
+                "paging":   false,
+                "ordering": false,
+                "info":     false,
+                "searching": false
+            });
+        } );
+    </script>
 @endsection

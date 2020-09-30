@@ -33,19 +33,20 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['prefix' => 'tugasbulananmahasiswa'], function() {
-            Route::get('datatugasbulanan/{id}', 'TugasBulananMahasiswaController@data')->name('tugasbulanan');
-            Route::get('datatugasbulanans/{id}', 'TugasBulananMahasiswaController@ajaxtable');
-            Route::post('inputtugasbulanan', 'TugasBulananMahasiswaController@inputtugasbulanan');
-            Route::post('edittugasbulanan/{id}', 'TugasBulananMahasiswaController@edittugasbulanan');
-            Route::post('hapustugasbulanan/{id}', 'TugasBulananMahasiswaController@delete');
+            Route::get('/{id}', 'TugasBulananMahasiswaController@index')->name('tugasbulanan');
+            Route::get('data/{id}', 'TugasBulananMahasiswaController@ajaxtable');
+            Route::post('input', 'TugasBulananMahasiswaController@inputtugasbulanan');
+            Route::post('edit/{id}', 'TugasBulananMahasiswaController@edittugasbulanan');
+            Route::post('delete/{id}', 'TugasBulananMahasiswaController@delete');
             Route::get('listtugas', 'TugasBulananMahasiswaController@listTugas');
         });
 
-        Route::group(['prefix' => 'tagihan'], function() {
-            Route::get('datatagihanmahasiswa', 'TagihanMahasiswaController@ajaxTable');
-            Route::post('inputtagihanmahasiswa', 'TagihanMahasiswaController@input');
-            Route::post('edittagihanmahasiswa/{id}', 'TagihanMahasiswaController@edit');
-            Route::post('hapustagihanmahasiswa/{id}', 'TagihanMahasiswaController@delete');
+        Route::group(['prefix' => 'tagihanmahasiswa'], function() {
+            Route::get('/{id}', 'TagihanMahasiswaController@index')->name('tagihan');
+            Route::get('data/{id}', 'TagihanMahasiswaController@ajaxTable');
+            Route::post('input', 'TagihanMahasiswaController@input');
+            Route::post('edit/{id}', 'TagihanMahasiswaController@edit');
+            Route::post('delete/{id}', 'TagihanMahasiswaController@delete');
         });
 
         Route::group(['prefix' => 'pembina'], function(){
