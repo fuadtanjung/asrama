@@ -28,17 +28,19 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'data'], function(){
             Route::get('/','DataController@index')->name('datamahasiswa');
+            Route::get('/tugasbulananmahasiswa','DataController@indextugasbulanan')->name('datatugasbulananmahasiswa');
+            Route::get('/tagihanmahasiswa', 'DataController@indextagihan')->name('datatagihanmahasiswa');
+            Route::get('/dendamahasiswa', 'DataController@indexdenda')->name('datadendamahasiswa');
             Route::get('detailmahasiswa/{id}','DataController@detailmahasiswa')->name('detailmahasiswa');
-            Route::get('tagihanmahasiswa/{id}', 'DataController@tagihanmahasiswa')->name('tagihanmahasiswa');
+
         });
 
         Route::group(['prefix' => 'tugasbulananmahasiswa'], function() {
             Route::get('/{id}', 'TugasBulananMahasiswaController@index')->name('tugasbulanan');
             Route::get('data/{id}', 'TugasBulananMahasiswaController@ajaxtable');
-            Route::post('input', 'TugasBulananMahasiswaController@inputtugasbulanan');
-            Route::post('edit/{id}', 'TugasBulananMahasiswaController@edittugasbulanan');
-            Route::post('delete/{id}', 'TugasBulananMahasiswaController@delete');
-            Route::get('listtugas', 'TugasBulananMahasiswaController@listTugas');
+            Route::post('input', 'TugasBulananMahasiswaController@input');
+            Route::post('edit/{id}', 'TugasBulananMahasiswaController@edit');
+            Route::post('delete/{id}/{bulan}/{tahun}/{mhs}', 'TugasBulananMahasiswaController@delete');
         });
 
         Route::group(['prefix' => 'tagihanmahasiswa'], function() {
@@ -47,6 +49,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('input', 'TagihanMahasiswaController@input');
             Route::post('edit/{id}', 'TagihanMahasiswaController@edit');
             Route::post('delete/{id}', 'TagihanMahasiswaController@delete');
+        });
+
+        Route::group(['prefix' => 'dendamahasiswa'], function() {
+            Route::get('/{id}', 'DendaMahasiswaController@index')->name('denda');
+            Route::get('data/{id}', 'DendaMahasiswaController@ajaxTable');
+            Route::post('input', 'DendaMahasiswaController@input');
+            Route::post('edit/{id}', 'DendaMahasiswaController@edit');
+            Route::post('delete/{id}/{delete}', 'DendaMahasiswaController@delete')->name('hapusdenda');
         });
 
         Route::group(['prefix' => 'pembina'], function(){
@@ -119,6 +129,15 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete/{id}', 'TugasController@delete');
         });
 
+        Route::group(['prefix' => 'denda'], function(){
+            Route::get('/','DendaController@index');
+            Route::get('data', 'DendaController@ajaxTable');
+            Route::post('input', 'DendaController@input');
+            Route::post('edit/{id}', 'DendaController@edit');
+            Route::post('delete/{id}', 'DendaController@delete');
+            Route::get('listdenda', 'DendaController@listDenda');
+        });
+
         Route::group(['prefix' => 'tugasbulanan'], function(){
             Route::get('/','TugasBulananController@index');
             Route::get('data', 'TugasBulananController@ajaxTable');
@@ -126,15 +145,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('edit/{id}', 'TugasBulananController@edit');
             Route::post('delete/{id}', 'TugasBulananController@delete');
             Route::get('listtugas', 'TugasBulananController@listTugas');
+            Route::get('listtugasbulanan', 'TugasBulananController@listTugasbulanan');
         });
 
         Route::group(['prefix' => 'absensholat'], function () {
-            Route::get('/', 'TugasBulananController@index');
-            Route::get('data', 'TugasBulananController@ajaxTable');
-            Route::post('input', 'TugasBulananController@input');
-            Route::post('edit/{id}', 'TugasBulananController@edit');
-            Route::post('delete/{id}', 'TugasBulananController@delete');
-            Route::get('listtugas', 'TugasBulananController@listTugas');
+            Route::get('/', 'AbsenSholatController@index');
+            Route::get('data', 'AbsenSholatController@ajaxTable');
+            Route::post('input', 'AbsenSholatController@input')->name('absen');
+            Route::get('cari', 'AbsenSholatController@search')->name('found');
         });
 
     });
@@ -164,6 +182,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('input', 'PengalamanorganisasiController@input');
             Route::post('edit/{id}', 'PengalamanorganisasiController@edit');
             Route::post('delete/{id}', 'PengalamanorganisasiController@delete');
+        });
+
+        Route::group(['prefix' => 'checkin'], function(){
+            Route::get('/','CheckinController@index');
+            Route::get('/input','CheckinController@input');
         });
     });
 });

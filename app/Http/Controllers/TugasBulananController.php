@@ -92,5 +92,8 @@ class TugasBulananController extends Controller
         return json_encode($tugas);
     }
 
-
+    public function listTugasbulanan(){
+        $tugas = Tugas_bulanan::with('tugas')->get();
+        return json_encode($tugas);
+    }
 }

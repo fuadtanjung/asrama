@@ -6,10 +6,6 @@
         <div class="d-flex justify-content-between">
             <div class="mr-4 mb-3 mb-sm-0">
                 <h1 class="mb-0">Data Mahasiswa</h1>
-                <div class="small">
-                    <span class="font-weight-500 text-primary">Kelola Mahasiswa : </span>
-                    Seperti Detail Mahasiswa,Tugas Bulanan,Tagihan Mahasiswa, dan Denda Mahasiswa
-                </div>
             </div>
             <!-- Date range picker example button-->
             <div class="btn btn-white btn-sm line-height-normal p-3" >
@@ -19,7 +15,7 @@
             </div>
         </div>
     </div>
-        <div class="container mt-1">
+    <div class="container mt-1">
 
         <div class="card">
             <div class="card-body">
@@ -29,30 +25,31 @@
                         <th >No</th>
                         <th>Nim</th>
                         <th>Nama</th>
-                        <th></th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
-                        <tbody style="text-align: center" >
-                        @foreach($mahasiswa as $a)
+                    <tbody style="text-align: center" >
+                    @foreach($mahasiswa as $a)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $a -> nim }}</td>
                             <td>{{ $a -> nama }}</td>
                             <td>
-                                <a class="btn btn-outline-red btn-sm legitRipple" href="{{ route('detailmahasiswa',[$a -> user_id]) }}">Detail</a>
+                                <a class="btn btn-outline-indigo btn-sm legitRipple" href="{{ route('denda',[$a -> user_id]) }}">Denda</a>
                             </td>
                         </tr>
-                        @endforeach
-                        </tbody>
+                    @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
+        @endsection
+
+        @section('script')
+            <script>
+                $(document).ready( function () {
+                    $('#datatable').DataTable();
+                } );
+            </script>
 @endsection
 
-@section('script')
-    <script>
-    $(document).ready( function () {
-        $('#datatable').DataTable();
-    } );
-    </script>
-@endsection

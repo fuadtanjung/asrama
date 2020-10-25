@@ -68,4 +68,5 @@ class TugasController extends Controller
             return json_encode(array("error"=>"Gagal Menghapus Data Tugas"));
         }
     }
+
 }

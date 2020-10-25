@@ -18,7 +18,7 @@ class TugasBulananMahasiswaController extends Controller
 //            ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$id)
 //            ->get();
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
-        return view ('pembina.kelolamahasiswa.tugasbulananmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
+        return view ('pembina.checkout.tugas.tugasbulananmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
 
     }
 
@@ -35,15 +35,17 @@ class TugasBulananMahasiswaController extends Controller
             $arraydata[]= [
                 "no" => $no,
                 "tugas_bulanan_id" => $data->tugas_bulanan_id,
+                "mahasiswa_id" => $data->mahasiswa_id,
                 "nama_tugas"=>$data->nama_tugas,
                 "bulan"=>$data->bulan,
                 "tahun"=>$data->tahun,
                 "keterangan"=>$data->keterangan,
-                ];
+            ];
             $no++;
         }
         return DataTables::of($arraydata)->toJson();
     }
+
     protected function  validasiData($data){
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
@@ -58,7 +60,7 @@ class TugasBulananMahasiswaController extends Controller
         ], $pesan);
     }
 
-    public function inputtugasbulanan(Request $request){
+    public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()){
             $tugas_bulanan_mahasiswa = new Tugas_bulanan_mahasiswa();
@@ -83,10 +85,10 @@ class TugasBulananMahasiswaController extends Controller
         }
     }
 
-    public function edittugasbulanan($id, Request $request){
+    public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $tugas_bulanan_mahasiswa = tugas_bulanan_mahasiswa::where('mahasiswa_id', $id)->first();
+            $tugas_bulanan_mahasiswa = tugas_bulanan_mahasiswa::where('tugas', $id)->first();
             $tugas_bulanan_mahasiswa->tahun = $request->tahun;
             $tugas_bulanan_mahasiswa->bulan = $request->bulan;
             $tugas_bulanan_mahasiswa->tugas_bulanan_id = $request->tugas;
@@ -107,17 +109,12 @@ class TugasBulananMahasiswaController extends Controller
         }
     }
 
-    public function delete($id){
-        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->first();
+    public function delete($id,$bulan,$tahun,$mhs){
+        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->where('bulan',$bulan)->where('tahun',$tahun)->where('mahasiswa_id',$mhs);
         if($tugas_bulanan_mahasiswa->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data tugas_bulanan_mahasiswa"));
+            return json_encode(array("success"=>"Berhasil Menghapus Data Denda Mahasiswa"));
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data tugas_bulanan_mahasiswa"));
+            return json_encode(array("error"=>"Gagal Menghapus Data Denda Mahasiswa"));
         }
-    }
-
-    public function listTugas(){
-        $tugas = Tugas_bulanan::with(['tugas'])->get();
-        return json_encode($tugas);
     }
 }

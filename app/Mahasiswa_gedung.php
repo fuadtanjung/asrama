@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa_gedung extends Model
 {
     protected $table = 'mahasiswa_gedungs';
+    public $timestamps = false;
     protected $fillable = [
-        'mulai','akhir','surat_perjanjian'
+        'mulai','akhir','surat_perjanjian','ruangan_id','mahasiswa_id'
     ];
 
     public function mahasiswa(){

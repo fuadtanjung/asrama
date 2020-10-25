@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tugas_bulanan extends Model
 {
     protected $table = 'tugas_bulanans';
-    protected $primaryKey = 'tugas_id';
     public $timestamps = false;
+    protected $fillable = [
+        'tahun','bulan'
+    ];
 
     public function tugas(){
         return $this->belongsTo(Tugas::class,'tugas_id','id');

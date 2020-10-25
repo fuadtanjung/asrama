@@ -34,7 +34,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Riwayat Penyakit</div>
                     <div class="card-body">
-                       <table class="table table-bordered table-sm" id="pengalaman">
+                       <table class="table table-bordered table-sm" id="riwayat_penyakit">
                            <thead>
                            <tr>
                                <th>No.</th>
@@ -224,6 +224,15 @@
     <script>
         $(document).ready( function () {
             $('#pengalaman').DataTable({
+                "paging":   false,
+                "ordering": false,
+                "info":     false,
+                "searching": false
+            });
+        } );
+
+        $(document).ready( function () {
+            $('#riwayat_penyakit').DataTable({
                 "paging":   false,
                 "ordering": false,
                 "info":     false,

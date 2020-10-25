@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Absen_sholat extends Model
 {
     protected $table = 'absen_sholats';
-    protected $primaryKey = 'mahasiswa_id';
+    public $timestamps = false;
     protected $fillable = [
-        'keterangan','tanggal'
+        'mahasiswa_id','keterangan','tanggal'
     ];
 
     public function mahasiswa(){

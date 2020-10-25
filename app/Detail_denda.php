@@ -8,11 +8,12 @@ class Detail_denda extends Model
 {
     protected $table = 'detail_dendas';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
         'keterangan','waktu'
     ];
 
-    public function fakultas(){
+    public function denda(){
         return $this->belongsTo(Denda::class,'denda_id','id');
     }
     public function mahasiswa(){

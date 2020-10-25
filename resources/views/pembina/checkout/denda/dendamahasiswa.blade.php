@@ -3,76 +3,43 @@
 @section('content')
     <div class="container mt-1">
         <div class="card">
-
-            <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama }}</div>
+            <div class="card-header">Denda Mahasiswa {{ $namamahasiswa->nama}}</div>
             <br>
             <div class="container-sm">
-                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tugasbulananmhs">
+                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_denda">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
+                <table class="table table-hover table-bordered table-green-soft table-sm" id="datatable">
                     <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama Tugas</th>
-                        <th>Bulan</th>
-                        <th>Tahun</th>
+                        <th style="width: 1px">No.</th>
+                        <th>Nama Denda</th>
+                        <th>Jumlah Denda</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
-                    <tbody>
-{{--                    @foreach($tugasbulanan as $tugas)--}}
-{{--                    <tr>--}}
-{{--                        <td>{{ $loop->iteration}}</td>--}}
-{{--                        <td>{{ $tugas->nama_tugas }}</td>--}}
-{{--                        <td>{{ $tugas->bulan }}</td>--}}
-{{--                        <td>{{ $tugas->tahun }}</td>--}}
-{{--                        <td>{{ $tugas->keterangan }}</td>--}}
-{{--                        <td>--}}
-{{--                        <a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a>--}}
-{{--                        <a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
-{{--                    @endforeach--}}
-                    </tbody>
                 </table>
             </div>
-            <div class="modal fade" id="input_tugasbulananmhs" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="input_denda" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Tugas Bulanan</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Denda</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
-                            <form id="form_tugasbulananmhs" method="post">
+                            <form id="form_denda" method="post">
                                 @csrf
-                                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
+                                <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
-                                        Nama Tugas
+                                        Nama Denda
                                     </label>
-                                    <select class="custom-select select2" id="tugas" name="tugas">
-                                        <option value="">Pilih Tugas</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">
-                                        Bulan
-                                    </label>
-                                    <select class="custom-select select2" id="bulan" name="bulan">
-                                        <option value="">Pilih Bulan</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">
-                                        Tahun
-                                    </label>
-                                    <select class="custom-select select2" id="tahun" name="tahun">
-                                        <option value="">Pilih Tahun</option>
+                                    <select class="custom-select select2" id="denda" name="denda">
+                                        <option value="">Pilih Denda</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -87,7 +54,7 @@
                             <button class="btn btn-outline-danger legitRipple" type="button" data-dismiss="modal">
                                 Close
                             </button>
-                            <button class="btn btn-primary" type="button" id="submit_tugasbulananmhs" aksi="input">Submit
+                            <button class="btn btn-primary" type="button" id="submit_denda" aksi="input">Submit
                             </button>
                         </div>
                     </div>
@@ -101,17 +68,16 @@
     <script type="text/javascript">
         function loadData() {
             var id =  "{{ $id }}";
-            $('#datatable').dataTable({
+            $('#datatable').DataTable({
                 "ajax" : {
-                    "url" : "{{ url('/tugasbulananmahasiswa/data/') }}/" + id,
+                    "url" : "{{ url('dendamahasiswa/data/') }}/" + id,
                     "type" : "GET",
                     "datatype" : 'json'
                 },
                 "columns": [
-                    {"data" : "no"},
-                    { "data": "nama_tugas" },
-                    { "data": "tahun" },
-                    { "data": "bulan" },
+                    { "data": "no" },
+                    { "data": "nama_denda" },
+                    { "data": "denda" },
                     { "data": "keterangan" },
                     {
                         render: function() {
@@ -123,19 +89,19 @@
             });
         }
 
-        function resetFormTugasbulananmhs() {
-            $("#form_tugasbulananmhs")[0].reset();
+        function resetFormDenda() {
+            $("#form_denda")[0].reset();
         }
 
         $(window).on('load', function () {
             loadData();
-            $('#submit_tugasbulananmhs').click(function () {
-                var aksi = $("#submit_tugasbulananmhs").attr("aksi");
+            $('#submit_denda').click(function () {
+                var aksi = $("#submit_denda").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('tugasbulananmahasiswa/input') }}",
+                        url: "{{ url('dendamahasiswa/input') }}",
                         type: "post",
-                        data: new FormData($('#form_tugasbulananmhs')[0]),
+                        data: new FormData($('#form_denda')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -163,8 +129,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormTugasbulananmhs();
-                                $('#input_tugasbulananmhs').modal('toggle');
+                                resetFormDenda();
+                                $('#input_denda').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
                             }else {
@@ -190,11 +156,11 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_tugasbulananmhs= $("#submit_tugasbulananmhs").attr("idtugasbulananmhs");
+                    var id_denda= $("#submit_denda").attr("iddenda");
                     $.ajax({
-                        url: "{{ url('tugasbulananmahasiswa/edit/') }}/"+id_tugasbulananmhs,
+                        url: "{{ url('dendamahasiswa/edit/') }}/"+id_denda,
                         type: "post",
-                        data: new FormData($('#form_tugasbulananmhs')[0]),
+                        data: new FormData($('#form_denda')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -221,8 +187,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormTugasbulananmhs();
-                                $('#input_tugasbulananmhs').modal('toggle');
+                                resetFormDenda();
+                                $('#input_denda').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
 
@@ -235,7 +201,7 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                $('#submit_tugasbulananmhs').attr("data-aksi","input");
+                                $('#submit_denda').attr("data-aksi","input");
                             }
                         },
                         fail: function () {
@@ -255,13 +221,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_tugas').val(data.tugas_bulanan_id);
-                $('#bulan').val(data.bulan);
-                $('#tahun').val(data.tahun);
+                $('#denda').val(data.denda.id);
                 $('#keterangan').val(data.keterangan);
-                $("#submit_tugasbulananmhs").attr("aksi","edit");
-                $('#submit_tugasbulananmhs').attr("idtugasbulananmhs",data.tugas_bulanan_id);
-                $('#input_tugasbulananmhs').modal('toggle');
+                $("#submit_denda").attr("aksi","edit");
+                $('#submit_denda').attr("iddenda",data.id);
+                $('#input_denda').modal('toggle');
             } );
 
             $('#datatable tbody').on('click', '#delete', function (e) {
@@ -280,7 +244,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('tugasbulananmahasiswa/delete/') }}/" + data.tugas_bulanan_id,
+                                url: "{{ url('dendamahasiswa/delete/') }}/" + data.id + '/' + data.delete,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
@@ -326,23 +290,22 @@
             });
 
             $.ajax({
-                url: '{{ url('tugasbulananmahasiswa/listtugas') }}',
+                url: '{{ url('denda/listdenda') }}',
                 dataType: "json",
                 success: function(data) {
-                    var tugas = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(tugas, function(k, v) {
-                        $('#tugas').append($('<option>', {value: v.tugas_id}).text(v.tugas.nama_tugas))
-                        $('#bulan').append($('<option>', {value: v.bulan}).text(v.bulan))
-                        $('#tahun').append($('<option>', {value: v.tahun}).text(v.tahun))
+                    var denda = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(denda, function(k, v) {
+                        $('#denda').append($('<option>', {value: v.id}).text(v.nama_denda))
                     })
                 }
             });
 
-            $('#input_tugasbulananmhs').on('hidden.bs.modal', function () {
-                resetFormTugasbulananmhs();
-                $("#submit_tugasbulananmhs").attr("aksi","input");
-                $('#submit_tugasbulananmhs').removeAttr("idtugasbulanan");
+            $('#input_denda').on('hidden.bs.modal', function () {
+                resetFormDenda();
+                $("#submit_denda").attr("aksi","input");
+                $('#submit_denda').removeAttr("iddenda");
             });
         })
     </script>
 @endsection
+

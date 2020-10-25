@@ -13,7 +13,7 @@ class Denda extends Model
         'nama_denda','denda'
     ];
 
-    public function fakultas(){
+    public function detaildenda(){
         return $this->hasMany(Detail_denda::class);
     }
 }

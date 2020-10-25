@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="nav-fixed">
+<body>
     @yield('navbar')
 <!-- Scripts -->
 
@@ -31,7 +31,6 @@
     <script src="{{ url('js/moment.min.js') }}"></script>
     <script src="{{ url('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ url('js/custom.js') }}"></script>
-
 <!-- izitoast -->
 @yield('script')
 

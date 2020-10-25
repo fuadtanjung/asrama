@@ -13,7 +13,7 @@ class TagihanMahasiswaController extends Controller
 
     public function index($id){
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
-        return view ('pembina.kelolamahasiswa.tagihanmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
+        return view ('pembina.checkout.tagihan.tagihanmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
     }
 
     public function ajaxTable($tagihan){

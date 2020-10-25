@@ -27,15 +27,37 @@
                             Dashboard
                         </a>
                         @if ( auth()->user()->role->nama == "pembina")
+
                             <div class="sidenav-menu-heading">Data Mahasiswa</div>
                             <a class="nav-link" href="{{ route ('datamahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-table"></i></div>
                                 Mahasiswa
                             </a>
-                            <a class="nav-link" href="{{ route ('datamahasiswa')}}">
+
+                            <a class="nav-link" href="{{ url ('absensholat')}}">
                                 <div class="nav-link-icon"><i class="fa fa-table"></i></div>
                                 Absen Sholat
                             </a>
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
+                                <div class="nav-link-icon"><i class="fas fa-address-card"></i></div>
+                                Kartu Check Out
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsecheckout" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="{{ route('datatugasbulananmahasiswa') }}">
+                                        Tugas Bulanan
+                                    </a>
+                                    <a class="nav-link" href="{{ route('datatagihanmahasiswa') }}">
+                                        Tagihan Mahasiswa
+                                    </a>
+                                    <a class="nav-link" href="{{ route('datadendamahasiswa') }}">
+                                        Denda
+                                    </a>
+                                </nav>
+                            </div>
+
                             <div class="sidenav-menu-heading">Fakultas dan Jurusan</div>
                             <a class="nav-link" href="{{ url ('fakultas')}}">
                                 <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
@@ -55,6 +77,10 @@
                                 <div class="nav-link-icon"><i class="fa fa-filter"></i></div>
                                 Jalur Masuk
                             </a>
+                            <a class="nav-link" href="{{ url ('denda')}}">
+                                <div class="nav-link-icon"><i class="fa fa-filter"></i></div>
+                                Denda
+                            </a>
                             <div class="sidenav-menu-heading">Gedung Asrama</div>
                             <a class="nav-link" href="{{ url ('gedung')}}">
                                 <div class="nav-link-icon"><i class="fa fa-building"></i></div>
@@ -72,11 +98,6 @@
                             <a class="nav-link" href="{{ url ('tugasbulanan')}}">
                                 <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
                                 Tugas Bulanan
-                            </a>
-                            <div class="sidenav-menu-heading">Profile</div>
-                            <a class="nav-link" href="{{ url ('pembina')}}">
-                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
-                                Profile
                             </a>
                             <div class="sidenav-menu-heading">Akun</div>
                             <a class="nav-link" href="{{ url ('akunpembina')}}">
@@ -98,11 +119,13 @@
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
                                 Pengalaman Organisasi
                             </a>
+                            <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                               Check - IN
+                            </a>
                         @endif
-
                     </div>
                 </div>
-
                 <div class="sidenav-footer">
                     <div class="sidenav-footer-content">
                         <div class="sidenav-footer-subtitle">Logged in as:</div>

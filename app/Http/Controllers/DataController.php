@@ -19,27 +19,26 @@ class DataController extends Controller
         return view('pembina.kelolamahasiswa.datamahasiswa',compact('mahasiswa'));
     }
 
+    public function indextugasbulanan(){
+        $mahasiswa = Mahasiswa::all();
+        return view('pembina.checkout.tugas.datatugas',compact('mahasiswa'));
+    }
+
+    public function indextagihan(){
+        $mahasiswa = Mahasiswa::all();
+        return view('pembina.checkout.tagihan.datatagihan',compact('mahasiswa'));
+    }
+
+    public function indexdenda(){
+        $mahasiswa = Mahasiswa::all();
+        return view('pembina.checkout.denda.datadenda',compact('mahasiswa'));
+    }
+
     public function detailmahasiswa($id){
         $mahasiswa = Mahasiswa::where('user_id',$id)->get();
         $pengalaman = Pengalaman_organisasi::where('mahasiswa_id',$id)->get();
         $riwayat_penyakit = Riwayat_penyakit::where('mahasiswa_id',$id)->get();
         return view('pembina.kelolamahasiswa.detailmahasiswa',compact('mahasiswa','pengalaman','riwayat_penyakit'));
     }
-
-//    {{--TUGAS BULANAN--}}
-
-
-
-//    {{----END TUGAS BULANAN-------}}
-
-
-//{{---TAGIHAN MAHASISWA}}
-
-    public function tagihanmahasiswa($id){
-        $mahasiswa = Mahasiswa::with('mahasiswatagihan')->where('user_id',$id)->get();
-        return view('pembina.kelolamahasiswa.tagihanmahasiswa',['tagihanmahasiswa'=>$mahasiswa]);
-    }
-
-
 
 }
