@@ -24,11 +24,11 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Golongan Darah</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Goldar</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
-                            <form id="form_goldar" method="post">
+                            <form id="form_goldar" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
@@ -56,7 +56,7 @@
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/goldar/data') }}",
+                "ajax": "{{ url('/golongandarah/data') }}",
                 "columns": [
                     { "data": "nama_goldar" },
                     {
@@ -89,7 +89,7 @@
                 var aksi = $("#submit_goldar").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('/goldar/input') }}",
+                        url: "{{ url('/golongandarah/input') }}",
                         type: "post",
                         data: new FormData($('#form_goldar')[0]),
                         async: false,
@@ -148,7 +148,7 @@
                 }else if(aksi=="edit"){
                     var id_goldar= $("#submit_goldar").attr("idgoldar");
                     $.ajax({
-                        url: "{{ url('/goldar/edit') }}/"+id_goldar,
+                        url: "{{ url('/golongandarah/edit') }}/"+id_goldar,
                         type: "post",
                         data: new FormData($('#form_goldar')[0]),
                         async: false,
@@ -233,7 +233,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/goldar/delete/') }}/" + data.id,
+                                url: "{{ url('/golongandarah/delete/') }}/" + data.id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

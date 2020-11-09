@@ -3,45 +3,47 @@
 @section('content')
     <div class="container mt-1">
         <div class="card" style="width: 70%">
-            <div class="card-header">Akun Pembina</div>
+            <div class="card-header">Postingan</div>
             <br>
             <div class="container-sm">
-                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_pembina">
+                <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_postingan">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
+                <table class="table table-hover table-green-soft table-sm table-bordered" id="datatable">
                     <thead>
                     <tr>
-                        <th>Nim</th>
-                        <th>Nama</th>
+                        <th>Judul</th>
+                        <th>Waktu</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
                 </table>
             </div>
-            <div class="modal fade" id="input_pembina" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="input_postingan" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Pembina</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Postingan</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
-                            <form id="form_pembina" method="post">
+                            <form id="form_postingan" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama_pembina" placeholder="Nama">
+                                    <label for="exampleFormControlInput1">
+                                        Judul
+                                    </label>
+                                    <input class="form-control form-control-solid" id="judul" name="judul" type="text">
+                                    <input class="form-control form-control-solid" name="pembina" type="text" value="{{ auth()->user()->id }}" hidden>
+                                    <input class="form-control form-control-solid" name="tanggal" type="text" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date('Y-m-d'); ?>" hidden>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nim</label>
-                                    <input type="number" class="form-control" id="nim" name="nim" placeholder="NIM">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password_pembina" placeholder="Password">
+                                    <label for="exampleFormControlInput1">
+                                        Keterangan
+                                    </label>
+                                    <textarea name="keterangan" id="keterangan" class="form-control" rows="8"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -49,7 +51,7 @@
                             <button class="btn btn-outline-danger legitRipple" type="button" data-dismiss="modal">
                                 Close
                             </button>
-                            <button class="btn btn-primary" type="button" id="submit_pembina" aksi="input">Submit
+                            <button class="btn btn-primary" type="button" id="submit_postingan" aksi="input">Submit
                             </button>
                         </div>
                     </div>
@@ -57,19 +59,18 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('script')
     <script type="text/javascript">
         function loadData() {
             $('#datatable').dataTable({
-                "ajax": "{{ url('/akunpembina/data') }}",
+                "ajax": "{{ url('/postingan/data') }}",
                 "columns": [
-                    {"data": "nim"},
-                    {"data": "name"},
+                    { "data": "judul" },
+                    { "data": "waktu_post" },
                     {
-                        render: function () {
+                        render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
                                 '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
                         }
@@ -82,7 +83,9 @@
                     },
                     {
                         width: "20px",
-                        targets: [1]
+                        targets: [1],
+                        render: $.fn.dataTable.render.moment( 'D MMM YYYY' ),
+
                     },
                     {
                         width: "20px",
@@ -92,19 +95,19 @@
             });
         }
 
-        function resetFormPembina() {
-            $("#form_pembina")[0].reset();
+        function resetFormPostingan() {
+            $("#form_postingan")[0].reset();
         }
 
         $(window).on('load', function () {
             loadData();
-            $('#submit_pembina').click(function () {
-                var aksi = $("#submit_pembina").attr("aksi");
+            $('#submit_postingan').click(function () {
+                var aksi = $("#submit_postingan").attr("aksi");
                 if(aksi=="input"){
                     $.ajax({
-                        url: "{{ url('/akunpembina/input') }}",
+                        url: "{{ url('/postingan/input') }}",
                         type: "post",
-                        data: new FormData($('#form_pembina')[0]),
+                        data: new FormData($('#form_postingan')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -132,8 +135,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormPembina();
-                                $('#input_pembina').modal('toggle');
+                                resetFormPostingan();
+                                $('#input_postingan').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
                             }else {
@@ -159,11 +162,11 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_pembina= $("#submit_pembina").attr("idpembina");
+                    var id_postingan= $("#submit_postingan").attr("idpostingan");
                     $.ajax({
-                        url: "{{ url('/akunpembina/edit') }}/"+id_pembina,
+                        url: "{{ url('/postingan/edit') }}/"+id_postingan,
                         type: "post",
-                        data: new FormData($('#form_pembina')[0]),
+                        data: new FormData($('#form_postingan')[0]),
                         async: false,
                         cache: false,
                         contentType: false,
@@ -190,8 +193,8 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                resetFormPembina();
-                                $('#input_pembina').modal('toggle');
+                                resetFormPostingan();
+                                $('#input_postingan').modal('toggle');
                                 $('#datatable').DataTable().destroy();
                                 loadData();
 
@@ -204,7 +207,7 @@
                                     transitionIn: 'flipInX',
                                     transitionOut: 'flipOutX'
                                 });
-                                $('#submit_pembina').attr("data-aksi","input");
+                                $('#submit_postingan').attr("data-aksi","input");
                             }
                         },
                         fail: function () {
@@ -224,11 +227,11 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama').val(data.name);
-                $('#nim').val(data.nim);
-                $("#submit_pembina").attr("aksi","edit");
-                $('#submit_pembina').attr("idpembina",data.id);
-                $('#input_pembina').modal('toggle');
+                $('#judul').val(data.judul);
+                $('#keterangan').val(data.keterangan);
+                $("#submit_postingan").attr("aksi","edit");
+                $('#submit_postingan').attr("idpostingan",data.id);
+                $('#input_postingan').modal('toggle');
             } );
 
             $('#datatable tbody').on('click', '#delete', function (e) {
@@ -247,7 +250,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/akunpembina/delete/') }}/" + data.id,
+                                url: "{{ url('/postingan/delete/') }}/" + data.id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
@@ -292,12 +295,14 @@
                 });
             });
 
-            $('#input_pembina').on('hidden.bs.modal', function () {
-                resetFormPembina();
-                $("#submit_pembina").attr("aksi","input");
-                $('#submit_pembina').removeAttr("idpembina");
+            $('#input_postingan').on('hidden.bs.modal', function () {
+                resetFormPostingan();
+                $("#submit_postingan").attr("aksi","input");
+                $('#submit_postingan').removeAttr("idpostingan");
             });
         })
 
+
     </script>
 @endsection
+

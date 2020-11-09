@@ -18,7 +18,7 @@ class CreateMahasiswaGedungsTable extends Migration
             $table->unsignedBigInteger('mahasiswa_id');
             $table->date('mulai');
             $table->date('akhir');
-            $table->string('surat_perjanjian');
+            $table->string('surat_perjanjian')->nullable();
 
             $table->foreign('ruangan_id')->references('id')->on('ruangans')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');

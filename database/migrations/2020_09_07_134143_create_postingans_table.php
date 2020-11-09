@@ -17,8 +17,8 @@ class CreatePostingansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pembina_id');
             $table->string('judul');
-            $table->string('keterangan');
-            $table->timestamp('waktu_post');
+            $table->text('keterangan');
+            $table->date('waktu_post');
 
             $table->foreign('pembina_id')->references('user_id')->on('pembinas')->onDelete('cascade')->onUpdate('cascade');
         });

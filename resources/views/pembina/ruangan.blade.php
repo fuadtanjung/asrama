@@ -31,19 +31,12 @@
                         <div class="modal-body">
                             <form id="form_ruangan" method="post">
                                 @csrf
+                                <input class="form-control form-control-solid" name="id_gedung" type="text" value="{{ $idgedung->id }}" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Nama Ruangan
                                     </label>
                                     <input class="form-control form-control-solid" id="nama_ruangan" name="nama_ruangan" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">
-                                        Nama Gedung
-                                    </label>
-                                    <select class="custom-select select2" id="gedung" name="gedung">
-                                        <option value="">Pilih Gedung</option>
-                                    </select>
                                 </div>
                             </form>
                         </div>
@@ -64,11 +57,16 @@
 @section('script')
     <script type="text/javascript">
         function loadData() {
+            var id =  "{{ $id }}";
             $('#datatable').dataTable({
-                "ajax": "{{ url('/ruangan/data') }}",
+                "ajax" : {
+                    "url" : "{{ url('ruangan/data/') }}/" + id,
+                    "type" : "GET",
+                    "datatype" : 'json'
+                },
                 "columns": [
                     { "data": "nama_ruangan" },
-                    { "data": "gedung.nama_gedung" },
+                    { "data": "nama_gedung" },
                     {
                         render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
@@ -291,17 +289,6 @@
                         console.info('Closed | closedBy: ' + closedBy);
                     }
                 });
-            });
-
-            $.ajax({
-                url: '{{ url('ruangan/listgedung') }}',
-                dataType: "json",
-                success: function(data) {
-                    var gedung = jQuery.parseJSON(JSON.stringify(data));
-                    $.each(gedung, function(k, v) {
-                        $('#gedung').append($('<option>', {value: v.id}).text(v.nama_gedung))
-                    })
-                }
             });
 
             $('#input_ruangan').on('hidden.bs.modal', function () {

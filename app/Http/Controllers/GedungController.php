@@ -30,7 +30,7 @@ class GedungController extends Controller
         if($validasi->passes()){
             $gedung = new Gedung();
             $gedung->nama_gedung = $request->nama_gedung;
-            $gedung->jenis_kelamin = $request->jenis_kelamin;
+            $gedung->gender = $request->jenis_kelamin;
             if($gedung->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Gedung"));
             }else{

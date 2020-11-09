@@ -20,19 +20,20 @@ class GoldarController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_goldar' => 'unique|required:goldar',
+            'nama_goldar' => 'required|unique:goldars',
         ], $pesan);
     }
 
     public function input(Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()){
-            $goldar = new Goldar();
-            $goldar->nama_goldar = $request->nama_goldar;
-            if($goldar->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Goldar"));
+            $goldar = Goldar::create([
+                "nama_goldar"  => $request->nama_goldar,
+            ]);
+            if($goldar){
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Golongan Darah"));
             }else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Goldar"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Golongan Darah"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();
@@ -52,7 +53,7 @@ class GoldarController extends Controller
 
     public function edit($id, Request $request){
         $goldar = Goldar::where('id', $id)->first();
-        $goldar->nama_goldar = $request->nama_goldar;
+        $goldar->nama_goldar = $request->goldar;
         if($goldar->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Goldar"));
         }else{

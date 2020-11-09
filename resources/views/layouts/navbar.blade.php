@@ -29,9 +29,19 @@
                         @if ( auth()->user()->role->nama == "pembina")
 
                             <div class="sidenav-menu-heading">Data Mahasiswa</div>
+                            <a class="nav-link" href="{{ url ('pembina')}}">
+                                <div class="nav-link-icon"><i class="fa fa-table"></i></div>
+                                Profile
+                            </a>
+
                             <a class="nav-link" href="{{ route ('datamahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-table"></i></div>
                                 Mahasiswa
+                            </a>
+
+                            <a class="nav-link" href="{{ url ('checkin')}}">
+                                <div class="nav-link-icon"><i class="fa fa-table"></i></div>
+                                Kamar Mahasiswa
                             </a>
 
                             <a class="nav-link" href="{{ url ('absensholat')}}">
@@ -58,6 +68,11 @@
                                 </nav>
                             </div>
 
+                            <a class="nav-link" href="{{ url ('postingan')}}">
+                                <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
+                                Postingan
+                            </a>
+
                             <div class="sidenav-menu-heading">Fakultas dan Jurusan</div>
                             <a class="nav-link" href="{{ url ('fakultas')}}">
                                 <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
@@ -69,7 +84,7 @@
                             </a>
 
                             <div class="sidenav-menu-heading">Kelola Data</div>
-                            <a class="nav-link" href="{{ url ('goldar')}}">
+                            <a class="nav-link" href="{{ url ('golongandarah')}}">
                                 <div class="nav-link-icon"><i class="fa fa-user-md"></i></div>
                                 Golongan Darah
                             </a>
@@ -85,10 +100,6 @@
                             <a class="nav-link" href="{{ url ('gedung')}}">
                                 <div class="nav-link-icon"><i class="fa fa-building"></i></div>
                                 Gedung
-                            </a>
-                            <a class="nav-link" href="{{ url ('ruangan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-bed"></i></div>
-                                Ruangan
                             </a>
                             <div class="sidenav-menu-heading">Tugas</div>
                             <a class="nav-link" href="{{ url ('tugas')}}">
@@ -119,9 +130,35 @@
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
                                 Pengalaman Organisasi
                             </a>
-                            <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
+                            <a class="nav-link" href="{{ url('mahasiswa/kamar') }}">
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                               Check - IN
+                                Kamar Asrama
+                            </a>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
+                                <div class="nav-link-icon"><i class="fas fa-address-card"></i></div>
+                                Syarat Check Out
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsecheckout" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="{{ route('tugasmahasiswa') }}">
+                                        Tugas Bulanan
+                                    </a>
+                                    <a class="nav-link" href="{{ route('tagihanmahasiswa') }}">
+                                        Tagihan
+                                    </a>
+                                    <a class="nav-link" href="{{ route('dendamahasiswa') }}">
+                                        Denda
+                                    </a>
+                                </nav>
+                            </div>
+                            <a class="nav-link" href="{{ url ('surat')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                              Surat Asrama
+                            </a>
+                            <a class="nav-link" href="{{ route ('pengumuman')}}">
+                                <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
+                                Pengumuman Pembina
                             </a>
                         @endif
                     </div>

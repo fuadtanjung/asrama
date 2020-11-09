@@ -70,11 +70,12 @@
                 "ajax": "{{ url('/gedung/data') }}",
                 "columns": [
                     { "data": "nama_gedung" },
-                    { "data": "jenis_kelamin" },
+                    { "data": "gender" },
                     {
                         render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a> &nbsp' +
+                                '<a href="#" id="lihat" class="btn btn-outline-info btn-sm legitRipple"><i class="fa fa-eye"></i> Lihat Ruangan</a>'
                         }
                     }
                 ],
@@ -279,6 +280,13 @@
                     }
                 });
             });
+
+            $('#datatable tbody').on('click', '#lihat', function (e) {
+                var table = $('#datatable').DataTable();
+                var data = table.row( $(this).parents('tr') ).data();
+                var id = data.id;
+                window.location.href = "{{ url('/ruangan/')}}/"+id;
+            } );
 
             $('#input_gedung').on('hidden.bs.modal', function () {
                 resetFormGedung();

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Postingan extends Model
 {
     protected $table = 'postingans';
+    public $timestamps= false;
     protected $fillable = [
         'judul','keterangan','waktu_post'
     ];

@@ -41,4 +41,8 @@ class DataController extends Controller
         return view('pembina.kelolamahasiswa.detailmahasiswa',compact('mahasiswa','pengalaman','riwayat_penyakit'));
     }
 
+    public function surat(){
+        return view('mahasiswa.surat');
+    }
+
 }

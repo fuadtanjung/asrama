@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Jurusan;
 use App\Jalur_masuk;
+use App\Mahasiswa_gedung;
 use App\Status_rumah;
 use App\Goldar;
 use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
 //        $profile = DB::table('mahasiswas')
 //            ->join('jurusans','mahasiswas.jurusan_id','=','jurusans.id')
 //            ->join('status_rumahs','mahasiswas.status_rumah_id','=','status_rumahs.id')
@@ -25,7 +28,8 @@ class MahasiswaController extends Controller
         return view('mahasiswa.profile');
     }
 
-    protected function  validasiData($data){
+    protected function validasiData($data)
+    {
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
             'unique' => ':attribute sudah ada',
@@ -59,11 +63,12 @@ class MahasiswaController extends Controller
         ], $pesan);
     }
 
-    public function input(Request $request){
+    public function input(Request $request)
+    {
         $validasi = $this->validasiData($request->all());
-        if($validasi->passes()){
+        if ($validasi->passes()) {
             $mahasiswa = new Mahasiswa();
-            $mahasiswa->user_id= $request->id;
+            $mahasiswa->user_id = $request->id;
             $mahasiswa->nim = $request->nim;
             $mahasiswa->jurusan_id = $request->jurusan;
             $mahasiswa->status_rumah_id = $request->status_rumah;
@@ -72,7 +77,7 @@ class MahasiswaController extends Controller
             $mahasiswa->nama = $request->nama;
             $mahasiswa->no_hp = $request->kontak;
             $mahasiswa->jenis_kelamin = $request->jenis_kelamin;
-            $mahasiswa->tanggal_lahir =Carbon::parse($request->tanggal_lahir);
+            $mahasiswa->tanggal_lahir = Carbon::parse($request->tanggal_lahir);
             $mahasiswa->tempat_lahir = $request->tempat_lahir;
             $mahasiswa->alamat = $request->alamat;
             $mahasiswa->bidik_misi = $request->bidik_misi;
@@ -89,39 +94,75 @@ class MahasiswaController extends Controller
             $mahasiswa->no_hp_ortu = $request->kontak_orang_tua;
             $mahasiswa->anak_ke = $request->anak_ke;
             $mahasiswa->total_saudara = $request->jumlah_saudara;
-            if($mahasiswa->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Fakultas"));
-            }else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Fakultas"));
+            if ($mahasiswa->save()) {
+                return json_encode(array("success" => "Berhasil Menambahkan Data Fakultas"));
+            } else {
+                return json_encode(array("error" => "Gagal Menambahkan Data Fakultas"));
             }
-        }else{
+        } else {
             $msg = $validasi->getMessageBag()->messages();
             $err = array();
-            foreach ($msg as $key=>$item) {
+            foreach ($msg as $key => $item) {
                 $err[] = $item[0];
             }
 
-            return json_encode(array("error"=>$err));
+            return json_encode(array("error" => $err));
         }
     }
 
-    public function listJurusan(){
+    public function listJurusan()
+    {
         $jurusan = Jurusan::all();
         return json_encode($jurusan);
     }
 
-    public function listJalurmasuk(){
+    public function listJalurmasuk()
+    {
         $jalur_masuk = Jalur_masuk::all();
         return json_encode($jalur_masuk);
     }
 
-    public function listStatusrumah(){
+    public function listStatusrumah()
+    {
         $status_rumah = Status_rumah::all();
         return json_encode($status_rumah);
     }
 
-    public function listGoldar(){
+    public function listGoldar()
+    {
         $goldar = Goldar::all();
         return json_encode($goldar);
     }
+
+    public function kamar()
+    {
+        $kamar = Mahasiswa::join('mahasiswa_gedungs', 'mahasiswas.user_id', '=', 'mahasiswa_gedungs.mahasiswa_id')
+            ->join('ruangans', 'mahasiswa_gedungs.ruangan_id', '=', 'ruangans.id')
+            ->join('gedungs', 'ruangans.gedung_id', '=', 'gedungs.id')
+            ->where('user_id', auth()->user()->mahasiswa->user_id)
+            ->get();
+        return view('mahasiswa.kamar')->with('room',$kamar);
+    }
+
+    public function inputsurat($id,Request $req)
+    {
+        $req->validate([
+            'file' => 'required|mimes:jpeg,png,pdf|max:2048'
+        ]);
+
+        $file = $req->file('file');
+        $fileName = $file->getClientOriginalName();
+        $fileName = time().'.'. $fileName;
+        $path = $file->storeAs('uploads', $fileName, 'public');
+
+        if($req->file()) {
+            $perjanjian = Mahasiswa_gedung::where('ruangan_id',$id);
+            $perjanjian->surat_perjanjian = $fileName;
+            $perjanjian->update();
+        }
+        return back()
+            ->with('success','File has been uploaded.')
+            ->with('file', $fileName);
+    }
+
 }

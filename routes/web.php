@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,9 +67,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'akunpembina'], function(){
             Route::get('/','AkunPembinaController@index');
-            Route::post('input', 'AkunPembinaController@input');
             Route::get('data', 'AkunPembinaController@ajaxTable');
-
+            Route::post('input', 'AkunPembinaController@input');
+            Route::post('edit/{id}', 'AkunPembinaController@edit');
+            Route::post('delete/{id}', 'AkunPembinaController@delete');
         });
 
         Route::group(['prefix' => 'fakultas'], function(){
@@ -88,7 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('listfakultas', 'JurusanController@listFakultas');
         });
 
-        Route::group(['prefix' => 'goldar'], function(){
+        Route::group(['prefix' => 'golongandarah'], function(){
             Route::get('/','GoldarController@index');
             Route::get('data', 'GoldarController@ajaxTable');
             Route::post('input', 'GoldarController@input');
@@ -113,12 +115,11 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['prefix' => 'ruangan'], function(){
-            Route::get('/','RuanganController@index');
-            Route::get('data', 'RuanganController@ajaxTable');
+            Route::get('/{id}','RuanganController@index');
+            Route::get('data/{id}', 'RuanganController@ajaxTable');
             Route::post('input', 'RuanganController@input');
             Route::post('edit/{id}', 'RuanganController@edit');
             Route::post('delete/{id}', 'RuanganController@delete');
-            Route::get('listgedung', 'RuanganController@listGedung');
         });
 
         Route::group(['prefix' => 'tugas'], function(){
@@ -155,6 +156,19 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('cari', 'AbsenSholatController@search')->name('found');
         });
 
+        Route::group(['prefix' => 'checkin'], function(){
+            Route::get('/','CheckinController@index');
+            Route::get('/mahasiswa/{id}','CheckinController@choice')->name('kamar');
+            Route::post('/input/{id}','CheckinController@input')->name('masuk');
+        });
+
+        Route::group(['prefix' => 'postingan'], function(){
+            Route::get('/','PostinganController@index');
+            Route::get('data', 'PostinganController@ajaxTable');
+            Route::post('input', 'PostinganController@input');
+            Route::post('edit/{id}', 'PostinganController@edit');
+            Route::post('delete/{id}', 'PostinganController@delete');
+        });
     });
 
     Route::group(['middleware' => ['checkRole:mahasiswa']], function () {
@@ -166,6 +180,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('liststatusrumah', 'MahasiswaController@listStatusrumah');
             Route::get('listjalurmasuk', 'MahasiswaController@listJalurmasuk');
             Route::get('listgoldar', 'MahasiswaController@listGoldar');
+            Route::get('kamar', 'MahasiswaController@kamar');
+            Route::post('inputperjanjian/{id}', 'MahasiswaController@inputsurat')->name('suratperjanjian');
         });
 
         Route::group(['prefix' => 'riwayatpenyakit'], function(){
@@ -184,9 +200,33 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delete/{id}', 'PengalamanorganisasiController@delete');
         });
 
-        Route::group(['prefix' => 'checkin'], function(){
-            Route::get('/','CheckinController@index');
-            Route::get('/input','CheckinController@input');
+        Route::group(['prefix' => 'checkout'], function(){
+            Route::get('/tagihan','CheckoutController@tagihan')->name('tagihanmahasiswa');
+            Route::get('/denda','CheckoutController@denda')->name('dendamahasiswa');
+            Route::get('/tugas','CheckoutController@tugas')->name('tugasmahasiswa');
+        });
+
+        Route::group(['prefix' => 'postinganpembina'], function(){
+            Route::get('/','PostinganController@pengumuman')->name('pengumuman');
+        });
+
+
+
+        Route::group(['prefix' => 'surat'], function(){
+            Route::get('/','DataController@surat');
+            Route::get('/download',function (){
+                $file = public_path()."/storage/kartu.txt";
+                $headers = array('Content-type : application/octet-stream')
+                ;
+                return Response::download($file,"Kartu Checkout.txt",$headers);
+            })->name('download');
+
+            Route::get('/downloads',function (){
+                $file = public_path()."/storage/query.txt";
+                $headers = array('Content-type : application/octet-stream')
+                ;
+                return Response::download($file,"Kartu Checkout.txt",$headers);
+            })->name('downloads');
         });
     });
 });

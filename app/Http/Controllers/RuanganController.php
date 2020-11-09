@@ -9,9 +9,17 @@ use Yajra\DataTables\Facades\DataTables;
 
 class RuanganController extends Controller
 {
-    public function index(){
-        return view('pembina.ruangan');
+    public function index($id){
+        $idgedung = Gedung::select('id')->where('id',$id)->first();
+        return view('pembina.ruangan',['idgedung'=>$idgedung,'id'=>$id]);
     }
+
+    public function ajaxTable($ruangan){
+        $ruangans =  Ruangan::join('gedungs','ruangans.gedung_id','=','gedungs.id')
+            ->where('ruangans.gedung_id',$ruangan)->get();
+        return Datatables::of($ruangans)->toJson();
+    }
+
 
     protected function  validasiData($data){
         $pesan = [
@@ -20,8 +28,8 @@ class RuanganController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_ruangan' => 'required|unique:ruangans',
-            'gedung' => 'required:ruangans',
+            'nama_ruangan' => 'required:ruangans',
+            'id_gedung' => 'required:ruangans',
         ], $pesan);
     }
 
@@ -30,7 +38,7 @@ class RuanganController extends Controller
         if($validasi->passes()){
             $ruangan = new Ruangan();
             $ruangan->nama_ruangan = $request->nama_ruangan;
-            $ruangan->gedung_id = $request->gedung;
+            $ruangan->gedung_id = $request->id_gedung;
             if($ruangan->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Ruangan"));
             }else{
@@ -45,11 +53,6 @@ class RuanganController extends Controller
 
             return json_encode(array("error"=>$err));
         }
-    }
-
-    public function ajaxTable(){
-        $ruangan =  Ruangan::with(['gedung']);
-        return Datatables::of($ruangan)->toJson();
     }
 
     public function edit($id, Request $request){
