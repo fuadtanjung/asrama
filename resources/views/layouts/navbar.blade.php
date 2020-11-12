@@ -120,7 +120,7 @@
                         @if ( auth()->user()->role->nama == "mahasiswa" && empty(auth()->user()->mahasiswa)== false)
                             <a class="nav-link" href="{{ url ('mahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>
-                                Profile
+                                Profile Pendaftaran
                             </a>
                             <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">
                                 <div class="nav-link-icon"><i class="fa fa-desktop"></i></div>

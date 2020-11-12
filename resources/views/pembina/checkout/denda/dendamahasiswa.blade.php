@@ -33,7 +33,7 @@
                         <div class="modal-body">
                             <form id="form_denda" method="post">
                                 @csrf
-                                <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
+                                <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Nama Denda
@@ -156,9 +156,9 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_denda= $("#submit_denda").attr("iddenda");
+                    var id_denda_mahasiswa= $("#submit_denda").attr("iddendamahasiswa");
                     $.ajax({
-                        url: "{{ url('dendamahasiswa/edit/') }}/"+id_denda,
+                        url: "{{ url('/dendamahasiswa/edit/') }}/"+id_denda_mahasiswa,
                         type: "post",
                         data: new FormData($('#form_denda')[0]),
                         async: false,
@@ -221,10 +221,10 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#denda').val(data.denda.id);
+                $('#denda').val(data.denda_id);
                 $('#keterangan').val(data.keterangan);
                 $("#submit_denda").attr("aksi","edit");
-                $('#submit_denda').attr("iddenda",data.id);
+                $('#submit_denda').attr("iddendamahasiswa",data.id);
                 $('#input_denda').modal('toggle');
             } );
 
@@ -244,13 +244,14 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('dendamahasiswa/delete/') }}/" + data.id + '/' + data.delete,
+                                url: "{{ url('/dendamahasiswa/delete/')}}/" + data.id + '/' + data.mahasiswa_id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
                                 },
                                 cache: false,
                                 success: function (response) {
+                                    console.log(response);
                                     var pesan = JSON.parse(response);
                                     iziToast.success({
                                         title: 'Success notice',
@@ -276,10 +277,8 @@
                                 transitionOut: 'flipOutX'
                             });
                             instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-
                         }],
                     ],
-
                     onClosing: function(instance, toast, closedBy){
                         console.info('Closing | closedBy: ' + closedBy);
                     },
@@ -303,7 +302,7 @@
             $('#input_denda').on('hidden.bs.modal', function () {
                 resetFormDenda();
                 $("#submit_denda").attr("aksi","input");
-                $('#submit_denda').removeAttr("iddenda");
+                $('#submit_denda').removeAttr("iddendamahasiswa");
             });
         })
     </script>

@@ -35,6 +35,7 @@ class TugasBulananMahasiswaController extends Controller
             $arraydata[]= [
                 "no" => $no,
                 "tugas_bulanan_id" => $data->tugas_bulanan_id,
+                "id" => $data->id,
                 "mahasiswa_id" => $data->mahasiswa_id,
                 "nama_tugas"=>$data->nama_tugas,
                 "bulan"=>$data->bulan,
@@ -88,7 +89,7 @@ class TugasBulananMahasiswaController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $tugas_bulanan_mahasiswa = tugas_bulanan_mahasiswa::where('tugas', $id)->first();
+            $tugas_bulanan_mahasiswa = tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->first();
             $tugas_bulanan_mahasiswa->tahun = $request->tahun;
             $tugas_bulanan_mahasiswa->bulan = $request->bulan;
             $tugas_bulanan_mahasiswa->tugas_bulanan_id = $request->tugas;

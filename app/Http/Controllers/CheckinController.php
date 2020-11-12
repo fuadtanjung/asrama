@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Gedung;
-use App\Mahasiswa;
 use App\Mahasiswa_gedung;
 use App\Ruangan;
 use Illuminate\Http\Request;
@@ -12,7 +10,12 @@ use Illuminate\Support\Facades\DB;
 class CheckinController extends Controller
 {
     public function index(){
-        $ruangan = Ruangan::all();
+//        $ruangan = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','mahasiswas.user_id')
+//            ->join('ruangans','mahasiswa_gedungs.ruangan_id','ruangans.id')
+//            ->select('ruangans.*','mahasiswa_gedungs.mahasiswa_id')
+//            ->get();
+        $ruangan = Ruangan::join('gedungs','ruangans.gedung_id','gedungs.id')->
+            select('ruangans.id','ruangans.nama_ruangan','gedungs.nama_gedung')->get();
         return view('pembina.checkin.kamarmahasiswa',compact('ruangan'));
     }
 
@@ -24,19 +27,32 @@ class CheckinController extends Controller
     }
 
     public function input(Request $request, $id){
+
+        $request->validate([
+            "mahasiswa_id" => 'required',
+        ]);
+
         $mahasiswa_gedung = new Mahasiswa_gedung();
         $mahasiswa_gedung->mahasiswa_id = $request->mahasiswa_id;
         $mahasiswa_gedung->ruangan_id = $id;
         $mahasiswa_gedung->mulai = now();
         $mahasiswa_gedung->akhir = now();
         $mahasiswa_gedung->save();
+        return back()->with('success','Berhasil Di Tambahkan.');
     }
 
+    public function indexmhs($id){
+        $checkroom = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','mahasiswas.user_id')
+        ->join('ruangans','mahasiswa_gedungs.ruangan_id','ruangans.id')
+        ->where('ruangan_id',$id)->get();
+        return view('pembina.checkin.checkroom',compact('checkroom'));
+    }
 
-
-
-
-
+    public function unduh($id,$mhs){
+       $surat = Mahasiswa_gedung::where('ruangan_id',$id)->where('mahasiswa_id',$mhs)->first();
+        $path = public_path()."\storage\uploads\\$surat->surat_perjanjian";
+        return response()->download($path);
+    }
 
 
 //    public function input(){

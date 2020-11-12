@@ -224,7 +224,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 $('#nama_ruangan').val(data.nama_ruangan);
-                $('#gedung').val(data.gedung.id);
+                $('#gedung').val(data.gedung_id);
                 $("#submit_ruangan").attr("aksi","edit");
                 $('#submit_ruangan').attr("idruangan",data.id);
                 $('#input_ruangan').modal('toggle');

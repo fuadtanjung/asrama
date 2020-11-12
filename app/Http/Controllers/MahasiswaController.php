@@ -95,9 +95,9 @@ class MahasiswaController extends Controller
             $mahasiswa->anak_ke = $request->anak_ke;
             $mahasiswa->total_saudara = $request->jumlah_saudara;
             if ($mahasiswa->save()) {
-                return json_encode(array("success" => "Berhasil Menambahkan Data Fakultas"));
+                return json_encode(array("success" => "Berhasil Menambahkan Data Pendaftaran"));
             } else {
-                return json_encode(array("error" => "Gagal Menambahkan Data Fakultas"));
+                return json_encode(array("error" => "Gagal Menambahkan Data Pendaftaran"));
             }
         } else {
             $msg = $validasi->getMessageBag()->messages();
@@ -140,11 +140,12 @@ class MahasiswaController extends Controller
             ->join('ruangans', 'mahasiswa_gedungs.ruangan_id', '=', 'ruangans.id')
             ->join('gedungs', 'ruangans.gedung_id', '=', 'gedungs.id')
             ->where('user_id', auth()->user()->mahasiswa->user_id)
-            ->get();
-        return view('mahasiswa.kamar')->with('room',$kamar);
+            ->first();
+        $room = Mahasiswa_gedung::where('mahasiswa_id')->where('ruangan_id')->first();
+        return view('mahasiswa.kamar',compact('kamar','room'));
     }
 
-    public function inputsurat($id,Request $req)
+    public function inputsurat(Request $req)
     {
         $req->validate([
             'file' => 'required|mimes:jpeg,png,pdf|max:2048'
@@ -153,12 +154,12 @@ class MahasiswaController extends Controller
         $file = $req->file('file');
         $fileName = $file->getClientOriginalName();
         $fileName = time().'.'. $fileName;
-        $path = $file->storeAs('uploads', $fileName, 'public');
+        $file->storeAs('uploads', $fileName, 'public');
 
         if($req->file()) {
-            $perjanjian = Mahasiswa_gedung::where('ruangan_id',$id);
-            $perjanjian->surat_perjanjian = $fileName;
-            $perjanjian->update();
+            Mahasiswa_gedung::where('mahasiswa_id',auth()->user()->mahasiswa->user_id)->update([
+                'surat_perjanjian' => $fileName
+            ]);
         }
         return back()
             ->with('success','File has been uploaded.')

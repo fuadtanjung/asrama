@@ -54,7 +54,7 @@
                         <div class="card-body text-center">
                             <h2>Sign up</h2><br>
                             <div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Sistem Informasi Check In dan Check Out Asrama Universitas Andalas.</p>
                                 <button class="btn btn-lg btn-outline-light mt-3" data-toggle="modal" data-target="#register" type="button">Register Now!</button>
                             </div>
                         </div>

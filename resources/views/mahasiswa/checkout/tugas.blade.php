@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">Tugas</div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
+                <table class="table table-hover table-green-soft" id="table">
                     <thead>
                     <tr>
                         <th>Nama Tugas</th>
@@ -15,14 +15,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach( $tugas as $data )
                     <tr>
-                        @foreach( $tugas as $data )
-                            <td>{{ $data->nama_tugas }}</td>
-                            <td>{{ $data->bulan }}</td>
-                            <td>{{ $data->tahun }}</td>
-                            <td>{{ $data->keterangan }}</td>
-                        @endforeach
+                        <td>{{ $data->nama_tugas }}</td>
+                        <td>{{ $data->bulan }}</td>
+                        <td>{{ $data->tahun }}</td>
+                        <td>{{ $data->keterangan }}</td>
                     </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -33,7 +33,7 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#datatable').DataTable();
+            $('#table').DataTable();
         } );
     </script>
 @endsection

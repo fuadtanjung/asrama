@@ -5,8 +5,23 @@
         <div class="card" style="width: 70%">
             <form action="{{ route('masuk',$id) }}" method="post">
                 @csrf
-            <div class="card-header">Denda</div>
+            <div class="card-header">Nama Mahasiswa</div>
             <br>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+
+                @if ( count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             <div class="container-sm">
                 <button type="submit" class="btn btn-primary btn-sm legitRipple">
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah

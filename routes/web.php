@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('data/{id}', 'DendaMahasiswaController@ajaxTable');
             Route::post('input', 'DendaMahasiswaController@input');
             Route::post('edit/{id}', 'DendaMahasiswaController@edit');
-            Route::post('delete/{id}/{delete}', 'DendaMahasiswaController@delete')->name('hapusdenda');
+            Route::post('delete/{id}/{mhs}', 'DendaMahasiswaController@delete');
         });
 
         Route::group(['prefix' => 'pembina'], function(){
@@ -144,7 +144,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('data', 'TugasBulananController@ajaxTable');
             Route::post('input', 'TugasBulananController@input');
             Route::post('edit/{id}', 'TugasBulananController@edit');
-            Route::post('delete/{id}', 'TugasBulananController@delete');
+            Route::post('delete/{id}/{bulan}', 'TugasBulananController@delete');
             Route::get('listtugas', 'TugasBulananController@listTugas');
             Route::get('listtugasbulanan', 'TugasBulananController@listTugasbulanan');
         });
@@ -160,6 +160,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/','CheckinController@index');
             Route::get('/mahasiswa/{id}','CheckinController@choice')->name('kamar');
             Route::post('/input/{id}','CheckinController@input')->name('masuk');
+            Route::get('/check/{id}','CheckinController@indexmhs')->name('check');
+            Route::get('/unduh/{id}/{mhs}','CheckinController@unduh')->name('unduh');
         });
 
         Route::group(['prefix' => 'postingan'], function(){
@@ -214,18 +216,19 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'surat'], function(){
             Route::get('/','DataController@surat');
+
             Route::get('/download',function (){
-                $file = public_path()."/storage/kartu.txt";
-                $headers = array('Content-type : application/octet-stream')
-                ;
-                return Response::download($file,"Kartu Checkout.txt",$headers);
+                $file = public_path()."\storage\bebas_asrama.pdf";
+                $name = "Surat Bebas Asrama.pdf";
+                $headers = array('Content-type : application/pdf');
+                return Response()->download($file, $name, $headers);
             })->name('download');
 
             Route::get('/downloads',function (){
-                $file = public_path()."/storage/query.txt";
-                $headers = array('Content-type : application/octet-stream')
-                ;
-                return Response::download($file,"Kartu Checkout.txt",$headers);
+                $file = public_path()."\storage\perjanjian_asrama.pdf";
+                $name = "Surat Perjanjian Asrama.pdf";
+                $headers = array('Content-type : application/pdf');
+                return Response()->download($file, $name, $headers);
             })->name('downloads');
         });
     });

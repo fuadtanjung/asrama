@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">Denda</div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
+                <table class="table table-hover table-green-soft" id="table">
                     <thead>
                     <tr>
                         <th>Nama Denda</th>
@@ -15,14 +15,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach( $denda as $data )
                     <tr>
-                        @foreach( $denda as $data )
-                            <td>{{ $data->nama_denda }}</td>
-                            <td>{{ $data->denda }}</td>
-                            <td>{{ $data->keterangan }}</td>
-                            <td>{{ date('d-m-Y',strtotime( $data->waktu)) }}</td>
-                        @endforeach
+                    <td>{{ $data->nama_denda }}</td>
+                    <td>{{ $data->denda }}</td>
+                    <td>{{ $data->keterangan }}</td>
+                    <td>{{ date('d-m-Y',strtotime( $data->waktu)) }}</td>
                     </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -33,7 +33,7 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#datatable').DataTable();
-        } );
+            $('#table').DataTable();
+        });
     </script>
 @endsection

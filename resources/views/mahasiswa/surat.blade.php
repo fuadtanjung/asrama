@@ -18,7 +18,7 @@
                     <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Kartu Checkout</td>
+                        <td>Surat Bebas Asrama</td>
                         <td><a href="{{ route('download') }}" class="btn-success btn-sm"> Download</a></td>
                     </tr>
                     <tr>

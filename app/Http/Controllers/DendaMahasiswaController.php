@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Denda;
 use App\Detail_denda;
 use App\Mahasiswa;
 use Illuminate\Http\Request;
@@ -18,6 +17,7 @@ class DendaMahasiswaController extends Controller
     public function ajaxtable($detail_denda){
         $detail_dendas = Detail_denda::join('dendas', 'detail_dendas.denda_id', '=', 'dendas.id')
             ->join('mahasiswas', 'detail_dendas.mahasiswa_id', '=', 'mahasiswas.user_id')
+            ->select('detail_dendas.*', 'dendas.nama_denda','dendas.denda','mahasiswas.*')
             ->where('detail_dendas.mahasiswa_id',$detail_denda)
             ->get();
         $no = 1;
@@ -26,6 +26,8 @@ class DendaMahasiswaController extends Controller
             $arraydata[]= [
                 "no" => $no,
                 "id" => $data->id,
+                "denda_id" => $data->denda_id,
+                "mahasiswa_id" => $data->mahasiswa_id,
                 "nama_denda"=>$data->nama_denda,
                 "denda"=>$data->denda,
                 "keterangan"=>$data->keterangan,
@@ -74,7 +76,7 @@ class DendaMahasiswaController extends Controller
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $detail_denda = Detail_denda::where('id', $id)->first();
+            $detail_denda = Detail_denda::where('id',$id)->first();
             $detail_denda->denda_id = $request->denda;
             $detail_denda->keterangan = $request->keterangan;
             $detail_denda->mahasiswa_id = $request->mahasiswa;
@@ -94,8 +96,8 @@ class DendaMahasiswaController extends Controller
         }
     }
 
-    public function delete($id,$delete){
-        $detail_denda = Detail_denda::where('mahasiswa_id', $id)->where('id', $delete)->first();
+    public function delete($id,$mhs){
+        $detail_denda = Detail_denda::where('id', $id)->where('mahasiswa_id',$mhs)->first();
         if($detail_denda->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Denda Mahasiswa"));
         }else{

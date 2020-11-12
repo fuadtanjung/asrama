@@ -16,7 +16,9 @@ class RuanganController extends Controller
 
     public function ajaxTable($ruangan){
         $ruangans =  Ruangan::join('gedungs','ruangans.gedung_id','=','gedungs.id')
-            ->where('ruangans.gedung_id',$ruangan)->get();
+            ->select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.nama_gedung')
+            ->where('ruangans.gedung_id',$ruangan)
+            ->get();
         return Datatables::of($ruangans)->toJson();
     }
 
@@ -60,7 +62,7 @@ class RuanganController extends Controller
         if($validasi->passes()) {
             $ruangan = Ruangan::where('id', $id)->first();
             $ruangan->nama_ruangan = $request->nama_ruangan;
-            $ruangan->gedung_id = $request->gedung;
+            $ruangan->gedung_id = $request->id_gedung;
             if ($ruangan->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Ruangan"));
             } else {

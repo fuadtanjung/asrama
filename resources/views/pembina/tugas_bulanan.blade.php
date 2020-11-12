@@ -74,7 +74,7 @@
             $('#datatable').dataTable({
                 "ajax": "{{ url('/tugasbulanan/data') }}",
                 "columns": [
-                    { "data": "tugas.nama_tugas" },
+                    { "data": "nama_tugas" },
                     { "data": "tahun" },
                     { "data": "bulan" },
                     {
@@ -237,7 +237,7 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#tugas').val(data.tugas.id);
+                $('#tugas').val(data.tugas_id);
                 $('#tahun').val(data.tahun);
                 $('#bulan').val(data.bulan);
                 $("#submit_tugas_bulanan").attr("aksi","edit");
@@ -261,7 +261,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.tugas_id,
+                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.tugas_id + '/' + data.bulan,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

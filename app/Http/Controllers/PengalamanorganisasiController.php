@@ -58,7 +58,7 @@ class PengalamanorganisasiController extends Controller
     }
 
     public function edit($id, Request $request){
-        $pengalaman_organisasi = Pengalaman_organisasi::where('mahasiswa_id', $id)->first();
+        $pengalaman_organisasi = Pengalaman_organisasi::where('id', $id)->first();
         $pengalaman_organisasi->nama_organisasi = $request->nama_organisasi;
         $pengalaman_organisasi->mulai =Carbon::parse($request->mulai);
         $pengalaman_organisasi->akhir = Carbon::parse($request->akhir);
@@ -71,7 +71,7 @@ class PengalamanorganisasiController extends Controller
     }
 
     public function delete($id){
-        $pengalaman_organisasi = Pengalaman_organisasi::where('mahasiswa_id', $id)->first();
+        $pengalaman_organisasi = Pengalaman_organisasi::where('id', $id)->first();
         if($pengalaman_organisasi->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Pengalaman Organisasi"));
         }else{

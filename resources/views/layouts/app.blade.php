@@ -28,10 +28,10 @@
     <script src="{{ url('plugins/izitoast/js/iziToast.min.js') }}"></script>
     <script src="{{ url('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ url('js/datetime.js') }}"></script>
     <script src="{{ url('js/moment.min.js') }}"></script>
     <script src="{{ url('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ url('js/custom.js') }}"></script>
+    <script src="{{ url('js/datetime.js') }}"></script>
 <!-- izitoast -->
 @yield('script')
 

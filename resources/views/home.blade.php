@@ -28,7 +28,7 @@
                     @if ( auth()->user()->role->nama == "mahasiswa" && $asrama->isEmpty())
                     <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal"
                         data-target="#input_mahasiswa">
-                        Isi Dulu Profile <i class="fa fa-arrow-right" style="margin-left: 7px"></i>
+                        Isi Pendaftaran Dulu! <i class="fa fa-arrow-right" style="margin-left: 7px"></i>
                     </button>
                     @endif
                 </div>

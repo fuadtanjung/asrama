@@ -51,7 +51,9 @@ class TugasBulananController extends Controller
     }
 
     public function ajaxTable(){
-        $tugas_bulanan =  Tugas_bulanan::with(['tugas']);
+        $tugas_bulanan =  Tugas_bulanan::join('tugas','tugas_bulanans.tugas_id','tugas.id')
+            ->select('tugas.nama_tugas', 'tugas_bulanans.*')
+            ->get();
         return Datatables::of($tugas_bulanan)->toJson();
     }
 
@@ -78,8 +80,8 @@ class TugasBulananController extends Controller
         }
     }
 
-    public function delete($id){
-        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->first();
+    public function delete($id,$bulan){
+        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->where('bulan',$bulan);
         if($tugas_bulanan->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Tugas Bulanan"));
         }else{

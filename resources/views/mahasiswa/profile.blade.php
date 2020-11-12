@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-1">
         <div class="card">
-            <div class="card-header">Profile</div>
+            <div class="card-header">Data Pendaftaran</div>
             <div class="card-body">
                 <form>
                     @csrf

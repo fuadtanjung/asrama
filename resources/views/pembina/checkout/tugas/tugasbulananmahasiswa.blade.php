@@ -235,7 +235,7 @@
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#nama_tugas').val(data.id);
+                $('#tugas').val(data.id);
                 $('#bulan').val(data.bulan);
                 $('#tahun').val(data.tahun);
                 $('#keterangan').val(data.keterangan);
@@ -243,6 +243,7 @@
                 $('#submit_tugasbulananmhs').attr("idtugasbulananmhs",data.tugas_bulanan_id);
                 $('#input_tugasbulananmhs').modal('toggle');
             } );
+
             $('#datatable tbody').on('click', '#delete', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();

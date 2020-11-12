@@ -96,6 +96,16 @@
                         }
                     }
                 ],
+                columnDefs: [{
+                    width: 250,
+                    targets: [ 0 ]
+                },{
+                    width: 150,
+                    targets: [ 3 ]
+                },{
+                    width: 130,
+                    targets: [ 4 ]
+                }],
             });
         }
 
@@ -256,7 +266,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/pengalamanorganisasi/delete/') }}/" + data.id,
+                                url: "{{ url('pengalamanorganisasi/delete/') }}/" + data.id,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
