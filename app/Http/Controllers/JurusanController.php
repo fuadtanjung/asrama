@@ -33,9 +33,9 @@ class JurusanController extends Controller
             $jurusan->nama_jurusan = $request->nama_jurusan;
             $jurusan->fakultas_id = $request->fakultas;
             if($jurusan->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Fakultas"));
+                return json_encode(array("success"=>"Berhasil Menambahkan Data Jurusan"));
             }else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Fakultas"));
+                return json_encode(array("error"=>"Gagal Menambahkan Data Jurusan"));
             }
         }else{
             $msg = $validasi->getMessageBag()->messages();

@@ -44,7 +44,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Form Profil Mahasiswa</h5>
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Form Pendaftaran Mahasiswa</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
                     </div>
