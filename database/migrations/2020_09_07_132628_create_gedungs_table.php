@@ -16,7 +16,7 @@ class CreateGedungsTable extends Migration
         Schema::create('gedungs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_gedung');
-            $table->string('jenis_kelamin');
+            $table->string('gender');
         });
     }
 

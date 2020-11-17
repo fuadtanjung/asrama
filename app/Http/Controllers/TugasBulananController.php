@@ -11,7 +11,8 @@ use Yajra\DataTables\Facades\DataTables;
 class TugasBulananController extends Controller
 {
     public function index(){
-        return view('pembina.tugas_bulanan');
+        $bulan = Tugas_bulanan::select('bulan')->get();
+        return view('pembina.tugas_bulanan',["bulans"=>$bulan]);
     }
 
     protected function  validasiData($data){
@@ -21,9 +22,9 @@ class TugasBulananController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'tahun' => 'required:tugas_bulanan',
-            'bulan' => 'required:tugas_bulanan',
-            'tugas' => 'required:tugas_bulanan',
+            'tahun' => 'required',
+            'bulan' => 'required',
+            'tugas' => 'required',
         ], $pesan);
     }
 
@@ -54,13 +55,22 @@ class TugasBulananController extends Controller
         $tugas_bulanan =  Tugas_bulanan::join('tugas','tugas_bulanans.tugas_id','tugas.id')
             ->select('tugas.nama_tugas', 'tugas_bulanans.*')
             ->get();
-        return Datatables::of($tugas_bulanan)->toJson();
+        $arraydata = [];
+        foreach ($tugas_bulanan as $data){
+            $arraydata[]= [
+                "nama_tugas" => $data->nama_tugas,
+                "tugas_id" => $data->tugas_id,
+                "bulan" => $data->bulan,
+                "tahun"=> $data->tahun,
+            ];
+        }
+        return Datatables::of($arraydata)->toJson();
     }
 
     public function edit($id, Request $request){
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()) {
-            $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->first();
+            $tugas_bulanan = Tugas_bulanan::where('bulan',$id)->first();
             $tugas_bulanan->tahun = $request->tahun;
             $tugas_bulanan->bulan = $request->bulan;
             $tugas_bulanan->tugas_id = $request->tugas;
@@ -80,8 +90,8 @@ class TugasBulananController extends Controller
         }
     }
 
-    public function delete($id,$bulan){
-        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->where('bulan',$bulan);
+    public function delete($id,$bulan,$tahun){
+        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->where('bulan',$bulan)->where('tahun',$tahun);
         if($tugas_bulanan->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data Tugas Bulanan"));
         }else{

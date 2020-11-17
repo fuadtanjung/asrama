@@ -174,7 +174,7 @@
                 }else if(aksi=="edit"){
                     var id_tugas_bulanan= $("#submit_tugas_bulanan").attr("idtugasbulanan");
                     $.ajax({
-                        url: "{{ url('/tugasbulanan/edit') }}/"+id_tugas_bulanan,
+                        url: "{{ url('/tugasbulanan/edit') }}/" + id_tugas_bulanan,
                         type: "post",
                         data: new FormData($('#form_tugas_bulanan')[0]),
                         async: false,
@@ -241,7 +241,7 @@
                 $('#tahun').val(data.tahun);
                 $('#bulan').val(data.bulan);
                 $("#submit_tugas_bulanan").attr("aksi","edit");
-                $('#submit_tugas_bulanan').attr("idtugasbulanan",data.tugas_id);
+                $('#submit_tugas_bulanan').attr("idtugasbulanan",data.bulan);
                 $('#input_tugas_bulanan').modal('toggle');
             } );
 
@@ -261,7 +261,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.tugas_id + '/' + data.bulan,
+                                url: "{{ url('/tugasbulanan/delete/') }}/" + data.tugas_id + '/' + data.bulan + '/' + data.tahun,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",

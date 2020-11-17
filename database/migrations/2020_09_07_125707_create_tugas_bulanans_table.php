@@ -18,6 +18,7 @@ class CreateTugasBulanansTable extends Migration
             $table->string('bulan');
             $table->string('tahun');
 
+            $table->primary(['tugas_id','bulan','tahun']);
             $table->foreign('tugas_id')->references('id')->on('tugas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

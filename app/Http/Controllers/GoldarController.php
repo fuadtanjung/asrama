@@ -53,7 +53,7 @@ class GoldarController extends Controller
 
     public function edit($id, Request $request){
         $goldar = Goldar::where('id', $id)->first();
-        $goldar->nama_goldar = $request->goldar;
+        $goldar->nama_goldar = $request->nama_goldar;
         if($goldar->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Goldar"));
         }else{

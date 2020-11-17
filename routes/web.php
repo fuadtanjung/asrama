@@ -144,7 +144,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('data', 'TugasBulananController@ajaxTable');
             Route::post('input', 'TugasBulananController@input');
             Route::post('edit/{id}', 'TugasBulananController@edit');
-            Route::post('delete/{id}/{bulan}', 'TugasBulananController@delete');
+            Route::post('delete/{id}/{bulan}/{tahun}', 'TugasBulananController@delete');
             Route::get('listtugas', 'TugasBulananController@listTugas');
             Route::get('listtugasbulanan', 'TugasBulananController@listTugasbulanan');
         });
