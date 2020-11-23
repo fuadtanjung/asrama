@@ -5,7 +5,7 @@
         <div class="card" style="width: 70%">
             <div class="card-header">Kamar Asrama</div>
             <div class="card-body" style="margin-right: 10%">
-                @if ( $room )
+                @if ( !$room )
                     <h2>Anda Belum punya kamar</h2>
                 @else
                     <h4 class="text-info">Anda Berada Di :</h4>

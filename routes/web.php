@@ -19,6 +19,7 @@ Route::post('login','LoginController@postlogin')->name('login.postlogin');
 Route::get('logout','LoginController@logout')->name('login.logout');
 
 Route::post('register','RegisterController@input')->name('register');
+Route::get('/getroomtest','CheckinController@getRoom');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['checkRole:pembina,mahasiswa']], function () {

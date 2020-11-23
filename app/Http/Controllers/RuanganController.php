@@ -19,6 +19,7 @@ class RuanganController extends Controller
             ->select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.nama_gedung')
             ->where('ruangans.gedung_id',$ruangan)
             ->get();
+            dd($ruangans);
         return Datatables::of($ruangans)->toJson();
     }
 

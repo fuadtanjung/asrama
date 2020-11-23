@@ -53,90 +53,62 @@ class CheckinController extends Controller
         $path = public_path()."\storage\uploads\\$surat->surat_perjanjian";
         return response()->download($path);
     }
+    
+ public function getRoom(){
+        $gender = auth()->user()->mahasiswa->jenis_kelamin;
+        $jurusan = auth()->user()->mahasiswa->jurusan_id;
+    //kamar yang bisa ditempati dengan jurusan berbeda
+// SELECT DISTINCT ruangans.id from ruangans 
+// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id 
+// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs 
+//       LEFT JOIN mahasiswas ON mahasiswas.user_id = mahasiswa_gedungs.mahasiswa_id
+//       WHERE mahasiswas.jurusan_id = 9))
+// AND (gedungs.gender = 'perempuan') 
+// AND (ruangans.id NOT IN 
+//     (SELECT DISTINCT ruangans.id FROM `mahasiswa_gedungs`
+//     LEFT JOIN ruangans ON ruangans.id = mahasiswa_gedungs.ruangan_id
+//     LEFT JOIN gedungs ON gedungs.id = ruangans.id
+//     GROUP BY mahasiswa_gedungs.ruangan_id
+//     HAVING COUNT(*) = 4))
+
+       $jurusansama = Mahasiswa_gedung::select('ruangans.id')
+                       ->leftjoin('mahasiswas', 'mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
+                       ->leftjoin('ruangans','ruangans.id','=','mahasiswa_gedungs.ruangan_id')
+                       ->where('mahasiswas.jurusan_id',$jurusan)
+                       ->distinct()->get();
+        $arrJurusanSama = array();
+
+        foreach ($jurusansama as $key) {
+            array_push($arrJurusanSama,$key['id']);
+            
+        }
+
+        $kamarpenuh = Mahasiswa_gedung::select('ruangans.id')
+        ->leftjoin('ruangans','ruangans.id','=','mahasiswa_gedungs.ruangan_id')
+        ->leftjoin('gedungs','gedungs.id','=','ruangans.id')
+        ->groupBy('mahasiswa_gedungs.ruangan_id')
+        ->having(DB::raw('count(*)'), '=', 4)
+        ->distinct()->get();
+
+        $arrKamarPenuh = array();
+        foreach ($kamarpenuh as $key) {
+            array_push($arrKamarPenuh,$key['id']);
+        }
 
 
-//    public function input(){
-//        $kamar = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','=','mahasiswas.user_id')
-//            ->join('jurusans','mahasiswas.jurusan_id','=','jurusans.id')
-//            ->join('ruangans','mahasiswa_gedungs.ruangan_id','=','ruangans.id')
-//            ->join('gedungs','ruangans.gedung_id','=','gedungs.id')
-//            ->get();
-//
-//        if (count($kamar) == 0)
-//        {
-//            $ruangan = Ruangan::select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.id','gedungs.nama_gedung','gedungs.gender')->join('gedungs','ruangans.gedung_id','=','gedungs.id')->where('gedungs.gender',auth()->user()->mahasiswa->jenis_kelamin)->first();
-//            $mahasiswa_gedung = Mahasiswa_gedung::create([
-//                "ruangan_id" => $ruangan->id,
-//                "mahasiswa_id"  => auth()->user()->id,
-//                "mulai" => "2020-10-01",
-//                "akhir" => "2021-10-01",
-//                "surat_perjanjian"   => "test"
-//            ]);
-//        }
-//        elseif (count($kamar) > 0)
-//        {
-//            $gedung = Gedung::where('gender',auth()->user()->mahasiswa->jenis_kelamin)->get();
-//
-//
-//            foreach($gedung as $data)
-//            {
-//                foreach($data->ruangan as $ruangan)
-//                {
-//                    $hitung = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','=','mahasiswas.user_id')
-//                        ->join('jurusans','mahasiswas.jurusan_id','=','jurusans.id')
-//                        ->join('ruangans','mahasiswa_gedungs.ruangan_id','=','ruangans.id')
-//                        ->join('gedungs','ruangans.gedung_id','=','gedungs.id')
-//                        ->where('ruangans.id', $ruangan->id)
-//                        ->get();
-//
-//                    if(count($hitung) < 4)
-//                    {
-//                        $jurusan = Mahasiswa_gedung::select('mahasiswa_gedungs.*','mahasiswas.*','jurusans.id','jurusans.nama_jurusan','jurusans.fakultas_id')->join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','=','mahasiswas.user_id')
-//                            ->join('jurusans','mahasiswas.jurusan_id','=','jurusans.id')
-//                            ->join('ruangans','mahasiswa_gedungs.ruangan_id','=','ruangans.id')
-//                            ->join('gedungs','ruangans.gedung_id','=','gedungs.id')
-//                            ->where('ruangans.id', $ruangan->id)
-//                            ->where('jurusans.id','!=',auth()->user()->mahasiswa->jurusan->id)
-//                            ->get();
-//
-////                        dd($jurusan);
-//
-//                        foreach($jurusan as $data_jurusan)
-//                        {
-//                            if($data_jurusan->nama_jurusan == auth()->user()->mahasiswa->jurusan->nama_jurusan)
-//                            {
-//                                return "test";
-//                            }
-//                            elseif(){
-//
-//                                 $mahasiswa_gedung = Mahasiswa_gedung::create([
-//                                    "ruangan_id" => $ruangan->id,
-//                                    "mahasiswa_id"  => 3,
-//                                    "mulai" => "2020-10-02",
-//                                    "akhir" => "2021-10-02",
-//                                    "surat_perjanjian"   => "test"
-//                                ]);
-//                                return "test2";
-//                            }
-//                        }
-//
-//                        $mahasiswa_gedung = Mahasiswa_gedung::create([
-//                            "ruangan_id" => $ruangan->id,
-//                            "mahasiswa_id"  => auth()->user()->id,
-//                            "mulai" => "2020-10-02",
-//                            "akhir" => "2021-10-02",
-//                            "surat_perjanjian"   => "test"
-//                        ]);
-//
-//                        return "test";
-//                    }
-//
-//                }
-//            }
-//
-//        }
-//
-//        return "success";
-//
-//    }
+        $ruangans = Ruangan::select('ruangans.id','gedungs.nama_gedung')
+                    ->leftjoin('gedungs', 'gedungs.id', '=', 'ruangans.gedung_id')
+                    ->where('gedungs.gender',$gender)
+                    ->whereNotIn('ruangans.id',$arrJurusanSama)
+                    ->whereNotIn('ruangans.id',$arrKamarPenuh)
+                    ->get();
+
+
+
+        if(empty($ruangans)){
+            return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']); 
+        }
+        $ruangan = $ruangans[0];  
+        return response()->json(['isAvailable'=>'true','result'=> $ruangan]); 
+    }
 }

@@ -14,23 +14,23 @@ class GedungSeeder extends Seeder
     {
         DB::table('gedungs')->insert([
             'nama_gedung' => 'hijau',
-            'jenis_kelamin' => 'perempuan',
+            'gender' => 'perempuan',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'roesma',
-            'jenis_kelamin' => 'perempuan',
+            'gender' => 'perempuan',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'msyaff',
-            'jenis_kelamin' => 'laki-laki',
+            'gender' => 'laki-laki',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'rpx',
-            'jenis_kelamin' => 'perempuan',
+            'gender' => 'perempuan',
         ]);
         DB::table('gedungs')->insert([
             'nama_gedung' => 'oren',
-            'jenis_kelamin' => 'perempuan',
+            'gender' => 'perempuan',
         ]);
     }
 }

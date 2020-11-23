@@ -10,7 +10,7 @@
                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Tambah
                 </button>
             </div>
-            <div class="card-body" style="margin-right: 10%">
+            <div class="card-body">
                 <table class="table table-hover table-green-soft" id="datatable">
                     <thead>
                     <tr>
@@ -86,7 +86,7 @@
                         targets: [1]
                     },
                     {
-                        width: "20px",
+                        width: "60px",
                         targets: [2]
                     },
                 ],

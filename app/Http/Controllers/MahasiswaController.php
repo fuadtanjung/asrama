@@ -8,6 +8,8 @@ use App\Mahasiswa_gedung;
 use App\Status_rumah;
 use App\Goldar;
 use App\Mahasiswa;
+use App\Gedung;
+use App\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -142,8 +144,10 @@ class MahasiswaController extends Controller
             ->where('user_id', auth()->user()->mahasiswa->user_id)
             ->first();
         $room = Mahasiswa_gedung::where('mahasiswa_id')->where('ruangan_id')->first();
+        // dd($kamar);
         return view('mahasiswa.kamar',compact('kamar','room'));
     }
+
 
     public function inputsurat(Request $req)
     {
