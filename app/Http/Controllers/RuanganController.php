@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class RuanganController extends Controller
 {
     public function index($id){
-        $idgedung = Gedung::select('id')->where('id',$id)->first();
+        $idgedung = Gedung::select('id','nama_gedung')->where('id',$id)->first();
         return view('pembina.ruangan',['idgedung'=>$idgedung,'id'=>$id]);
     }
 
@@ -19,7 +19,7 @@ class RuanganController extends Controller
             ->select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.nama_gedung')
             ->where('ruangans.gedung_id',$ruangan)
             ->get();
-            dd($ruangans);
+//            dd($ruangans);
         return Datatables::of($ruangans)->toJson();
     }
 

@@ -16,9 +16,16 @@
         </div>
     </div>
     <div class="container mt-1">
-
         <div class="card">
             <div class="card-body">
+                <div class="container-sm">
+                    <form action="{{ route('printtugas') }}" target="_blank" class="form-material" method="get">
+                        <button type="submit" class="btn btn-primary legitRipple" data-toggle="modal" data-target="#input_tugasbulananmhs">
+                            <i class="fa fa-print" style="margin-right: 7px"></i>Print Rekap Tugas Bulanan
+                        </button>
+                    </form>
+                </div>
+                <br>
                 <table class="table table-hover table-bordered table-sm" id="datatable">
                     <thead style="text-align: center">
                     <tr>

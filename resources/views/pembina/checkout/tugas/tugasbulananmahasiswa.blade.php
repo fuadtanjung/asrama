@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card">
 
+        <div class="card">
             <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama }}</div>
             <br>
             <div class="container-sm">
@@ -64,7 +64,11 @@
                                     <label for="exampleFormControlInput1">
                                         Keterangan
                                     </label>
-                                    <textarea  class="form-control" name="keterangan" id="keterangan" ></textarea>
+                                    <select class="custom-select select2" name="keterangan" id="keterangan">
+                                        <option value="">Pilih Keterangan</option>
+                                        <option value="Belum Selesai">Belum Selesai</option>
+                                        <option value="Selesai">Selesai</option>
+                                    </select>
                                 </div>
                             </form>
                         </div>

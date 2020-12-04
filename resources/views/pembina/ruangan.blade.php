@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-1">
         <div class="card" style="width: 70%">
-            <div class="card-header">Ruangan</div>
+            <div class="card-header">Ruangan Asrama Gedung {{  $idgedung->nama_gedung }}</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_ruangan">
@@ -15,7 +15,6 @@
                     <thead>
                     <tr>
                         <th>Nama Ruangan</th>
-                        <th>Nama Gedung</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
@@ -66,7 +65,6 @@
                 },
                 "columns": [
                     { "data": "nama_ruangan" },
-                    { "data": "nama_gedung" },
                     {
                         render: function() {
                             return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
@@ -82,10 +80,6 @@
                     {
                         width: "20px",
                         targets: [1]
-                    },
-                    {
-                        width: "20px",
-                        targets: [2]
                     },
                 ],
             });

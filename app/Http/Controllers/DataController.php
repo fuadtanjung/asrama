@@ -45,4 +45,15 @@ class DataController extends Controller
         return view('mahasiswa.surat');
     }
 
+    public function printtugas(){
+        $printtugas = Tugas_bulanan_mahasiswa::join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
+            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
+            ->join('mahasiswas', 'tugas_bulanan_mahasiswas.mahasiswa_id', '=', 'mahasiswas.user_id')
+            ->select('mahasiswas.nama','tugas.nama_tugas',
+                'tugas_bulanan_mahasiswas.bulan','tugas_bulanan_mahasiswas.tahun',
+                'tugas_bulanan_mahasiswas.keterangan')
+            ->get();
+        return view('pembina.checkout.tugas.print',compact('printtugas'));
+    }
+
 }

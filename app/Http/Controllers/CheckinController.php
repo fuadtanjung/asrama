@@ -53,18 +53,18 @@ class CheckinController extends Controller
         $path = public_path()."\storage\uploads\\$surat->surat_perjanjian";
         return response()->download($path);
     }
-    
+
  public function getRoom(){
         $gender = auth()->user()->mahasiswa->jenis_kelamin;
         $jurusan = auth()->user()->mahasiswa->jurusan_id;
     //kamar yang bisa ditempati dengan jurusan berbeda
-// SELECT DISTINCT ruangans.id from ruangans 
-// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id 
-// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs 
+// SELECT DISTINCT ruangans.id from ruangans
+// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id
+// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs
 //       LEFT JOIN mahasiswas ON mahasiswas.user_id = mahasiswa_gedungs.mahasiswa_id
 //       WHERE mahasiswas.jurusan_id = 9))
-// AND (gedungs.gender = 'perempuan') 
-// AND (ruangans.id NOT IN 
+// AND (gedungs.gender = 'perempuan')
+// AND (ruangans.id NOT IN
 //     (SELECT DISTINCT ruangans.id FROM `mahasiswa_gedungs`
 //     LEFT JOIN ruangans ON ruangans.id = mahasiswa_gedungs.ruangan_id
 //     LEFT JOIN gedungs ON gedungs.id = ruangans.id
@@ -78,9 +78,10 @@ class CheckinController extends Controller
                        ->distinct()->get();
         $arrJurusanSama = array();
 
+
         foreach ($jurusansama as $key) {
             array_push($arrJurusanSama,$key['id']);
-            
+
         }
 
         $kamarpenuh = Mahasiswa_gedung::select('ruangans.id')
@@ -103,12 +104,18 @@ class CheckinController extends Controller
                     ->whereNotIn('ruangans.id',$arrKamarPenuh)
                     ->get();
 
-
-
         if(empty($ruangans)){
-            return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']); 
+            return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']);
         }
-        $ruangan = $ruangans[0];  
-        return response()->json(['isAvailable'=>'true','result'=> $ruangan]); 
+
+//        $ruangan = $ruangans[0];
+
+        $ruangan = new Mahasiswa_gedung();
+        $ruangan->ruangan_id = $ruangans[0]['id'];
+        $ruangan->mahasiswa_id = auth()->user()->mahasiswa->user_id;
+        $ruangan->mulai = date('Y-m-d');
+        $ruangan->akhir = date('Y-m-d');
+        $ruangan->save();
+        return response()->json(['isAvailable'=>'true','result'=> [$ruangan]]);
     }
 }

@@ -21,7 +21,7 @@ Route::get('logout','LoginController@logout')->name('login.logout');
 Route::post('register','RegisterController@input')->name('register');
 Route::get('/getroomtest','CheckinController@getRoom');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
     Route::group(['middleware' => ['checkRole:pembina,mahasiswa']], function () {
         Route::get('/home', 'HomeController@index')->name('home');
     });
@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/tagihanmahasiswa', 'DataController@indextagihan')->name('datatagihanmahasiswa');
             Route::get('/dendamahasiswa', 'DataController@indexdenda')->name('datadendamahasiswa');
             Route::get('detailmahasiswa/{id}','DataController@detailmahasiswa')->name('detailmahasiswa');
+            Route::get('print','DataController@printtugas')->name('printtugas');
 
         });
 

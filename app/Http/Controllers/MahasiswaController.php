@@ -96,7 +96,70 @@ class MahasiswaController extends Controller
             $mahasiswa->no_hp_ortu = $request->kontak_orang_tua;
             $mahasiswa->anak_ke = $request->anak_ke;
             $mahasiswa->total_saudara = $request->jumlah_saudara;
-            if ($mahasiswa->save()) {
+            $inputmahasiswa = $mahasiswa->save();
+
+            $gender = auth()->user()->mahasiswa->jenis_kelamin;
+            $jurusan = auth()->user()->mahasiswa->jurusan_id;
+        //kamar yang bisa ditempati dengan jurusan berbeda
+// SELECT DISTINCT ruangans.id from ruangans
+// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id
+// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs
+//       LEFT JOIN mahasiswas ON mahasiswas.user_id = mahasiswa_gedungs.mahasiswa_id
+//       WHERE mahasiswas.jurusan_id = 9))
+// AND (gedungs.gender = 'perempuan')
+// AND (ruangans.id NOT IN
+//     (SELECT DISTINCT ruangans.id FROM `mahasiswa_gedungs`
+//     LEFT JOIN ruangans ON ruangans.id = mahasiswa_gedungs.ruangan_id
+//     LEFT JOIN gedungs ON gedungs.id = ruangans.id
+//     GROUP BY mahasiswa_gedungs.ruangan_id
+//     HAVING COUNT(*) = 4))
+
+        $jurusansama = Mahasiswa_gedung::select('ruangans.id')
+            ->leftjoin('mahasiswas', 'mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
+            ->leftjoin('ruangans','ruangans.id','=','mahasiswa_gedungs.ruangan_id')
+            ->where('mahasiswas.jurusan_id',$jurusan)
+            ->distinct()->get();
+        $arrJurusanSama = array();
+
+
+        foreach ($jurusansama as $key) {
+            array_push($arrJurusanSama,$key['id']);
+
+        }
+
+        $kamarpenuh = Mahasiswa_gedung::select('ruangans.id')
+            ->leftjoin('ruangans','ruangans.id','=','mahasiswa_gedungs.ruangan_id')
+            ->leftjoin('gedungs','gedungs.id','=','ruangans.id')
+            ->groupBy('mahasiswa_gedungs.ruangan_id')
+            ->having(DB::raw('count(*)'), '=', 4)
+            ->distinct()->get();
+
+        $arrKamarPenuh = array();
+        foreach ($kamarpenuh as $key) {
+            array_push($arrKamarPenuh,$key['id']);
+        }
+
+
+        $ruangans = Ruangan::select('ruangans.id','gedungs.nama_gedung')
+            ->leftjoin('gedungs', 'gedungs.id', '=', 'ruangans.gedung_id')
+            ->where('gedungs.gender',$gender)
+            ->whereNotIn('ruangans.id',$arrJurusanSama)
+            ->whereNotIn('ruangans.id',$arrKamarPenuh)
+            ->get();
+
+//        if(empty($ruangans)){
+//            return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']);
+//        }
+
+//        $ruangan = $ruangans[0];
+
+        $ruangan = new Mahasiswa_gedung();
+        $ruangan->ruangan_id = $ruangans[0]['id'];
+        $ruangan->mahasiswa_id = auth()->user()->mahasiswa->user_id;
+        $ruangan->mulai = date('Y-m-d');
+        $ruangan->akhir = date('Y-m-d');
+
+            if ($inputmahasiswa && $ruangan->save()) {
                 return json_encode(array("success" => "Berhasil Menambahkan Data Pendaftaran"));
             } else {
                 return json_encode(array("error" => "Gagal Menambahkan Data Pendaftaran"));
@@ -110,6 +173,7 @@ class MahasiswaController extends Controller
 
             return json_encode(array("error" => $err));
         }
+
     }
 
     public function listJurusan()
@@ -143,8 +207,8 @@ class MahasiswaController extends Controller
             ->join('gedungs', 'ruangans.gedung_id', '=', 'gedungs.id')
             ->where('user_id', auth()->user()->mahasiswa->user_id)
             ->first();
-        $room = Mahasiswa_gedung::where('mahasiswa_id')->where('ruangan_id')->first();
-        // dd($kamar);
+        $room = Mahasiswa_gedung::where('mahasiswa_id',auth()->user()->mahasiswa->user_id)->first();
+//        dd($room);
         return view('mahasiswa.kamar',compact('kamar','room'));
     }
 

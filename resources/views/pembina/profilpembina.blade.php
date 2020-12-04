@@ -122,8 +122,7 @@
     </div>
 @endsection
 @section('script')
-    <script>
-
+    <script type="javascript">
         function resetFormPembina() {
             $("#form_pembina")[0].reset();
         }
