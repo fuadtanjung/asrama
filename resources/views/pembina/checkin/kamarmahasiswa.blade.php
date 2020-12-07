@@ -18,16 +18,7 @@
                     <tr>
                         <td>{{ $data->nama_ruangan }}</td>
                         <td>{{ $data->nama_gedung }}</td>
-                        @php
-                        $jml = \App\Mahasiswa_gedung::where('ruangan_id',$data->id)->get();
-                        @endphp
-
-                        @if( count($jml) < 4)
-                        <td><a class="btn btn-primary-soft" href="{{ route("kamar",$data->id) }}">Tambah Mahasiswa</a></td>
-
-                        @elseif( count($jml) >= 4 )
-                            <td><a class="btn btn-primary" href="{{ route('check',$data->id) }}">Lihat Mahasiswa</a></td>
-                        @endif
+                        <td><a class="btn btn-primary" href="{{ route('check',$data->id) }}">Lihat Mahasiswa</a></td>
                     </tr>
                     @endforeach
                     </tbody>

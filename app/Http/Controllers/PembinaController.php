@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pembina;
+use App\Pembina_gedung;
+use App\Pembina_tahun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -28,6 +30,8 @@ class PembinaController extends Controller
             'tanggal_lahir' => 'required:pembina',
             'tempat_lahir' => 'required:pembina',
             'alamat' => 'required:pembina',
+            'gedung' => 'required',
+            'tahun' => 'required',
         ], $pesan);
     }
 
@@ -45,6 +49,18 @@ class PembinaController extends Controller
             $pembina->tempat_lahir = $request->tempat_lahir;
             $pembina->alamat_asal = $request->alamat;
             if($pembina->save()){
+
+                $pembina_tahun = new Pembina_tahun();
+                $pembina_tahun->pembina_id = $request->id;
+                $pembina_tahun->tahun = $request->tahun;
+                $pembina_tahun->save();
+
+                $pembina_gedung = new Pembina_gedung();
+                $pembina_gedung->pembina_id = $request->id;
+                $pembina_gedung->gedung_id = $request->gedung;
+                $pembina_gedung->tahun = $request->tahun;
+                $pembina_gedung->save();
+
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Pembina"));
             }else{
                 return json_encode(array("error"=>"Gagal Menambahkan Data Pembina"));

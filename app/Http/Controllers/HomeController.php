@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mahasiswa;
+use App\Pembina;
 use Illuminate\Http\Request;
 class HomeController extends Controller
 {
@@ -24,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $mahasiswa = Mahasiswa::where('user_id', auth()->user()->id)->get();
-        return view('home',['asrama'=>$mahasiswa]);
+        $pembina = Pembina::where('user_id', auth()->user()->id)->get();
+        return view('home',['asrama'=>$mahasiswa,'pembina'=>$pembina]);
     }
 }

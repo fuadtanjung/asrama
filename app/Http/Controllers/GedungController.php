@@ -70,4 +70,12 @@ class GedungController extends Controller
             return json_encode(array("error"=>"Gagal Menghapus Data Gedung"));
         }
     }
+
+    public function listGedung()
+    {
+        $gedung = Gedung::all();
+        return json_encode($gedung);
+    }
+
+
 }

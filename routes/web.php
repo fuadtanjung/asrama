@@ -108,12 +108,21 @@ Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
             Route::post('delete/{id}', 'JalurMasukController@delete');
         });
 
+        Route::group(['prefix' => 'statusrumah'], function(){
+            Route::get('/','StatusRumahController@index');
+            Route::get('data', 'StatusRumahController@ajaxTable');
+            Route::post('input', 'StatusRumahController@input');
+            Route::post('edit/{id}', 'StatusRumahController@edit');
+            Route::post('delete/{id}', 'StatusRumahController@delete');
+        });
+
         Route::group(['prefix' => 'gedung'], function(){
             Route::get('/','GedungController@index');
             Route::get('data', 'GedungController@ajaxTable');
             Route::post('input', 'GedungController@input');
             Route::post('edit/{id}', 'GedungController@edit');
             Route::post('delete/{id}', 'GedungController@delete');
+            Route::get('listgedung', 'GedungController@listGedung');
         });
 
         Route::group(['prefix' => 'ruangan'], function(){
@@ -155,6 +164,7 @@ Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
             Route::get('/', 'AbsenSholatController@index');
             Route::get('data', 'AbsenSholatController@ajaxTable');
             Route::post('input', 'AbsenSholatController@input')->name('absen');
+            Route::post('printabsen', 'AbsenSholatController@print')->name('printabsen');
             Route::get('cari', 'AbsenSholatController@search')->name('found');
         });
 

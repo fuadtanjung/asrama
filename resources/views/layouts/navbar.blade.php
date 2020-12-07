@@ -26,7 +26,7 @@
                             <div class="nav-link-icon"><i class="fa fa-home"></i></div>
                             Dashboard
                         </a>
-                        @if ( auth()->user()->role->nama == "pembina")
+                        @if ( auth()->user()->role->nama == "pembina" && empty(auth()->user()->pembina)== false)
 
                             <div class="sidenav-menu-heading">Data Mahasiswa</div>
                             <a class="nav-link" href="{{ url ('pembina')}}">
@@ -96,6 +96,11 @@
                                 <div class="nav-link-icon"><i class="fa fa-filter"></i></div>
                                 Denda
                             </a>
+                            <a class="nav-link" href="{{ url ('statusrumah')}}">
+                                <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
+                               Status Rumah
+                            </a>
+
                             <div class="sidenav-menu-heading">Gedung Asrama</div>
                             <a class="nav-link" href="{{ url ('gedung')}}">
                                 <div class="nav-link-icon"><i class="fa fa-building"></i></div>

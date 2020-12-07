@@ -30,17 +30,19 @@ class Mahasiswa extends Model
     public function status_rumah(){
         return $this->belongsTo(Status_rumah::class,'status_rumah_id','id');
     }
-
+    public function absensholat(){
+        return $this->hasOne(Absen_sholat::class,'mahasiswa_id','user_id');
+    }
+    public function mahasiswagedung(){
+        return $this->hasOne(Mahasiswa_gedung::class,'mahasiswa_id','user_id');
+    }
     public function pengalamanorganisasi(){
         return $this->hasMany(Pengalaman_organisasi::class,'mahasiswa_id');
     }
-
     public function mahasiswatagihan(){
         return $this->hasMany( Mahasiswa_tagihan::class,'mahasiswa_id');
     }
-
     public function tugasbulananmahasiswa(){
         return $this->hasMany( Tugas_bulanan_mahasiswa::class,'mahasiswa_id');
     }
-
 }

@@ -16,7 +16,7 @@ class Pembina extends Model
         return $this->hasMany(Postingan::class);
     }
     public function pembina_tahun(){
-        return $this->hasOne(Pembina_tahun::class);
+        return $this->hasOne(Pembina_tahun::class,'pembina_id','user_id');
     }
 
     public function user(){
