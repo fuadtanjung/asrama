@@ -33,7 +33,7 @@
                         <div class="modal-body">
                             <form id="form_denda" method="post">
                                 @csrf
-                                <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}">
+                                <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="{{ $namamahasiswa->user_id}}" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Nama Denda
@@ -46,7 +46,11 @@
                                     <label for="exampleFormControlInput1">
                                         Keterangan
                                     </label>
-                                    <textarea  class="form-control" name="keterangan" id="keterangan" ></textarea>
+                                    <select class="custom-select select2" name="keterangan" id="keterangan">
+                                        <option value="">Pilih Keterangan</option>
+                                        <option value="Lunas">Lunas</option>
+                                        <option value="Belum Lunas">Belum Lunas</option>
+                                    </select>
                                 </div>
                             </form>
                         </div>

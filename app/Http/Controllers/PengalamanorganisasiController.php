@@ -20,10 +20,10 @@ class PengalamanorganisasiController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'nama_organisasi' => 'required:pengalaman_organisasis',
-            'mulai' => 'required:pengalaman_organisasis',
-            'akhir' => 'required:pengalaman_organisasis',
-            'jabatan' => 'required:pengalaman_organisasis',
+            'nama_organisasi' => 'required',
+            'mulai' => 'required',
+            'akhir' => 'required',
+            'jabatan' => 'required',
         ], $pesan);
     }
 
@@ -63,6 +63,7 @@ class PengalamanorganisasiController extends Controller
         $pengalaman_organisasi->mulai =Carbon::parse($request->mulai);
         $pengalaman_organisasi->akhir = Carbon::parse($request->akhir);
         $pengalaman_organisasi->jabatan = $request->jabatan;
+        $pengalaman_organisasi->mahasiswa_id = auth()->user()->mahasiswa->user_id;
         if($pengalaman_organisasi->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Pengalaman Organisasi"));
         }else{

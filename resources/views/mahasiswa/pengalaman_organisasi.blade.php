@@ -246,7 +246,7 @@
                 $('#akhir').val(data.akhir);
                 $('#jabatan').val(data.jabatan);
                 $("#submit_pengalaman").attr("aksi","edit");
-                $('#submit_pengalaman').attr("idpengalaman",data.mahasiswa_id);
+                $('#submit_pengalaman').attr("idpengalaman",data.id);
                 $('#input_pengalaman').modal('toggle');
             } );
 

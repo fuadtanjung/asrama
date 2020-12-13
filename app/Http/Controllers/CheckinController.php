@@ -14,8 +14,11 @@ class CheckinController extends Controller
 //            ->join('ruangans','mahasiswa_gedungs.ruangan_id','ruangans.id')
 //            ->select('ruangans.*','mahasiswa_gedungs.mahasiswa_id')
 //            ->get();
-        $ruangan = Ruangan::join('gedungs','ruangans.gedung_id','gedungs.id')->
-            select('ruangans.id','ruangans.nama_ruangan','gedungs.nama_gedung')->get();
+        $ruangan = Ruangan::join('gedungs','ruangans.gedung_id','gedungs.id')
+            ->join('pembina_gedungs','gedungs.id','pembina_gedungs.gedung_id')
+            ->select('ruangans.id','ruangans.nama_ruangan','gedungs.nama_gedung')
+            ->where('pembina_gedungs.gedung_id',auth()->user()->pembina->pembina_tahun->pembina_gedung->gedung_id)
+            ->get();
         return view('pembina.checkin.kamarmahasiswa',compact('ruangan'));
     }
 

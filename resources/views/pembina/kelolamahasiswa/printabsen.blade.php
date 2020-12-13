@@ -43,16 +43,19 @@
                 <th>Keterangan</th>
             </tr>
             </thead>
-
             <tbody style="text-align: center">
+
             @foreach($absen as $data)
+                <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->nama_ruangan }}</td>
                 <td>{{ $data->nama_gedung }}</td>
-                <td>{{ $data->tanggal}}</td>
+                <td>{{date('d-m-Y',strtotime($data->tanggal))}}</td>
                 <td>{{ $data->keterangan }}</td>
+                </tr>
             @endforeach
+
             </tbody>
         </table>
 

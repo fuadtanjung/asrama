@@ -42,7 +42,11 @@
                                     <label for="exampleFormControlInput1">
                                         Keterangan
                                     </label>
-                                    <textarea  class="form-control" name="keterangan" id="keterangan" ></textarea>
+                                    <select class="custom-select select2" name="keterangan" id="keterangan">
+                                        <option value="">Pilih Keterangan</option>
+                                        <option value="Lunas">Lunas</option>
+                                        <option value="Belum Lunas">Belum Lunas</option>
+                                    </select>
                                 </div>
                             </form>
                         </div>

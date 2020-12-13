@@ -55,6 +55,7 @@ class GedungController extends Controller
     public function edit($id, Request $request){
         $gedung = Gedung::where('id', $id)->first();
         $gedung->nama_gedung = $request->nama_gedung;
+        $gedung->gender = $request->jenis_kelamin;
         if($gedung->update()){
             return json_encode(array("success"=>"Berhasil Merubah Data Gedung"));
         }else{

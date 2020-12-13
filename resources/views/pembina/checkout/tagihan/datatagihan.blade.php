@@ -25,7 +25,7 @@
                         <th >No</th>
                         <th>Nim</th>
                         <th>Nama</th>
-                        <th>Bdik Misi</th>
+                        <th>Bidik Misi</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>

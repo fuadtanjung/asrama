@@ -46,12 +46,14 @@
 
             <tbody style="text-align: center">
             @foreach($printtugas as $data)
+                <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->nama_tugas }}</td>
                 <td>{{ $data->bulan }}</td>
                 <td>{{ $data->tahun }}</td>
                 <td>{{ $data->keterangan }}</td>
+                </tr>
             @endforeach
             </tbody>
         </table>
