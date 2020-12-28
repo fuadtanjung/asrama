@@ -20,17 +20,18 @@ class AkunPembinaController extends Controller
     }
 
     protected function  validasiData($data){
-        $pesan = [
-            'required' => ':attribute tidak boleh kosong',
-            'unique' => ':attribute sudah ada',
-            'exists' => ':attribute tidak ditemukan'
-        ];
-        return validator($data, [
-            'nama_pembina' => 'required:users',
-            'nim' => 'required|unique:users',
-            'password_pembina' => 'required:users',
-        ], $pesan);
+            $pesan = [
+                'required' => ':attribute tidak boleh kosong',
+                'unique' => ':attribute sudah ada',
+                'exists' => ':attribute tidak ditemukan'
+            ];
+            return validator($data, [
+                'nama_pembina' => 'required:users',
+                'nim' => 'required|unique:users,nim',
+                'password_pembina' => 'required:users',
+            ], $pesan);
     }
+
 
 
     public function input(Request $request){
@@ -54,20 +55,43 @@ class AkunPembinaController extends Controller
             foreach ($msg as $key=>$item) {
                 $err[] = $item[0];
             }
-
             return json_encode(array("error"=>$err));
         }
     }
 
-    public function edit($id, Request $request){
-        $pembina = User::where('id', $id)->first();
-        $pembina->name = $request->nama_pembina;
-        $pembina->nim = $request->nim;
-        $pembina->password = bcrypt($request->password_pembina);
-        if($pembina->update()){
-            return json_encode(array("success"=>"Berhasil Merubah Data pembina"));
+    protected function  validasiData2($data,$id){
+        $pesan = [
+            'required' => ':attribute tidak boleh kosong',
+            'unique' => ':attribute sudah ada',
+            'exists' => ':attribute tidak ditemukan'
+        ];
+
+        return validator($data, [
+            'nama_pembina' => 'required:users',
+            'nim' => "required|unique:users,nim,$id",
+            'password_pembina' => 'required:users',
+        ], $pesan);
+    }
+
+    public function edit(Request $request,$id){
+        $validasi = $this->validasiData2($request->all(),$id);
+        if($validasi->passes()){
+            $pembina = User::where('id', $id)->first();
+            $pembina->name = $request->nama_pembina;
+            $pembina->nim = $request->nim;
+            $pembina->password = bcrypt($request->password_pembina);
+            if($pembina->update()){
+                return json_encode(array("success"=>"Berhasil Merubah Data pembina"));
+            }else{
+                return json_encode(array("errors"=>"Gagal Merubah Data pembina"));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Merubah Data pembina"));
+            $msg = $validasi->getMessageBag()->messages();
+            $err = array();
+            foreach ($msg as $key=>$item) {
+                $err[] = $item[0];
+            }
+            return json_encode(array("error"=>$err));
         }
     }
 

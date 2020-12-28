@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-bordered table-sm table-green-soft" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Penyakit</th>
                         <th>Aksi</th>

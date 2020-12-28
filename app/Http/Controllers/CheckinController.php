@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\DB;
 class CheckinController extends Controller
 {
     public function index(){
-//        $ruangan = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','mahasiswas.user_id')
-//            ->join('ruangans','mahasiswa_gedungs.ruangan_id','ruangans.id')
-//            ->select('ruangans.*','mahasiswa_gedungs.mahasiswa_id')
-//            ->get();
+
         $ruangan = Ruangan::join('gedungs','ruangans.gedung_id','gedungs.id')
             ->join('pembina_gedungs','gedungs.id','pembina_gedungs.gedung_id')
             ->select('ruangans.id','ruangans.nama_ruangan','gedungs.nama_gedung')
@@ -52,27 +49,20 @@ class CheckinController extends Controller
     }
 
     public function unduh($id,$mhs){
-       $surat = Mahasiswa_gedung::where('ruangan_id',$id)->where('mahasiswa_id',$mhs)->first();
-        $path = public_path()."\storage\uploads\\$surat->surat_perjanjian";
+        $surat = Mahasiswa_gedung::where('ruangan_id',$id)->where('mahasiswa_id',$mhs)->first();
+        $path = storage_path()."\app\public\uploads\\$surat->surat_perjanjian";
+        if($surat->surat_perjanjian == null)
+        {
+            return redirect()->back()->with('failed','Gagal mengunduh file');
+        }
+
         return response()->download($path);
     }
 
- public function getRoom(){
+    public function getRoom(){
         $gender = auth()->user()->mahasiswa->jenis_kelamin;
         $jurusan = auth()->user()->mahasiswa->jurusan_id;
-    //kamar yang bisa ditempati dengan jurusan berbeda
-// SELECT DISTINCT ruangans.id from ruangans
-// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id
-// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs
-//       LEFT JOIN mahasiswas ON mahasiswas.user_id = mahasiswa_gedungs.mahasiswa_id
-//       WHERE mahasiswas.jurusan_id = 9))
-// AND (gedungs.gender = 'perempuan')
-// AND (ruangans.id NOT IN
-//     (SELECT DISTINCT ruangans.id FROM `mahasiswa_gedungs`
-//     LEFT JOIN ruangans ON ruangans.id = mahasiswa_gedungs.ruangan_id
-//     LEFT JOIN gedungs ON gedungs.id = ruangans.id
-//     GROUP BY mahasiswa_gedungs.ruangan_id
-//     HAVING COUNT(*) = 4))
+
 
        $jurusansama = Mahasiswa_gedung::select('ruangans.id')
                        ->leftjoin('mahasiswas', 'mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
@@ -111,7 +101,6 @@ class CheckinController extends Controller
             return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']);
         }
 
-//        $ruangan = $ruangans[0];
 
         $ruangan = new Mahasiswa_gedung();
         $ruangan->ruangan_id = $ruangans[0]['id'];

@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
-                                        Nama Fakultas
+                                        Jenis Kelamin
                                     </label>
                                     <select class="custom-select select2" id="jenis_kelamin" name="jenis_kelamin">
                                         <option value="">Jenis Kelamin </option>

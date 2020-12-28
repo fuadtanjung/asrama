@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckoutController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PostinganController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/datetime.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/postinganmahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/surat.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/checkin/kamarmahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/checkin/pilihmahasiswa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pembina/postingan.blade.php" afterDir="false" />
+    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="update beberapa tugas bulanan dan tagihan mahasiswa">
+      <change afterPath="$PROJECT_DIR$/asrama.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/asrama.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/asrama.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GedungController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GedungController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoldarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoldarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RuanganController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RuanganController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Postingan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Postingan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_133211_create_mahasiswa_gedungs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_133211_create_mahasiswa_gedungs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_134143_create_postingans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_134143_create_postingans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125707_create_tugas_bulanans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125707_create_tugas_bulanans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkin.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkin/checkroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkin/checkroom.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/datadenda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/datadenda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/tagihanmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/tagihanmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/goldar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/goldar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/ruangan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/ruangan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +165,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1i7ZKdfEeWWo2GneFhLFoWCmoEM" />
@@ -174,12 +180,14 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="discord-application" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -247,6 +255,17 @@
       <workItem from="1604851556588" duration="591000" />
       <workItem from="1604873505714" duration="88000" />
       <workItem from="1604876819618" duration="42000" />
+      <workItem from="1608881273390" duration="21000" />
+      <workItem from="1608881298027" duration="8017000" />
+      <workItem from="1608916943750" duration="8218000" />
+      <workItem from="1608959081708" duration="5066000" />
+      <workItem from="1608976072508" duration="5488000" />
+      <workItem from="1608986079235" duration="19186000" />
+      <workItem from="1609047266582" duration="36000" />
+      <workItem from="1609055107863" duration="9594000" />
+      <workItem from="1609070963905" duration="3234000" />
+      <workItem from="1609081703109" duration="6395000" />
+      <workItem from="1609141048422" duration="1791000" />
     </task>
     <servers />
   </component>
@@ -255,100 +274,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="9" width="816" height="729" key="#Intentions" timestamp="1601702398203">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="9" width="816" height="729" key="#Intentions/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1601702398203" />
-    <state x="386" y="193" key="#Notifications" timestamp="1604419395052">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="386" y="193" key="#Notifications/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604419395052" />
-    <state x="59" y="210" key="#SQL_Dialects" timestamp="1604393076989">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="59" y="210" key="#SQL_Dialects/0.0.1366.738@0.0.1366.738" timestamp="1604393076989" />
-    <state x="137" y="10" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603357644517">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="137" y="10" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738/2732.-237.1280.689/1366.-104.1366.738@0.0.1366.738" timestamp="1603357644517" />
-    <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601701221930">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1601701221930" />
-    <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1601448140148" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604787239253">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604787239253" />
-    <state x="1779" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1601802266803" />
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.1.center" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.1.left" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.1.right" timestamp="1604397203272">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1604397203272" />
-    <state width="1323" height="227" key="GridCell.Tab.2.bottom" timestamp="1604397203273">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1604397203273" />
-    <state width="1323" height="227" key="GridCell.Tab.2.center" timestamp="1604397203273">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1604397203273" />
-    <state width="1323" height="227" key="GridCell.Tab.2.left" timestamp="1604397203273">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1604397203273" />
-    <state width="1323" height="227" key="GridCell.Tab.2.right" timestamp="1604397203273">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="1323" height="227" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1604397203273" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1604790803084">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604790803084" />
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604553991436" />
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1604384919162" />
-    <state width="600" height="320" key="javadoc.popup" timestamp="1604589370065">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="600" height="320" key="javadoc.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604589370065" />
-    <state width="600" height="428" key="javadoc.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1601277011342" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1604699466443">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604699466443" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1604423126185">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/1366.-104.1280.689@0.0.1366.738" timestamp="1604423126185" />
+    <MESSAGE value="update beberapa tugas bulanan dan tagihan mahasiswa" />
+    <option name="LAST_COMMIT_MESSAGE" value="update beberapa tugas bulanan dan tagihan mahasiswa" />
   </component>
 </project>

@@ -5,21 +5,15 @@ namespace App\Http\Controllers;
 use App\Mahasiswa;
 use App\Tugas_bulanan;
 use App\Tugas_bulanan_mahasiswa;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class TugasBulananMahasiswaController extends Controller
 {
     public function index($id){
-//        $mahasiswa = Mahasiswa::join('tugas_bulanan_mahasiswas', 'mahasiswas.user_id', '=', 'tugas_bulanan_mahasiswas.mahasiswa_id')
-//            ->join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
-//            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
-//            ->select('tugas.*', 'tugas_bulanans.*','tugas_bulanan_mahasiswas.*','mahasiswas.*')
-//            ->where('tugas_bulanan_mahasiswas.mahasiswa_id',$id)
-//            ->get();
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
         return view ('pembina.checkout.tugas.tugasbulananmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
-
     }
 
     public function ajaxtable($mahasiswa){
@@ -50,18 +44,19 @@ class TugasBulananMahasiswaController extends Controller
     protected function  validasiData($data){
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
-            'unique' => ':attribute sudah ada',
+            'unique' => ':attribute ini sudah ada',
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'tugas' => 'required:tugas_bulanan_mahasiswa',
-            'tahun' => 'required:tugas_bulanan_mahasiswa',
-            'bulan' => 'required:tugas_bulanan_mahasiswa',
+            'tugas' => "required:tugas_bulanan_mahasiswas",
             'keterangan' => 'required:tugas_bulanan_mahasiswa',
         ], $pesan);
     }
 
     public function input(Request $request){
+        $tgs = $request->tugas;
+        $mhs = $request->mahasiswa;
+        if (Tugas_bulanan_mahasiswa::where('tugas_bulanan_id',$tgs )->where('mahasiswa_id',$mhs)->count() == 0) {
         $validasi = $this->validasiData($request->all());
         if($validasi->passes()){
             $tugas_bulanan_mahasiswa = new Tugas_bulanan_mahasiswa();
@@ -84,29 +79,22 @@ class TugasBulananMahasiswaController extends Controller
 
             return json_encode(array("error"=>$err));
         }
+        } else {
+            return json_encode(array("error"=>"Tugas ini Sudah ada"));
+        }
     }
 
-    public function edit($id, Request $request){
-        $validasi = $this->validasiData($request->all());
-        if($validasi->passes()) {
-            $tugas_bulanan_mahasiswa = tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->first();
-            $tugas_bulanan_mahasiswa->tahun = $request->tahun;
-            $tugas_bulanan_mahasiswa->bulan = $request->bulan;
-            $tugas_bulanan_mahasiswa->tugas_bulanan_id = $request->tugas;
-            $tugas_bulanan_mahasiswa->keterangan = $request->keterangan;
-            if ($tugas_bulanan_mahasiswa->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Tugas Bulanan"));
-            } else {
-                return json_encode(array("error" => "Gagal Merubah Data Tugas Bulanan"));
-            }
-        }else{
-            $msg = $validasi->getMessageBag()->messages();
-            $err = array();
-            foreach ($msg as $key=>$item) {
-                $err[] = $item[0];
-            }
-
-            return json_encode(array("error"=>$err));
+    public function edit(Request $request, $id,$mhs){
+        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->where('mahasiswa_id', $mhs)->first();
+        $tugas_bulanan_mahasiswa->tahun = $request->tahun;
+        $tugas_bulanan_mahasiswa->bulan = $request->bulan;
+        $tugas_bulanan_mahasiswa->tugas_bulanan_id = $request->tugas;
+        $tugas_bulanan_mahasiswa->keterangan = $request->keterangan;
+        $tugas_bulanan_mahasiswa->mahasiswa_id = $request->mahasiswa;
+        if ($tugas_bulanan_mahasiswa->update()) {
+            return json_encode(array("success" => "Berhasil Merubah Data Tugas Bulanan"));
+        } else {
+            return json_encode(array("error" => "Gagal Merubah Data Tugas Bulanan"));
         }
     }
 

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>SIRAMU</title>
+    <link rel="icon" type="image/x-icon" href="{{ url('assets/favicon.png')}}" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('plugins/izitoast/css/iziToast.min.css') }}">
 
@@ -68,7 +70,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Static Backdrop Modal</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign Up!</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">

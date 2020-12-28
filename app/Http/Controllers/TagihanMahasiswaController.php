@@ -29,59 +29,55 @@ class TagihanMahasiswaController extends Controller
             'exists' => ':attribute tidak ditemukan'
         ];
         return validator($data, [
-            'bulan' => 'required:tagihan',
+            'bulan' => 'required:mahasiswa_tagihans',
             'keterangan' => 'required:tagihan',
-
         ], $pesan);
     }
 
-    public function input(Request $request){
-        $validasi = $this->validasiData($request->all());
-        if($validasi->passes()){
-            $tagihan = new Mahasiswa_tagihan();
-            $tagihan->bulan = $request->bulan;
-            $tagihan->keterangan = $request->keterangan;
-            $tagihan->mahasiswa_id = $request->mahasiswa;
-            if($tagihan->save()){
-                return json_encode(array("success"=>"Berhasil Menambahkan Data Tagihan"));
-            }else{
-                return json_encode(array("error"=>"Gagal Menambahkan Data Tagihan"));
-            }
-        }else{
-            $msg = $validasi->getMessageBag()->messages();
-            $err = array();
-            foreach ($msg as $key=>$item) {
-                $err[] = $item[0];
-            }
-
-            return json_encode(array("error"=>$err));
-        }
-    }
-
-    public function edit($id, Request $request){
-        $validasi = $this->validasiData($request->all());
-        if($validasi->passes()) {
-            $tagihan = Mahasiswa_tagihan::where('mahasiswa_id', $id)->first();
-            $tagihan->bulan = $request->bulan;
-            $tagihan->keterangan = $request->keterangan;
-            if ($tagihan->update()) {
-                return json_encode(array("success" => "Berhasil Merubah Data Tagihan"));
+    public function input(){
+        $bln = request()->bulan;
+        $mhs = request()->mahasiswa;
+        if (Mahasiswa_tagihan::where('bulan',$bln )->where('mahasiswa_id',$mhs)->count() == 0) {
+            $validasi = $this->validasiData(request()->all());
+            if ($validasi->passes()) {
+                $tagihan = Mahasiswa_tagihan::create([
+                    'bulan' => request()->bulan,
+                    'keterangan' => request()->keterangan,
+                    'mahasiswa_id' => request()->mahasiswa,
+                ]);
+                if ($tagihan) {
+                    return json_encode(array("success" => "Berhasil Menambahkan Data Tagihan"));
+                } else {
+                    return json_encode(array("error" => "Gagal Menambahkan Data Tagihan"));
+                }
             } else {
-                return json_encode(array("error" => "Gagal Merubah Data Tagihan"));
-            }
-        }else{
-            $msg = $validasi->getMessageBag()->messages();
-            $err = array();
-            foreach ($msg as $key=>$item) {
-                $err[] = $item[0];
-            }
+                $msg = $validasi->getMessageBag()->messages();
+                $err = array();
+                foreach ($msg as $key => $item) {
+                    $err[] = $item[0];
+                }
 
-            return json_encode(array("error"=>$err));
+                return json_encode(array("error" => $err));
+            }
+        } else {
+            return json_encode(array("error"=>"Tagihan Bulan ini Sudah ada"));
         }
     }
 
-    public function delete($id){
-        $tagihan = Mahasiswa_tagihan::where('mahasiswa_id', $id)->first();
+    public function edit($bulan,$mhs, Request $request){
+        $tagihan = Mahasiswa_tagihan::where('bulan', $bulan)->where('mahasiswa_id',$mhs)->first();
+        $tagihan->bulan = $request->bulan;
+        $tagihan->keterangan = $request->keterangan;
+        $tagihan->mahasiswa_id = $request->mahasiswa;
+        if ($tagihan->update()) {
+            return json_encode(array("success" => "Berhasil Merubah Data Tagihan"));
+        } else {
+            return json_encode(array("error" => "Gagal Merubah Data Tagihan"));
+        }
+    }
+
+    public function delete($id, $bulan){
+        $tagihan = Mahasiswa_tagihan::where('mahasiswa_id',$id)->where('bulan', $bulan);
         if($tagihan->delete()){
             return json_encode(array("success"=>"Berhasil Menghapus Data tagihan"));
         }else{

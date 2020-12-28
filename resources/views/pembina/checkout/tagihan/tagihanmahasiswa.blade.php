@@ -154,9 +154,10 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_tagihan= $("#submit_tagihan").attr("idtagihan");
+                    var bln= $("#submit_tagihan").attr("bln");
+                    var mhs= $("#submit_tagihan").attr("mhs");
                     $.ajax({
-                        url: "{{ url('tagihanmahasiswa/edit/') }}/"+id_tagihan,
+                        url: "{{ url('tagihanmahasiswa/edit/') }}/"+ bln + '/' + mhs,
                         type: "post",
                         data: new FormData($('#form_tagihan')[0]),
                         async: false,
@@ -222,7 +223,7 @@
                 $('#bulan').val(data.bulan);
                 $('#keterangan').val(data.keterangan);
                 $("#submit_tagihan").attr("aksi","edit");
-                $('#submit_tagihan').attr("idtagihan",data.mahasiswa_id);
+                $('#submit_tagihan').attr("bln",data.bulan).attr("mhs",data.mahasiswa_id);
                 $('#input_tagihan').modal('toggle');
             } );
 
@@ -242,7 +243,7 @@
                     buttons: [
                         ['<button><b>Iya!</b></button>', function (instance, toast) {
                             $.ajax({
-                                url: "{{ url('tagihanmahasiswa/delete/') }}/" + data.mahasiswa_id,
+                                url: "{{ url('tagihanmahasiswa/delete/') }}/" + data.mahasiswa_id + '/' + data.bulan,
                                 type: "post",
                                 data: {
                                     "_token": "{{ csrf_token() }}",
@@ -290,7 +291,7 @@
             $('#input_tagihan').on('hidden.bs.modal', function () {
                 resetFormTagihan();
                 $("#submit_tagihan").attr("aksi","input");
-                $('#submit_tagihan').removeAttr("idtagihan");
+                $('#submit_tagihan').removeAttr("bln");
             });
         })
 

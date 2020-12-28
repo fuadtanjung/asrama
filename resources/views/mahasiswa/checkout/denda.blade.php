@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header">Denda</div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="table">
-                    <thead>
+                <table class="table table-hover table-sm table-bordered table-green-soft" id="table">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Denda</th>
                         <th>Jumlah Denda</th>

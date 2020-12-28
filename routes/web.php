@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
             Route::get('/{id}', 'TugasBulananMahasiswaController@index')->name('tugasbulanan');
             Route::get('data/{id}', 'TugasBulananMahasiswaController@ajaxtable');
             Route::post('input', 'TugasBulananMahasiswaController@input');
-            Route::post('edit/{id}', 'TugasBulananMahasiswaController@edit');
+            Route::post('edit/{id}/{mhs}', 'TugasBulananMahasiswaController@edit');
             Route::post('delete/{id}/{bulan}/{tahun}/{mhs}', 'TugasBulananMahasiswaController@delete');
         });
 
@@ -50,8 +50,8 @@ Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
             Route::get('/{id}', 'TagihanMahasiswaController@index')->name('tagihan');
             Route::get('data/{id}', 'TagihanMahasiswaController@ajaxTable');
             Route::post('input', 'TagihanMahasiswaController@input');
-            Route::post('edit/{id}', 'TagihanMahasiswaController@edit');
-            Route::post('delete/{id}', 'TagihanMahasiswaController@delete');
+            Route::post('edit/{bulan}/{mhs}', 'TagihanMahasiswaController@edit');
+            Route::post('delete/{id}/{bulan}', 'TagihanMahasiswaController@delete');
         });
 
         Route::group(['prefix' => 'dendamahasiswa'], function() {
@@ -158,6 +158,7 @@ Route::group(['middleware' => 'auth','throttle : 60,1'], function () {
             Route::post('delete/{id}/{bulan}/{tahun}', 'TugasBulananController@delete');
             Route::get('listtugas', 'TugasBulananController@listTugas');
             Route::get('listtugasbulanan', 'TugasBulananController@listTugasbulanan');
+            Route::get('listtugasbulananmhs/{id}', 'TugasBulananController@listTugasbulananmhs')->name('gettugas');
         });
 
         Route::group(['prefix' => 'absensholat'], function () {

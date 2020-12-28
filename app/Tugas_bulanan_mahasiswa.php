@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tugas_bulanan_mahasiswa extends Model
 {
     protected $table = 'tugas_bulanan_mahasiswas';
-    protected $primaryKey = 'mahasiswa_id';
+    protected $primaryKey = 'tugas_bulanan_id';
     public $timestamps = false;
     protected $fillable = [
-        'bulan','tahun','keterangan'
+        'tugas_bulanan_id','mahasiswa_id','bulan','tahun','keterangan',
     ];
 
     public function mahasiswa(){

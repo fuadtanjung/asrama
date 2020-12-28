@@ -5,9 +5,13 @@
         <div class="page-header-content pt-4">
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto mt-4">
-                    <div class="page-header-icon"> Tanggal dan Waktu :</div>
+                    <div class="page-header-icon text-primaryr"><b> Tanggal dan Waktu : </b></div>
                     <h1 class="page-header-title">
-                        <?php date_default_timezone_set('Asia/Jakarta'); echo date('l, d-m-Y  h:i a'); ?>
+                      @php setlocale(LC_TIME, 'id_ID.utf8');
+                            \Carbon\Carbon::setLocale('id');
+                        echo \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y');
+                        echo date(' H:i a');
+                        @endphp
                     </h1>
                 </div>
             </div>

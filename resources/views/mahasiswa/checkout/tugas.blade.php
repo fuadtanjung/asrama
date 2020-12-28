@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-header">Tugas</div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="table">
-                    <thead>
+                <table class="table table-hover table-green-soft table-sm table-bordered" id="table">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Tugas</th>
                         <th>Bulan</th>

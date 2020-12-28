@@ -108,4 +108,10 @@ class TugasBulananController extends Controller
         $tugas = Tugas_bulanan::with('tugas')->get();
         return json_encode($tugas);
     }
+
+    public function listTugasbulananmhs($id = 0){
+        $tugas = Tugas_bulanan::join('tugas','tugas_bulanans.tugas_id','=','tugas.id')
+            ->where('tugas_bulanans.tugas_id',$id)->first();
+        return json_encode($tugas);
+    }
 }

@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-sm table-bordered table-green-soft" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Organisasi</th>
                         <th>Mulai</th>

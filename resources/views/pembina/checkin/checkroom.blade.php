@@ -30,6 +30,17 @@
     <script>
         $(document).ready( function () {
             $('#datatable').DataTable();
+
+            @if(Session::has('failed'))
+                iziToast.error({
+                title: 'Gagal',
+                position: 'topRight',
+                message: "Surat Perjanjian Mahasiswa Belum Diupload",
+                timeout :'2500',
+                transitionIn: 'flipInX',
+                transitionOut: 'flipOutX'
+                });
+            @endif
         } );
     </script>
 @endsection

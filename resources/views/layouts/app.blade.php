@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>SIRAMU</title>
+   <link rel="icon" type="image/x-icon" href="{{ url('assets/favicon.png')}}" />
     <link href="{{ url('css/styles.css')}}" rel="stylesheet" />
     <link href="{{ url('css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('plugins/izitoast/css/iziToast.min.css') }}">

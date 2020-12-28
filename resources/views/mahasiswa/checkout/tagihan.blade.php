@@ -5,8 +5,8 @@
         <div class="card" style="width: 80%">
             <div class="card-header">Tagihan</div>
             <div class="card-body" style="margin-right: 5%">
-                <table class="table table-hover table-green-soft table-bordered" id="table">
-                    <thead>
+                <table class="table table-hover table-sm table-bordered table-green-soft table-bordered" id="table">
+                    <thead class="text-center">
                     <tr>
                         <th>Bulan</th>
                         <th>Keterangan</th>

@@ -22,7 +22,6 @@ class CreateTugasBulananMahasiswasTable extends Migration
 
             $table->foreign('tugas_bulanan_id')->references('tugas_id')->on('tugas_bulanans')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');
-
         });
     }
 

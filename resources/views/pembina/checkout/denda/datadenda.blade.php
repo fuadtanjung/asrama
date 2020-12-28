@@ -22,7 +22,7 @@
                 <table class="table table-hover table-bordered table-sm" id="datatable">
                     <thead style="text-align: center">
                     <tr>
-                        <th >No</th>
+                        <th>No</th>
                         <th>Nim</th>
                         <th>Nama</th>
                         <th>Aksi</th>

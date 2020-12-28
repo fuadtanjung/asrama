@@ -77,10 +77,4 @@ class AbsenSholatController extends Controller
         }
         return view('pembina.kelolamahasiswa.printabsen',(['absen'=>$absen]));
     }
-
-//    public function search(Request $request){
-//        $find = Absen_sholat::where('tanggal',$request->tanggal);
-//        return view ('pembina.kelolamahasiswa.absensholat',compact('find'));
-//    }
-
 }

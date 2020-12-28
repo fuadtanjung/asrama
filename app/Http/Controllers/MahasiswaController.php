@@ -20,13 +20,7 @@ class MahasiswaController extends Controller
 
     public function index()
     {
-//        $profile = DB::table('mahasiswas')
-//            ->join('jurusans','mahasiswas.jurusan_id','=','jurusans.id')
-//            ->join('status_rumahs','mahasiswas.status_rumah_id','=','status_rumahs.id')
-//            ->join('jalur_masuks','mahasiswas.jalur_masuk_id','=','jalur_masuks.id')
-//            ->join('goldars','mahasiswas.goldar_id','=','goldars.id')
-//            ->select('jurusans.nama_jurusan','mahasiswas.*','jalur_masuks.nama_jalur','goldars.nama_goldar','status_rumahs.nama_status')
-//            ->get();
+
         return view('mahasiswa.profile');
     }
 
@@ -100,19 +94,7 @@ class MahasiswaController extends Controller
 
             $gender = auth()->user()->mahasiswa->jenis_kelamin;
             $jurusan = auth()->user()->mahasiswa->jurusan_id;
-        //kamar yang bisa ditempati dengan jurusan berbeda
-// SELECT DISTINCT ruangans.id from ruangans
-// LEFT JOIN gedungs ON gedungs.id = ruangans.gedung_id
-// WHERE (ruangans.id NOT IN (SELECT mahasiswa_gedungs.ruangan_id from mahasiswa_gedungs
-//       LEFT JOIN mahasiswas ON mahasiswas.user_id = mahasiswa_gedungs.mahasiswa_id
-//       WHERE mahasiswas.jurusan_id = 9))
-// AND (gedungs.gender = 'perempuan')
-// AND (ruangans.id NOT IN
-//     (SELECT DISTINCT ruangans.id FROM `mahasiswa_gedungs`
-//     LEFT JOIN ruangans ON ruangans.id = mahasiswa_gedungs.ruangan_id
-//     LEFT JOIN gedungs ON gedungs.id = ruangans.id
-//     GROUP BY mahasiswa_gedungs.ruangan_id
-//     HAVING COUNT(*) = 4))
+
 
         $jurusansama = Mahasiswa_gedung::select('ruangans.id')
             ->leftjoin('mahasiswas', 'mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
@@ -147,17 +129,12 @@ class MahasiswaController extends Controller
             ->whereNotIn('ruangans.id',$arrKamarPenuh)
             ->get();
 
-//        if(empty($ruangans)){
-//            return response()->json(['isAvailable'=>'false','result'=> 'Tidak ada kamar tersedia saat ini']);
-//        }
-
-//        $ruangan = $ruangans[0];
 
         $ruangan = new Mahasiswa_gedung();
         $ruangan->ruangan_id = $ruangans[0]['id'];
         $ruangan->mahasiswa_id = auth()->user()->mahasiswa->user_id;
         $ruangan->mulai = date('Y-m-d');
-        $ruangan->akhir = date('Y-m-d');
+        $ruangan->akhir = date('Y-m-d', mktime(0, 0, 0, date("m")+10,   date("d"),   date("Y")));
 
             if ($inputmahasiswa && $ruangan->save()) {
                 return json_encode(array("success" => "Berhasil Menambahkan Data Pendaftaran"));
@@ -208,7 +185,7 @@ class MahasiswaController extends Controller
             ->where('user_id', auth()->user()->mahasiswa->user_id)
             ->first();
         $room = Mahasiswa_gedung::where('mahasiswa_id',auth()->user()->mahasiswa->user_id)->first();
-//        dd($room);
+
         return view('mahasiswa.kamar',compact('kamar','room'));
     }
 

@@ -17,8 +17,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Tugas</th>
-                        <th>Bulan</th>
                         <th>Tahun</th>
+                        <th>Bulan</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
@@ -44,22 +44,8 @@
                                         <option value="">Pilih Tugas</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">
-                                        Bulan
-                                    </label>
-                                    <select class="custom-select select2" id="bulan" name="bulan">
-                                        <option value="">Pilih Bulan</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">
-                                        Tahun
-                                    </label>
-                                    <select class="custom-select select2" id="tahun" name="tahun">
-                                        <option value="">Pilih Tahun</option>
-                                    </select>
-                                </div>
+                                    <input type="text" class="form-control" id="bulan" name="bulan" hidden>
+                                    <input type="text" class="form-control" id="tahun" name="tahun" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
                                         Keterangan
@@ -176,9 +162,10 @@
                         }
                     });
                 }else if(aksi=="edit"){
-                    var id_tugasbulananmhs= $("#submit_tugasbulananmhs").attr("idtugasbulananmhs");
+                    var id_tugasmhs= $("#submit_tugasbulananmhs").attr("idtugasmhs");
+                    var mhs= $("#submit_tugasbulananmhs").attr("mhs");
                     $.ajax({
-                        url: "{{ url('tugasbulananmahasiswa/edit/') }}/"+id_tugasbulananmhs,
+                        url: "{{ url('tugasbulananmahasiswa/edit/') }}/"+id_tugasmhs + '/' + mhs,
                         type: "post",
                         data: new FormData($('#form_tugasbulananmhs')[0]),
                         async: false,
@@ -236,15 +223,16 @@
                     });
                 }
             });
+
             $('#datatable tbody').on('click', '#edit', function (e) {
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
-                $('#tugas').val(data.id);
+                $('#tugas').val(data.id).attr('readonly', true).change();
                 $('#bulan').val(data.bulan);
                 $('#tahun').val(data.tahun);
                 $('#keterangan').val(data.keterangan);
                 $("#submit_tugasbulananmhs").attr("aksi","edit");
-                $('#submit_tugasbulananmhs').attr("idtugasbulananmhs",data.tugas_bulanan_id);
+                $('#submit_tugasbulananmhs').attr("idtugasmhs",data.tugas_bulanan_id).attr("mhs",data.mahasiswa_id);
                 $('#input_tugasbulananmhs').modal('toggle');
             } );
 
@@ -307,6 +295,25 @@
                     }
                 });
             });
+
+            $('#tugas').change(function(){
+                var id = $(this).val();
+                var url = '{{ route("gettugas", ":id") }}';
+                url = url.replace(':id', id);
+
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response){
+                        if(response != null){
+                            $('#bulan').val(response.bulan);
+                            $('#tahun').val(response.tahun);
+                        }
+                    }
+                });
+            });
+
             $.ajax({
                 url: '{{ url('tugasbulanan/listtugasbulanan') }}',
                 dataType: "json",
@@ -314,8 +321,6 @@
                     var tugas = jQuery.parseJSON(JSON.stringify(data));
                     $.each(tugas, function(k, v) {
                         $('#tugas').append($('<option>', {value: v.tugas_id}).text(v.tugas.nama_tugas))
-                        $('#bulan').append($('<option>', {value: v.bulan}).text(v.bulan))
-                        $('#tahun').append($('<option>', {value: v.tahun}).text(v.tahun))
                     })
                 }
             });
@@ -323,7 +328,7 @@
             $('#input_tugasbulananmhs').on('hidden.bs.modal', function () {
                 resetFormTugasbulananmhs();
                 $("#submit_tugasbulananmhs").attr("aksi","input");
-                $('#submit_tugasbulananmhs').removeAttr("idtugasbulanan");
+                $('#submit_tugasbulananmhs').removeAttr("idtugasmhs");
             });
         })
     </script>
