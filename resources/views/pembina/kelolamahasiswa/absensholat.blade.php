@@ -62,7 +62,7 @@
                                        data-toggle="datetimepicker" data-target=".enddate" placeholder="Akhir" id="akhir" name="akhir" />
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary btn-sm legitRipple" aksi="input" id="absen">
+                                <button type="submit" class="btn btn-primary btn-sm legitRipple">
                                     <i class="fa fa-plus-circle" style="margin-right: 7px"></i>Print
                                 </button>
                             </div>
@@ -76,7 +76,6 @@
 
 @section('script')
     <script type="text/javascript">
-
         $(document).ready(function(){
             setDateRangePicker(".startdate", ".enddate")
         })
@@ -128,6 +127,7 @@
                             message: pesan.error,
                         });
                         resetFormdaftar();
+                        window.onload();
                     }else if(pesan.success != null){
                         iziToast.success({
                             title: 'Success notice',

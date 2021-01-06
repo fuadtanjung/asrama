@@ -65,11 +65,14 @@ class TagihanMahasiswaController extends Controller
     }
 
     public function edit($bulan,$mhs, Request $request){
-        $tagihan = Mahasiswa_tagihan::where('bulan', $bulan)->where('mahasiswa_id',$mhs)->first();
-        $tagihan->bulan = $request->bulan;
-        $tagihan->keterangan = $request->keterangan;
-        $tagihan->mahasiswa_id = $request->mahasiswa;
-        if ($tagihan->update()) {
+        $tagihan = Mahasiswa_tagihan::where('bulan', $bulan)
+            ->where('mahasiswa_id',$mhs)
+            ->update([
+                'bulan' => $request->bulan,
+                'keterangan' => $request->keterangan,
+                'mahasiswa_id' => $request->mahasiswa
+            ]);
+        if ($tagihan) {
             return json_encode(array("success" => "Berhasil Merubah Data Tagihan"));
         } else {
             return json_encode(array("error" => "Gagal Merubah Data Tagihan"));

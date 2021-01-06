@@ -1,44 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="update beberapa tugas bulanan dan tagihan mahasiswa">
-      <change afterPath="$PROJECT_DIR$/asrama.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/asrama.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/asrama.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125707_create_tugas_bulanans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125707_create_tugas_bulanans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/riwayat_penyakit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkin/checkroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkin/checkroom.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/datadenda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/datadenda.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/tagihanmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/tagihanmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/datatugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/datatugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/absensholat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/absensholat.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +156,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -191,6 +164,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\asrama\public\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\asrama\public\fuad" />
       <recent name="C:\laragon\www\asrama\public" />
@@ -265,8 +241,21 @@
       <workItem from="1609055107863" duration="9594000" />
       <workItem from="1609070963905" duration="3234000" />
       <workItem from="1609081703109" duration="6395000" />
-      <workItem from="1609141048422" duration="1791000" />
+      <workItem from="1609141048422" duration="4884000" />
+      <workItem from="1609158149841" duration="737000" />
+      <workItem from="1609677023436" duration="2530000" />
+      <workItem from="1609833119538" duration="4683000" />
+      <workItem from="1609857058503" duration="2830000" />
+      <workItem from="1609906795977" duration="619000" />
     </task>
+    <task id="LOCAL-00001" summary="update beberapa tugas bulanan dan tagihan mahasiswa">
+      <created>1609142960330</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609142960330</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

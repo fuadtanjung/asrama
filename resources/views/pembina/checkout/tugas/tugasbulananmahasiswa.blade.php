@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container mt-1">
-
         <div class="card">
             <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama }}</div>
             <br>

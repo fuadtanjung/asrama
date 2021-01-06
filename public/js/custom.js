@@ -56,3 +56,22 @@ function setYearRangePicker(input1, input2){
         viewMode: "years"
     })
 }
+
+function setMonthRangePicker(input1, input2){
+    $(input1).datetimepicker({
+        format: "MM",
+        useCurrent: false,
+        viewMode: "months"
+    })
+
+    $(input1).on("change.datetimepicker", function (e) {
+        $(input2).val("")
+        $(input2).datetimepicker('minDate', e.date);
+    })
+
+    $(input2).datetimepicker({
+        format: "MM",
+        useCurrent: false,
+        viewMode: "months"
+    })
+}

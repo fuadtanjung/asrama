@@ -84,14 +84,17 @@ class TugasBulananMahasiswaController extends Controller
         }
     }
 
-    public function edit(Request $request, $id,$mhs){
-        $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id', $id)->where('mahasiswa_id', $mhs)->first();
-        $tugas_bulanan_mahasiswa->tahun = $request->tahun;
-        $tugas_bulanan_mahasiswa->bulan = $request->bulan;
-        $tugas_bulanan_mahasiswa->tugas_bulanan_id = $request->tugas;
-        $tugas_bulanan_mahasiswa->keterangan = $request->keterangan;
-        $tugas_bulanan_mahasiswa->mahasiswa_id = $request->mahasiswa;
-        if ($tugas_bulanan_mahasiswa->update()) {
+    public function edit(Request $request,$tgs,$mhs){
+       $tugas_bulanan_mahasiswa = Tugas_bulanan_mahasiswa::where('tugas_bulanan_id',$tgs )
+           ->where('mahasiswa_id',$mhs)
+           ->update([
+               'tahun' => $request->tahun,
+               'bulan' => $request->bulan,
+               'tugas_bulanan_id' => $request->tugas,
+               'keterangan' => $request->keterangan,
+               'mahasiswa_id' => $request->mahasiswa
+           ]);
+        if ($tugas_bulanan_mahasiswa) {
             return json_encode(array("success" => "Berhasil Merubah Data Tugas Bulanan"));
         } else {
             return json_encode(array("error" => "Gagal Merubah Data Tugas Bulanan"));

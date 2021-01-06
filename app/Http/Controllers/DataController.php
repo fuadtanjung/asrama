@@ -65,15 +65,39 @@ class DataController extends Controller
         return view('mahasiswa.surat');
     }
 
-    public function printtugas(){
-        $printtugas = Tugas_bulanan_mahasiswa::join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
-            ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
-            ->join('mahasiswas', 'tugas_bulanan_mahasiswas.mahasiswa_id', '=', 'mahasiswas.user_id')
-            ->select('mahasiswas.nama','tugas.nama_tugas',
-                'tugas_bulanan_mahasiswas.bulan','tugas_bulanan_mahasiswas.tahun',
-                'tugas_bulanan_mahasiswas.keterangan')
-            ->get();
-        return view('pembina.checkout.tugas.print',compact('printtugas'));
+    public function printtugas(Request $request){
+
+        $mulai = $request->mulai;
+        $akhir = $request->akhir;
+        if($request->filled('mulai') && $request->filled('akhir')){
+            $printtugas = Tugas_bulanan_mahasiswa::join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
+                ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
+                ->join('mahasiswas', 'tugas_bulanan_mahasiswas.mahasiswa_id', '=', 'mahasiswas.user_id')
+                ->join('mahasiswa_gedungs','mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
+                ->join('ruangans','mahasiswa_gedungs.ruangan_id','=','ruangans.id')
+                ->join('gedungs','ruangans.gedung_id','=','gedungs.id')
+                ->join('pembina_gedungs','gedungs.id','pembina_gedungs.gedung_id')
+                ->where('pembina_gedungs.gedung_id',auth()->user()->pembina->pembina_tahun->pembina_gedung->gedung_id)
+                ->whereBetween('tugas_bulanan_mahasiswas.bulan', [$mulai, $akhir])
+                ->select('mahasiswas.nama','tugas.nama_tugas',
+                    'tugas_bulanan_mahasiswas.bulan','tugas_bulanan_mahasiswas.tahun',
+                    'tugas_bulanan_mahasiswas.keterangan')
+                ->get();
+        }else{
+            $printtugas=  Tugas_bulanan_mahasiswa::join('tugas_bulanans', 'tugas_bulanan_mahasiswas.tugas_bulanan_id', '=', 'tugas_bulanans.tugas_id')
+                ->join('tugas', 'tugas_bulanans.tugas_id', '=', 'tugas.id')
+                ->join('mahasiswas', 'tugas_bulanan_mahasiswas.mahasiswa_id', '=', 'mahasiswas.user_id')
+                ->join('mahasiswa_gedungs','mahasiswas.user_id','=','mahasiswa_gedungs.mahasiswa_id')
+                ->join('ruangans','mahasiswa_gedungs.ruangan_id','=','ruangans.id')
+                ->join('gedungs','ruangans.gedung_id','=','gedungs.id')
+                ->join('pembina_gedungs','gedungs.id','pembina_gedungs.gedung_id')
+                ->where('pembina_gedungs.gedung_id',auth()->user()->pembina->pembina_tahun->pembina_gedung->gedung_id)
+                ->select('mahasiswas.nama','tugas.nama_tugas',
+                    'tugas_bulanan_mahasiswas.bulan','tugas_bulanan_mahasiswas.tahun',
+                    'tugas_bulanan_mahasiswas.keterangan')
+                ->get();
+        }
+        return view('pembina.checkout.tugas.print',(['printtugas'=>$printtugas]));
     }
 
 }
