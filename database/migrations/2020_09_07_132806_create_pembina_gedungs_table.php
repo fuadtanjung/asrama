@@ -16,9 +16,9 @@ class CreatePembinaGedungsTable extends Migration
         Schema::create('pembina_gedungs', function (Blueprint $table) {
             $table->unsignedBigInteger('pembina_id');
             $table->unsignedBigInteger('gedung_id');
-            $table->string('tahun')->references('tahun')->on('pembina_tahuns');
+            $table->string('tahun');
 
-            $table->foreign('pembina_id')->references('pembina_id')->on('pembina_tahuns')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pembina_id')->references('user_id')->on('pembinas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('gedung_id')->references('id')->on('gedungs')->onDelete('cascade')->onUpdate('cascade');
         });
     }

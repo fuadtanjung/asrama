@@ -17,6 +17,8 @@ class CreateMahasiswaTagihansTable extends Migration
             $table->string('bulan');
             $table->unsignedBigInteger('mahasiswa_id');
             $table->string('keterangan');
+            $table->string('surat')->nullable();
+            $table->integer('jumlah');
 
             $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');
         });

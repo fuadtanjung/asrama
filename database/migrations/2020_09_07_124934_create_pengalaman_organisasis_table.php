@@ -15,11 +15,11 @@ class CreatePengalamanOrganisasisTable extends Migration
     {
         Schema::create('pengalaman_organisasis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswa_id');
-            $table->string('nama_organisasi');
-            $table->date('mulai');
-            $table->date('akhir');
-            $table->string('jabatan');
+            $table->unsignedBigInteger('mahasiswa_id')->nullable();
+            $table->string('nama_organisasi')->nullable();
+            $table->date('mulai')->nullable();
+            $table->date('akhir')->nullable();
+            $table->string('jabatan')->nullable();
 
             $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');
         });

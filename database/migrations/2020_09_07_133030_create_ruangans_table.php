@@ -17,7 +17,7 @@ class CreateRuangansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('gedung_id');
             $table->string('nama_ruangan');
-
+            $table->string('status_ruangan');
             $table->foreign('gedung_id')->references('id')->on('gedungs')->onDelete('cascade')->onUpdate('cascade');
         });
     }

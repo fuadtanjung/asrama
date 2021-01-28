@@ -15,8 +15,8 @@ class CreateRiwayatPenyakitsTable extends Migration
     {
         Schema::create('riwayat_penyakits', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswa_id');
-            $table->string('nama_penyakit');
+            $table->unsignedBigInteger('mahasiswa_id')->nullable();
+            $table->string('nama_penyakit')->nullable();
 
             $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');
         });

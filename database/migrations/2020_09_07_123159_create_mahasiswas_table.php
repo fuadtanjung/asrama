@@ -40,6 +40,7 @@ class CreateMahasiswasTable extends Migration
             $table->string('no_hp_ortu',25);
             $table->string('anak_ke',25);
             $table->string('total_saudara',25);
+            $table->string('status',25);
             $table->timestamps();
 
 

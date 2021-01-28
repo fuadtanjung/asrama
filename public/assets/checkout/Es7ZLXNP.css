@@ -1,0 +1,34 @@
+﻿@font-face {
+	font-family: 'Calibri_TrueType_0';
+	src: local('Calibri_TrueType_0');
+	src: url('Calibri_TrueType_0.ttf') format('truetype');
+}
+
+.fmt-0{font-style:normal;font-weight:normal;font-family:Calibri_TrueType_0,Calibri,serif;color:#000000;font-size:11.04pt;}
+
+.fmt-1{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:12pt;}
+
+.fmt-2{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:18pt;}
+
+.fmt-3{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:11.04pt;}
+
+@font-face {
+	font-family: 'Verdana_TrueType_1';
+	src: local('Verdana_TrueType_1');
+	src: url('Verdana_TrueType_1.ttf') format('truetype');
+}
+
+.fmt-4{font-style:normal;font-weight:bold;font-family:Verdana_TrueType_1,Verdana,serif;color:#000000;font-size:15.96pt;}
+
+.fmt-5{font-style:normal;font-weight:normal;font-family:Calibri_TrueType_0,Calibri,serif;color:#000000;font-size:11.04pt;}
+
+.fmt-6{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:12pt;}
+
+.fmt-7{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:11.04pt;}
+
+.fmt-8{font-style:normal;font-weight:normal;font-family:Times New Roman,Times New Roman,serif;color:#000000;font-size:12pt;}
+
+.fmt-9{font-style:normal;font-weight:normal;font-family:Arial,Arial,serif;color:#000000;font-size:12pt;}
+
+.fmt-10{font-style:normal;font-weight:bold;font-family:Times New Roman Bold,Times New Roman,serif;color:#000000;font-size:11.04pt;}
+
