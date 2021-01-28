@@ -11,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class AkunPembinaController extends Controller
 {
     public function index(){
-        return view('pembina.akun.akunpembina');
+        return view('pembina.kelola_pembina.akunpembina');
     }
 
     public function ajaxTable(){

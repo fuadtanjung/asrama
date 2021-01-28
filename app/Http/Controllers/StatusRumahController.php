@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mahasiswa;
 use App\Status_rumah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class StatusRumahController extends Controller
 {
     public function index(){
-        return view('pembina.statusrumah');
+        return view('pembina.kelola_data_pendaftaran.statusrumah');
     }
 
     protected function  validasiData($data){
@@ -60,12 +61,17 @@ class StatusRumahController extends Controller
         }
     }
 
-    public function delete($id){
-        $statusrumah = Status_rumah::where('id', $id)->first();
-        if($statusrumah->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Status Rumah"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Status Rumah"));
+    public function delete($id)
+    {
+        if (Mahasiswa::where('status_rumah_id', $id)->count() === 0) {
+            $statusrumah = Status_rumah::where('id', $id)->first();
+            if ($statusrumah->delete()) {
+                return json_encode(array("success" => "Berhasil Menghapus Data Status Rumah"));
+            } else {
+                return json_encode(array("error" => "Gagal Menghapus Data Status Rumah"));
+            }
+        } else {
+            return json_encode(array("error" => "Gagal Data Sedang Di Pakai"));
         }
     }
 }

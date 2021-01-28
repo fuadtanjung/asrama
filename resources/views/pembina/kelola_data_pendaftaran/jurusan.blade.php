@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Jurusan</th>
                         <th>Nama Fakultas</th>
@@ -64,8 +64,9 @@
 @section('script')
     <script type="text/javascript">
         function loadData() {
+            var id =  "{{ $id }}";
             $('#datatable').dataTable({
-                "ajax": "{{ url('/jurusan/data') }}",
+                "ajax": "{{ url('/jurusan/data/') }}/" + id,
                 "columns": [
                     { "data": "nama_jurusan" },
                     { "data": "nama_fakultas" },

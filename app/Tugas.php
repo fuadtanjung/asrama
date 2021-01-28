@@ -13,7 +13,7 @@ class Tugas extends Model
         'nama_tugas'
     ];
 
-    public function tugas_bulanan(){
-        return $this->hasMany(Tugas_bulanan::class,'tugas_id');
+    public function tugas_bulanan_mahasiswa(){
+        return $this->hasMany(Tugas_bulanan_mahasiswa::class,'tugas_bulanan_id');
     }
 }

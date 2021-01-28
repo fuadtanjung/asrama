@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
                     <thead>
                     <tr>
                         <th>Nama Denda</th>

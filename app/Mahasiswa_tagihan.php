@@ -11,10 +11,10 @@ class Mahasiswa_tagihan extends Model
     protected $keyType = 'string';
     public $timestamps= false;
     protected $fillable = [
-       'mahasiswa_id','keterangan','bulan'
+       'mahasiswa_id','keterangan','bulan','jumlah','surat'
     ];
 
     public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class,'mahasiswa_id','user_id');
+        return $this->belongsTo(Mahasiswa::class,'user_id','mahasiswa_id');
     }
 }

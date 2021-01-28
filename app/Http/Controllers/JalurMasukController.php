@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jalur_masuk;
+use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class JalurMasukController extends Controller
 {
     public function index(){
-        return view('pembina.jalur_masuk');
+        return view('pembina.kelola_data_pendaftaran.jalur_masuk');
     }
 
     protected function  validasiData($data){
@@ -61,11 +62,15 @@ class JalurMasukController extends Controller
     }
 
     public function delete($id){
-        $jalur = Jalur_masuk::where('id', $id)->first();
-        if($jalur->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Jalur Masuk"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Jalur Masuk"));
+        if (Mahasiswa::where('jalur_masuk_id', $id)->count() === 0) {
+            $jalur = Jalur_masuk::where('id', $id)->first();
+            if($jalur->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Jalur Masuk"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Jalur Masuk"));
+            }
+    } else {
+            return json_encode(array("error" => "Gagal Data Sedang Di Pakai"));
         }
     }
 }

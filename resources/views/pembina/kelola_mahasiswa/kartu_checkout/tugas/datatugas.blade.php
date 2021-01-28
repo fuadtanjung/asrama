@@ -25,8 +25,8 @@
 {{--                    </form>--}}
                 </div>
                 <br>
-                <table class="table table-hover table-bordered table-sm" id="datatable">
-                    <thead style="text-align: center">
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th >No</th>
                         <th>Nim</th>
@@ -34,14 +34,14 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
-                    <tbody style="text-align: center" >
+                    <tbody class="text-center" >
                     @foreach($mahasiswa as $a)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $a -> nim }}</td>
                             <td>{{ $a -> nama }}</td>
                             <td>
-                                <a class="btn btn-outline-indigo btn-sm legitRipple" href="{{ route('tugasbulanan',[$a -> user_id]) }}">Tugas Bulanan</a>
+                                <a class="btn btn-outline-primary btn-sm legitRipple" href="{{ route('tugasbulanan',[$a -> user_id]) }}"><i class="fa fa-wrench" style="margin-right: 7px"></i>Tugas Bulanan</a>
                             </td>
                         </tr>
                     @endforeach

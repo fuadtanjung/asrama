@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-1">
         <div class="card" style="width: 90%">
-                <div class="card-header">Tagihan Mahasiswa {{ $namamahasiswa->nama}}</div>
+                <div class="card-header">TAGIHAN {{ $namamahasiswa->nama}}</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tagihan">
@@ -11,15 +11,19 @@
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
+                        <th>No.</th>
                         <th>Bulan</th>
                         <th>Jumlah</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    <tbody class="text-center">
+                    <tr></tr>
+                    </tbody>
                 </table>
             </div>
             <div class="modal fade" id="input_tagihan" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -85,13 +89,14 @@
                     "datatype" : 'json'
                 },
                 "columns": [
+                    { "data": "no" },
                     { "data": "bulan" },
                     { "data": "jumlah" },
                     { "data": "keterangan" },
                     {
                         render: function() {
-                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
+                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit" style="margin-right: 7px"></i> Edit</a> &nbsp' +
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash" style="margin-right: 7px"></i> Hapus</a>'
                         }
                     }
                 ],

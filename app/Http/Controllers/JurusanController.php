@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Fakultas;
 use App\Jurusan;
+use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class JurusanController extends Controller
 {
-    public function index(){
-        return view('pembina.jurusan');
+    public function index($id){
+        $fakultas = Fakultas::where('id',$id)->first();
+        return view('pembina.kelola_data_pendaftaran.jurusan',['fakultas'=>$fakultas,'id'=>$id]);
     }
 
     protected function  validasiData($data){
@@ -48,9 +50,11 @@ class JurusanController extends Controller
         }
     }
 
-    public function ajaxTable(){
-        $jurusan =  Jurusan::with(['fakultas']);
-        return Datatables::of($jurusan)->toJson();
+    public function ajaxTable($jurusan){
+        $jurusans =  Jurusan::join('fakultas','jurusans.fakultas_id','=','fakultas.id')
+            ->where('jurusans.fakultas_id',$jurusan)
+            ->get();
+        return Datatables::of($jurusans)->toJson();
     }
 
     public function edit($id, Request $request){
@@ -76,11 +80,15 @@ class JurusanController extends Controller
     }
 
     public function delete($id){
-        $jurusan = Jurusan::where('id', $id)->first();
-        if($jurusan->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Jurusan"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Jurusan"));
+        if (Mahasiswa::where('jurusan_id', $id)->count() === 0) {
+            $jurusan = Jurusan::where('id', $id)->first();
+            if($jurusan->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Jurusan"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Jurusan"));
+            }
+        } else {
+            return json_encode(array("error" => "Gagal Data Sedang Di Pakai"));
         }
     }
 

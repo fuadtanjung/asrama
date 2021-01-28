@@ -19,4 +19,7 @@ class Ruangan extends Model
     public function mahasiswa_gedung(){
         return $this->hasMany(Mahasiswa_gedung::class);
     }
+    public function kamar_checkout(){
+        return $this->hasMany(Kamar_checkout::class);
+    }
 }

@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-hover table-bordered table-green-soft table-sm" id="datatable">
-                    <thead>
+                    <thead class="text-center">
                     <tr>
                         <th style="width: 1px">No.</th>
                         <th>Nama Denda</th>
@@ -21,6 +21,9 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    <tbody class="text-center">
+                    <tr>
+                    </tr></tbody>
                 </table>
             </div>
             <div class="modal fade" id="input_denda" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

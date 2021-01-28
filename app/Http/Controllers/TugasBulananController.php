@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Tugas_bulanan;
 use App\Tugas;
+use App\Tugas_bulanan_mahasiswa;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -91,9 +92,13 @@ class TugasBulananController extends Controller
     }
 
     public function delete($id,$bulan,$tahun){
-        $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->where('bulan',$bulan)->where('tahun',$tahun);
-        if($tugas_bulanan->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Tugas Bulanan"));
+        if (Tugas_bulanan_mahasiswa::where('tugas_id', $id)->where('bulan',$bulan)->where('tahun',$tahun)->count() === 0) {
+            $tugas_bulanan = Tugas_bulanan::where('tugas_id', $id)->where('bulan',$bulan)->where('tahun',$tahun);
+            if($tugas_bulanan->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Tugas Bulanan"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Tugas Bulanan"));
+            }
         }else{
             return json_encode(array("error"=>"Gagal Menghapus Data Tugas Bulanan"));
         }
@@ -105,7 +110,7 @@ class TugasBulananController extends Controller
     }
 
     public function listTugasbulanan(){
-        $tugas = Tugas_bulanan::with('tugas')->get();
+        $tugas = Tugas::get();
         return json_encode($tugas);
     }
 

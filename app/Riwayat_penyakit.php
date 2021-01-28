@@ -10,10 +10,10 @@ class Riwayat_penyakit extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'nama_penyakit'
+        'nama_penyakit','mahasiswa_id'
     ];
 
     public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class,'mahasiswa_id','user_id');
+        return $this->belongsToMany(Mahasiswa::class,'mahasiswa_id','user_id');
     }
 }

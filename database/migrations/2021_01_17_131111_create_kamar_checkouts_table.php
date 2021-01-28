@@ -14,8 +14,11 @@ class CreateKamarCheckoutsTable extends Migration
     public function up()
     {
         Schema::create('kamar_checkouts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('ruangan_id');
+            $table->unsignedBigInteger('mahasiswa_id');
+
+            $table->foreign('ruangan_id')->references('id')->on('ruangans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('mahasiswa_id')->references('user_id')->on('mahasiswas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

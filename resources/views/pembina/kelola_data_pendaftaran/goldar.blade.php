@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-sm table-bordered" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Golongan Darah</th>
                         <th>Aksi</th>
@@ -61,8 +61,8 @@
                     { "data": "nama_goldar" },
                     {
                         render: function() {
-                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
+                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit" style="margin-right: 7px"></i> Edit</a> &nbsp' +
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash" style="margin-right: 7px"></i> Hapus</a>'
                         }
                     }
                 ],

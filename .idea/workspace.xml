@@ -1,17 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="">
+    <list default="true" id="70d547ce-b3ae-4393-88f2-4e56d0b78bca" name="Default Changelist" comment="Alhamdulillah Semhas">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckoutMahasiswaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Notification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Kamar_checkout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asrama.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/livewire.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_17_131111_create_kamar_checkouts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/20bfda07e9ec38fe181adbca78e08a04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/28d5627b8831f28ea97993354a60830d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/408b66bff0a0c888299cb0e3c774fb3b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/4debc36e30ce616cfb50a30835fdf726.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/86d1b862b3ad35db79d7720938b4a4e8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/Calibri_TrueType_0.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/Es7ZLXNP.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/Es7ZLXNP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/Verdana_TrueType_1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/excanvas-compiled.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/checkout/fae2fa7b20db5d156cd10d9a17116fbd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/background1 - Copy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/background1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/tes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/notification.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/suratcheckout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile/biodatakeluarga.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile/biodatamahasiswa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile/pengalaman.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mahasiswa/profile/penyakit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/arsip/arsipmahasiswa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/checkout_mahasiswa/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tagihan/buktitagihanmahaiswa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/bootstrap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-bootstrap.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/simple-tailwind.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/livewire/tailwind.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/asrama.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/asrama.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenSholatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AkunPembinaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckinController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CheckoutController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DendaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DendaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DendaMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DendaMahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FakultasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GedungController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GedungController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoldarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoldarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JalurMasukController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JalurMasukController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JurusanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JurusanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PembinaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PembinaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PengalamanorganisasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengalamanorganisasiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostinganController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostinganController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RiwayatpenyakitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RiwayatpenyakitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RuanganController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RuanganController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StatusRumahController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StatusRumahController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagihanMahasiswaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasBulananMahasiswaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TugasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TugasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mahasiswa_tagihan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pembina.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pembina.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pembina_gedung.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pembina_gedung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Pembina_tahun.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Postingan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Postingan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Riwayat_penyakit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Riwayat_penyakit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Ruangan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Ruangan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tugas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tugas_bulanan_mahasiswa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/datatugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/datatugas.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/absensholat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/absensholat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_123159_create_mahasiswas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_124710_create_riwayat_penyakits_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_124710_create_riwayat_penyakits_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_124934_create_pengalaman_organisasis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_124934_create_pengalaman_organisasis_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_125233_create_mahasiswa_tagihans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_125707_create_tugas_bulanans_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_131300_create_tugas_bulanan_mahasiswas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_132000_create_pembinas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_132315_create_pembina_tahuns_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_132806_create_pembina_gedungs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_132806_create_pembina_gedungs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_133030_create_ruangans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_133030_create_ruangans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_07_134143_create_postingans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_07_134143_create_postingans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RuanganSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/data/mahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/data/mahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/denda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tagihan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/checkout/tugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/kamar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/pengalaman_organisasi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/profile.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mahasiswa/surat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mahasiswa/surat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/akun/akunpembina.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_pembina/akunpembina.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkin/checkroom.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kamar_mahasiswa/checkroom.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkin/kamarmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kamar_mahasiswa/kamarmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkin/pilihmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kamar_mahasiswa/pilihmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/datadenda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/denda/datadenda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/denda/dendamahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/denda/dendamahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/datatagihan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tagihan/datatagihan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tagihan/tagihanmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tagihan/tagihanmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/datatugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tugas/datatugas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tugas/print.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/checkout/tugas/tugasbulananmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/kartu_checkout/tugas/tugasbulananmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/denda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_tugas_dan_denda/denda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/fakultas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/fakultas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/gedung.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/gedung.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/goldar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/goldar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/jalur_masuk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/jalur_masuk.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/jurusan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/jurusan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/absensholat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/absen_sholat/absensholat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/datamahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/data_mahasiswa/datamahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/detailmahasiswa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/data_mahasiswa/detailmahasiswa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/kelolamahasiswa/printabsen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/absen_sholat/printabsen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/postingan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_mahasiswa/postingan/postingan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/profilpembina.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_pembina/profilpembina.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/ruangan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/ruangan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/status_rumah.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/statusrumah.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_data_pendaftaran/statusrumah.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembina/tugas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembina/kelola_tugas_dan_denda/tugas.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +260,7 @@
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
     </include_path>
   </component>
   <component name="ProjectId" id="1i7ZKdfEeWWo2GneFhLFoWCmoEM" />
@@ -160,7 +282,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -168,11 +290,11 @@
       <recent name="C:\laragon\www\asrama\public\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\asrama\public\fuad" />
-      <recent name="C:\laragon\www\asrama\public" />
-      <recent name="C:\laragon\www\asrama\resources\views\pembina\checkinmahasiswa" />
-      <recent name="C:\laragon\www\asrama\resources\views\pembina\checkout\tagihan" />
-      <recent name="C:\laragon\www\asrama\resources\views\pembina\checkout\tugas" />
+      <recent name="C:\laragon\www\asrama\resources\views\pembina\kelola_pembina" />
+      <recent name="C:\laragon\www\asrama\resources\views\pembina\kelola_data_pendaftaran" />
+      <recent name="C:\laragon\www\asrama\resources\views\pembina\kelola_tugas_dan_denda" />
+      <recent name="C:\laragon\www\asrama\resources\views\pembina\kelola_mahasiswa\postingan" />
+      <recent name="C:\laragon\www\asrama\resources\views\pembina\kelola_mahasiswa" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.web.php">
@@ -246,7 +368,49 @@
       <workItem from="1609677023436" duration="2530000" />
       <workItem from="1609833119538" duration="4683000" />
       <workItem from="1609857058503" duration="2830000" />
-      <workItem from="1609906795977" duration="619000" />
+      <workItem from="1609906795977" duration="1880000" />
+      <workItem from="1609921348582" duration="178000" />
+      <workItem from="1610184609917" duration="4501000" />
+      <workItem from="1610202189364" duration="2190000" />
+      <workItem from="1610208809353" duration="588000" />
+      <workItem from="1610252728195" duration="5458000" />
+      <workItem from="1610258312042" duration="240000" />
+      <workItem from="1610258584133" duration="852000" />
+      <workItem from="1610259486773" duration="50000" />
+      <workItem from="1610259561724" duration="596000" />
+      <workItem from="1610298333852" duration="3323000" />
+      <workItem from="1610335215400" duration="1800000" />
+      <workItem from="1610348356813" duration="598000" />
+      <workItem from="1610353640024" duration="435000" />
+      <workItem from="1610463302886" duration="13992000" />
+      <workItem from="1610539222644" duration="41000" />
+      <workItem from="1610539510962" duration="10084000" />
+      <workItem from="1610679646230" duration="6117000" />
+      <workItem from="1610716950268" duration="12450000" />
+      <workItem from="1610806355430" duration="2125000" />
+      <workItem from="1610810330472" duration="4374000" />
+      <workItem from="1610818164330" duration="127000" />
+      <workItem from="1610823740210" duration="2934000" />
+      <workItem from="1610857284015" duration="8966000" />
+      <workItem from="1610889890484" duration="6147000" />
+      <workItem from="1610913329621" duration="6497000" />
+      <workItem from="1610964774879" duration="8109000" />
+      <workItem from="1610995293795" duration="596000" />
+      <workItem from="1611041306795" duration="11875000" />
+      <workItem from="1611066702576" duration="14177000" />
+      <workItem from="1611122591175" duration="2408000" />
+      <workItem from="1611136984254" duration="168000" />
+      <workItem from="1611212461845" duration="2775000" />
+      <workItem from="1611245312839" duration="8699000" />
+      <workItem from="1611384087388" duration="3211000" />
+      <workItem from="1611395566565" duration="8905000" />
+      <workItem from="1611454810419" duration="4810000" />
+      <workItem from="1611477067815" duration="5624000" />
+      <workItem from="1611485120420" duration="1302000" />
+      <workItem from="1611493353052" duration="8924000" />
+      <workItem from="1611542627793" duration="4951000" />
+      <workItem from="1611574242897" duration="1984000" />
+      <workItem from="1611655487840" duration="13441000" />
     </task>
     <task id="LOCAL-00001" summary="update beberapa tugas bulanan dan tagihan mahasiswa">
       <created>1609142960330</created>
@@ -255,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609142960330</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Alhamdulillah Semhas">
+      <created>1609907469032</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609907469032</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +435,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update beberapa tugas bulanan dan tagihan mahasiswa" />
-    <option name="LAST_COMMIT_MESSAGE" value="update beberapa tugas bulanan dan tagihan mahasiswa" />
+    <MESSAGE value="Alhamdulillah Semhas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alhamdulillah Semhas" />
   </component>
 </project>

@@ -39,7 +39,7 @@
             iziToast.error({
                 title: 'Gagal',
                 position: 'topRight',
-                message: "Surat Perjanjian Mahasiswa Belum Diupload",
+                message: "Bukti Tagihan Mahasiswa Belum Diupload",
                 timeout :'2500',
                 transitionIn: 'flipInX',
                 transitionOut: 'flipOutX'

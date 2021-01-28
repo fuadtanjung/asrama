@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Denda;
+use App\Detail_denda;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class DendaController extends Controller
 {
     public function index(){
-        return view('pembina.denda');
+        return view('pembina.kelola_tugas_dan_denda.denda');
+    }
+
+    public function ajaxTable(){
+        $denda =  Denda::all();
+        return Datatables::of($denda)->toJson();
     }
 
     protected function  validasiData($data){
@@ -46,11 +52,6 @@ class DendaController extends Controller
         }
     }
 
-    public function ajaxTable(){
-        $denda =  Denda::all();
-        return Datatables::of($denda)->toJson();
-    }
-
     public function edit($id, Request $request){
         $denda = Denda::where('id', $id)->first();
         $denda->nama_denda = $request->nama_denda;
@@ -63,11 +64,15 @@ class DendaController extends Controller
     }
 
     public function delete($id){
-        $denda = Denda::where('id', $id)->first();
-        if($denda->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Denda"));
+        if (Detail_denda::where('denda_id',$id)->count() === 0) {
+            $denda = Denda::where('id', $id)->first();
+            if($denda->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Denda"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Denda"));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Denda"));
+            return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
 

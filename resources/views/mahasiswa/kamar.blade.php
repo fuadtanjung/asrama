@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container mt-1">
-        <div class="card" style="width: 70%">
+        <div class="card" >
             <div class="card-header">Kamar Asrama</div>
             <div class="card-body">
                 @if ( !$room)
-                    <h2>Anda Belum punya kamar</h2>
+                    <h2>Print Surat Checkout</h2>
+                    <a href="{{ route('suratcheckout',[auth()->user()->id]) }}" target="_blank" class="btn btn-outline-primary"> Surat Check Out</a>
                 @else
                     <h4 class="text-info">Anda Berada Di :</h4>
                     <div class="row">
@@ -19,38 +20,40 @@
                             <h3 class="text-primary">Akhir : {{ date('d F Y',strtotime($kamar->akhir )) }}</h3>
                         </div>
                     </div>
-                <p>Tolong upload Surat Perjanjian Anda. Anda dapat dapat mendownload Surat tersebut pada menu <b>Surat Asrama</b></p>
-                <form action="{{ route('suratperjanjian',[$kamar->ruangan_id]) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
+                    @if($room->surat_perjanjian == null)
+                        <p>Tolong upload Surat Perjanjian Anda. Anda dapat dapat mendownload Surat tersebut pada menu <b>Surat Asrama</b></p>
+                            <form action="{{ route('suratperjanjian',[$kamar->ruangan_id]) }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @endif
 
-                        @if ( count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                                @if ( count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 
+                                <div>
+                                    <input type="file" name="file" id="chooseFile">
+                                </div>
+
+                                <button type="submit" name="submit" class="btn btn-primary btn-lg mt-3">
+                                    <b>Upload Files</b>
+                                </button>
+                            </form>
                         <div>
-                            <input type="file" name="file" id="chooseFile">
-                        </div>
-
-                        <button type="submit" name="submit" class="btn btn-primary btn-lg mt-3">
-                            <b>Upload Files</b>
-                        </button>
-                    </form>
-                <div>
+                    @else
+                    <h2 class="text-red">Terima Kasih Surat Perjanjian Anda Sudah Berhasil Di Upload</h2>
+                    @endif
                     @endif
                     <br>
-{{--                <b>Nama File : {{ $data->surat_perjanjian }}</b>--}}
-{{--                    <small class="form-text text-muted">Nama File Akan Keliatan Apabila sudah upload.</small>--}}
                 </div>
             </div>
         </div>

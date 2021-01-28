@@ -29,7 +29,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->nama }}</td>
-                                        <td><input type="checkbox" name="chkbox[]" value="{{ $data->user_id }}"></td>
+                                        <td><input type="checkbox" name="mahasiswa[]" value="{{ $data->user_id }}"></td>
                                     </tr>
                                 @endforeach
                                 @else
@@ -104,7 +104,7 @@
         function resetFormdaftar() {
             $("#form_absen")[0].reset();
             $('#chk').val("").change();
-            $('#chkbox').val("").change();
+            $('#mahasiswa').val("").change();
         }
 
         $('#absen').click(function () {
@@ -122,12 +122,15 @@
                     var pesan = JSON.parse(response);
                     if(pesan.error != null){
                         iziToast.error({
-                            title: 'Gagal',
+                            title: 'Error notice',
                             position: 'topRight',
                             message: pesan.error,
+                            timeout :'2500',
+                            transitionIn: 'flipInX',
+                            transitionOut: 'flipOutX'
                         });
                         resetFormdaftar();
-                        window.onload();
+                        window.location.href = "{{ url('/absensholat')}}"
                     }else if(pesan.success != null){
                         iziToast.success({
                             title: 'Success notice',
@@ -135,6 +138,7 @@
                             message: pesan.success
                         });
                         resetFormdaftar();
+                        window.location.href = "{{ url('/absensholat')}}"
                     }else {
                         iziToast.warning({
                             title: 'Warning',

@@ -4,7 +4,11 @@
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <a class="navbar-brand" href="{{ route('home') }}">Asrama</a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i class="fa fa-bars"></i></button>
+
         <ul class="navbar-nav align-items-center ml-auto">
+            @if ( auth()->user()->role->nama == "mahasiswa")
+            <livewire:notification />
+            @endif
             <li class="nav-item dropdown no-caret mr-2 dropdown-user">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ url('images/at-work-pana.svg')}}"/></a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
@@ -24,19 +28,18 @@
                         <div class="sidenav-menu-heading">Core</div>
                         <a class="nav-link" href="{{ route ('home')}}">
                             <div class="nav-link-icon"><i class="fa fa-home"></i></div>
-                            Dashboard
+                            Beranda
                         </a>
                         @if ( auth()->user()->role->nama == "pembina" && empty(auth()->user()->pembina)== false)
 
                             <div class="sidenav-menu-heading">Kelola Mahasiswa</div>
-
 
                             <a class="nav-link" href="{{ route ('datamahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
                                 Data Mahasiswa
                             </a>
 
-                            <a class="nav-link" href="{{ url ('checkin')}}">
+                            <a class="nav-link" href="{{ url ('kamar_mahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-key"></i></div>
                                 Kamar Mahasiswa
                             </a>
@@ -46,14 +49,14 @@
                                 Absen Sholat
                             </a>
 
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
+                            <a class="nav-link {{ request()->is(['data/tugasbulananmahasiswa','data/tagihanmahasiswa','data/dendamahasiswa']) ? '' : 'collapsed'}}" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
                                 <div class="nav-link-icon"><i class="fas fa-road"></i></div>
                                 Kartu Check Out
                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsecheckout" data-parent="#accordionSidenav">
+                            <div class="collapse {{ request()->is(['data/tugasbulananmahasiswa','data/tagihanmahasiswa','data/dendamahasiswa']) ? 'show' : ''}}" id="collapsecheckout" data-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                    <a class="nav-link" href="{{ route('datatugasbulananmahasiswa') }}">
+                                    <a class="nav-link {{ request()->is('data/tugasbulananmahasiswa') ? 'active' : ''}}" href="{{ route('datatugasbulananmahasiswa') }}">
                                         Tugas Bulanan
                                     </a>
                                     <a class="nav-link" href="{{ route('datatagihanmahasiswa') }}">
@@ -65,6 +68,11 @@
                                 </nav>
                             </div>
 
+                            <a class="nav-link" href="{{ url ('checkoutmahasiswa')}}">
+                                <div class="nav-link-icon"><i class="fa fa-newspaper"></i></div>
+                                Checkout Mahasiswa
+                            </a>
+
                             <a class="nav-link" href="{{ url ('postingan')}}">
                                 <div class="nav-link-icon"><i class="fa fa-newspaper"></i></div>
                                 Postingan
@@ -75,10 +83,10 @@
                                 <div class="nav-link-icon"><i class="fa fa-tasks"></i></div>
                                 Tugas
                             </a>
-                            <a class="nav-link" href="{{ url ('tugasbulanan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-list-alt"></i></div>
-                                Tugas Bulanan
-                            </a>
+{{--                            <a class="nav-link" href="{{ url ('tugasbulanan')}}">--}}
+{{--                                <div class="nav-link-icon"><i class="fa fa-list-alt"></i></div>--}}
+{{--                                Tugas Bulanan--}}
+{{--                            </a>--}}
                             <a class="nav-link" href="{{ url ('denda')}}">
                                 <div class="nav-link-icon"><i class="fa fa-gavel"></i></div>
                                 Denda
@@ -87,13 +95,8 @@
                             <div class="sidenav-menu-heading">Kelola Data Pendaftaran</div>
                             <a class="nav-link" href="{{ url ('fakultas')}}">
                                 <div class="nav-link-icon"><i class="fa fa-university"></i></div>
-                                Fakultas
+                                Fakultas dan Jurusan
                             </a>
-                            <a class="nav-link" href="{{ url ('jurusan')}}">
-                                <div class="nav-link-icon"><i class="fa fa-graduation-cap"></i></div>
-                                Jurusan
-                            </a>
-
                             <a class="nav-link" href="{{ url ('golongandarah')}}">
                                 <div class="nav-link-icon"><i class="fa fa-user-md"></i></div>
                                 Golongan Darah
@@ -122,39 +125,47 @@
                                 <div class="nav-link-icon"><i class="fa fa-user"></i></div>
                                 Akun Pembina
                             </a>
+
+                            <div class="sidenav-menu-heading">Arsip</div>
+                            <a class="nav-link" href="{{ url ('data/arsip')}}">
+                                <div class="nav-link-icon"><i class="fa fa-user"></i></div>
+                                Arsip Mahasiswa
+                            </a>
                         @endif
 
                         @if ( auth()->user()->role->nama == "mahasiswa" && empty(auth()->user()->mahasiswa)== false)
-                            <a class="nav-link" href="{{ url ('mahasiswa')}}">
+
+                        <div class="sidenav-menu-heading">Menu</div>
+                            <a class="nav-link" href="{{ url ('profile/mahasiswa')}}">
                                 <div class="nav-link-icon"><i class="fa fa-address-card"></i></div>
-                                Profile Pendaftaran
+                                Profile
                             </a>
-                            <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">
-                                <div class="nav-link-icon"><i class="fa fa-medkit"></i></div>
-                                Riwayat Penyakit
-                            </a>
-                            <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">
-                                <div class="nav-link-icon"><i class="fa fa-suitcase"></i></div>
-                                Pengalaman Organisasi
-                            </a>
+{{--                            <a class="nav-link" href="{{ url ('riwayatpenyakit')}}">--}}
+{{--                                <div class="nav-link-icon"><i class="fa fa-medkit"></i></div>--}}
+{{--                                Riwayat Penyakit--}}
+{{--                            </a>--}}
+{{--                            <a class="nav-link" href="{{ url ('pengalamanorganisasi')}}">--}}
+{{--                                <div class="nav-link-icon"><i class="fa fa-suitcase"></i></div>--}}
+{{--                                Pengalaman Organisasi--}}
+{{--                            </a>--}}
                             <a class="nav-link" href="{{ url('mahasiswa/kamar') }}">
                                 <div class="nav-link-icon"><i class="fa fa-key"></i></div>
                                 Kamar Asrama
                             </a>
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
+                            <a class="nav-link {{ request()->is(['kartu_checkout/tagihan','kartu_checkout/tugas','kartu_checkout/denda']) ? '' : 'collapsed'}}" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsecheckout" aria-expanded="false" aria-controls="collapseDashboards">
                                 <div class="nav-link-icon"><i class="fas fa-road"></i></div>
                                 Syarat Check Out
                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsecheckout" data-parent="#accordionSidenav">
+                            <div class="collapse {{ request()->is(['kartu_checkout/tagihan','kartu_checkout/tugas','kartu_checkout/denda']) ? 'show' : ''}}" id="collapsecheckout" data-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                    <a class="nav-link" href="{{ route('tugasmahasiswa') }}">
+                                    <a class="nav-link  {{ request()->is('kartu_checkout/tugas') ? 'active' : ''}}" href="{{ route('tugasmahasiswa') }}">
                                         Tugas Bulanan
                                     </a>
-                                    <a class="nav-link" href="{{ route('tagihanmahasiswa') }}">
+                                    <a class="nav-link {{ request()->is('kartu_checkout/tagihan') ? 'active' : ''}}" href="{{ route('tagihanmahasiswa') }}">
                                         Tagihan
                                     </a>
-                                    <a class="nav-link" href="{{ route('dendamahasiswa') }}">
+                                    <a class="nav-link {{ request()->is('kartu_checkout/denda') ? 'active' : ''}}" href="{{ route('dendamahasiswa') }}">
                                         Denda
                                     </a>
                                 </nav>

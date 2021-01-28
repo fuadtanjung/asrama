@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-{{--    <input type="text" value="{{ date('d-m-Y',strtotime(auth()->user()->mahasiswa->pengalaman_organisasi->mulai))}}">--}}
+{{--    <input type="text" value="{{ date('d-m-Y',strtotime(auth()->user()->checkout_mahasiswa->pengalaman_organisasi->mulai))}}">--}}
 @endsection
 
 @section('script')

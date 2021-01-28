@@ -19,6 +19,7 @@ class CreatePostingansTable extends Migration
             $table->string('judul');
             $table->text('keterangan');
             $table->date('waktu_post');
+            $table->timestamps();
 
             $table->foreign('pembina_id')->references('user_id')->on('pembinas')->onDelete('cascade')->onUpdate('cascade');
         });

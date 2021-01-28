@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class RiwayatpenyakitController extends Controller
 {
     public function index(){
-        return view('mahasiswa.riwayat_penyakit');
+        return view('checkout_mahasiswa.riwayat_penyakit');
     }
 
     protected function  validasiData($data){
@@ -69,7 +69,4 @@ class RiwayatpenyakitController extends Controller
             return json_encode(array("error"=>"Gagal Menghapus Data Riwayat Penyakit"));
         }
     }
-    
-
-    
 }

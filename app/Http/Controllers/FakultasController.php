@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jurusan;
 use Illuminate\Http\Request;
 use App\Fakultas;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class FakultasController extends Controller
 {
     public function index(){
-        return view('pembina.fakultas');
+        return view('pembina.kelola_data_pendaftaran.fakultas');
     }
 
     protected function  validasiData($data){
@@ -61,11 +62,15 @@ class FakultasController extends Controller
     }
 
     public function delete($id){
-        $fakultas = Fakultas::where('id', $id)->first();
-        if($fakultas->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Fakultas"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Fakultas"));
+        if (Jurusan::where('fakultas_id', $id)->count() === 0) {
+            $fakultas = Fakultas::where('id', $id)->first();
+            if($fakultas->delete()){
+                return json_encode(array("success"=>"Berhasil Menghapus Data Fakultas"));
+            }else{
+                return json_encode(array("error"=>"Gagal Menghapus Data Fakultas"));
+            }
+        } else {
+            return json_encode(array("error" => "Gagal Data Sedang Di Pakai"));
         }
     }
 }

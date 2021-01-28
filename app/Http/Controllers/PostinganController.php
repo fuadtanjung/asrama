@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Postingan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class PostinganController extends Controller
 {
     public function index(){
-        return view('pembina.postingan');
+        return view('pembina.kelola_mahasiswa.postingan.postingan');
     }
 
     protected function  validasiData($data){
@@ -32,6 +33,7 @@ class PostinganController extends Controller
             $postingan->keterangan = $request->keterangan;
             $postingan->waktu_post = $request->tanggal;
             $postingan->pembina_id = $request->pembina;
+            $postingan->updated_at = '1970-11-11';
             if($postingan->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Postingan"));
             }else{
@@ -76,7 +78,17 @@ class PostinganController extends Controller
     }
 
     public function pengumuman(){
-        $pengumuman = Postingan::get();
+
+        $data = Postingan::where('updated_at','1970-11-11')->get();
+
+        foreach($data as $value){
+            $update = Postingan::where('updated_at','1970-11-11')->first();
+            $update->updated_at = Carbon::now();
+            $update->update();
+        }
+
+        $pengumuman = Postingan::latest()->get();
+
         return view('mahasiswa.postinganmahasiswa',['post' => $pengumuman]);
     }
 }

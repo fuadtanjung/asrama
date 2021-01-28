@@ -11,13 +11,16 @@
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Tugas</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr></tr>
+                    </tbody>
                 </table>
             </div>
             <div class="modal fade" id="input_tugas" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

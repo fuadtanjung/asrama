@@ -5,18 +5,20 @@
         <div class="card" style="width: 70%">
             <form>
                 <div class="card-body" style="margin-right: 10%">
-                    <table class="table table-hover table-green-soft" id="datatable">
-                        <thead>
+                    <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                        <thead class="text-center">
                         <tr>
+                            <th>No.</th>
                             <th>Nama Mahasiswa</th>
-                            <th>Aksi</th>
+                            <th>Download</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         @foreach($checkroom as $data)
                             <tr>
+                                <td>{{ $loop->iteration }}.</td>
                                 <td>{{ $data->nama }}</td>
-                                <td><a class="btn btn-primary" href="{{ route('unduh',[$data->ruangan_id,$data->mahasiswa_id]) }}">Surat Perjanjian</a></td>
+                                <td><a class="btn btn-outline-primary btn-sm legitRipple" href="{{ route('unduh',[$data->ruangan_id,$data->mahasiswa_id]) }}"><i class="fa fa-download" style="margin-right: 7px"></i>Surat Perjanjian</a></td>
                             </tr>
                         @endforeach
                         </tbody>

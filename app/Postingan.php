@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Postingan extends Model
 {
     protected $table = 'postingans';
-    public $timestamps= false;
     protected $fillable = [
         'judul','keterangan','waktu_post'
     ];
@@ -15,4 +14,5 @@ class Postingan extends Model
     public function pembina(){
         return $this->belongsTo(Pembina::class,'pembina_id','id');
     }
+
 }

@@ -36,6 +36,9 @@ class Mahasiswa extends Model
     public function mahasiswagedung(){
         return $this->hasOne(Mahasiswa_gedung::class,'mahasiswa_id','user_id');
     }
+    public function kamarcheckout(){
+        return $this->hasOne(Kamar_checkout::class,'mahasiswa_id','user_id');
+    }
     public function pengalamanorganisasi(){
         return $this->hasMany(Pengalaman_organisasi::class,'mahasiswa_id');
     }
@@ -44,5 +47,8 @@ class Mahasiswa extends Model
     }
     public function tugasbulananmahasiswa(){
         return $this->hasMany( Tugas_bulanan_mahasiswa::class,'mahasiswa_id');
+    }
+    public function riwayatpenyakit(){
+        return $this->hasMany( Riwayat_penyakit::class,'mahasiswa_id');
     }
 }

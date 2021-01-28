@@ -8,19 +8,21 @@
                 <table class="table table-hover table-sm table-bordered table-green-soft" id="table">
                     <thead class="text-center">
                     <tr>
+                        <th>No.</th>
                         <th>Nama Denda</th>
                         <th>Jumlah Denda</th>
                         <th>Keterangan</th>
                         <th>Waktu</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                     @foreach( $denda as $data )
                     <tr>
-                    <td>{{ $data->nama_denda }}</td>
-                    <td>{{ $data->denda }}</td>
-                    <td>{{ $data->keterangan }}</td>
-                    <td>{{ date('d-m-Y',strtotime( $data->waktu)) }}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $data->nama_denda }}</td>
+                        <td>{{ $data->denda }}</td>
+                        <td>{{ $data->keterangan }}</td>
+                        <td>{{ date('d-m-Y',strtotime( $data->waktu)) }}</td>
                     </tr>
                     @endforeach
                     </tbody>

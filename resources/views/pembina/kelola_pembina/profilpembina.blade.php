@@ -21,7 +21,7 @@
                         <label>NIM</label>
                         <input type="text" class="form-control form-control-solid form-control-sm" value="{{ auth()->user()->pembina->nim}}">
                         <label>Nama</label>
-                        <input type="text" class="form-control form-control-solid form-control-sm" value="{{ auth()->user()->pembina->nama }}" >
+                        <input type="text" class="form-control form-control-solid form-control-sm" value="{{ auth()->user()->pembina->nama_pembina }}" >
 
                          <label>Pembina Tahun</label>
                         <input type="text" class="form-control form-control-solid form-control-sm" value="{{ auth()->user()->pembina->pembina_gedung->tahun }}" >

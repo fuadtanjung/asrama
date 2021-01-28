@@ -14,7 +14,7 @@
 
         <div class="card">
             <div class="card-body">
-                <table class="table table-hover table-bordered table-sm" id="datatable">
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
                     <thead style="text-align: center">
                     <tr>
                         <th>Nama</th>

@@ -17,6 +17,6 @@ class Tugas_bulanan_mahasiswa extends Model
         return $this->belongsTo(Mahasiswa::class,'mahasiswa_id','user_id');
     }
     public function tugas_bulanan(){
-        return $this->belongsTo(Tugas::class,'tugas_bulanan_id','tugas_id');
+        return $this->belongsTo(Tugas::class,'tugas_bulanan_id','id');
     }
 }

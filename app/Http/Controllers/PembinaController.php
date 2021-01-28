@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Pembina;
 use App\Pembina_gedung;
-use App\Pembina_tahun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -13,18 +12,20 @@ class PembinaController extends Controller
     public function index()
     {
         $profilepembina = Pembina::where('user_id', auth()->user()->id)->get();
-        return view('pembina.profilpembina',['pembina'=>$profilepembina]);
+        return view('pembina.kelola_pembina.profilpembina',['pembina'=>$profilepembina]);
     }
 
     protected function  validasiData($data){
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
             'unique' => ':attribute sudah ada',
-            'exists' => ':attribute tidak ditemukan'
+            'exists' => ':attribute tidak ditemukan',
+            'min' => ':attribute minimal 10 nomor',
+            'max' => ':attribute maximal 12 nomor'
         ];
         return validator($data, [
             'nama' => 'required:pembina',
-            'kontak' => 'required:pembina',
+            'kontak' => 'required|min:10|max:12:pembinas',
             'jenis_kelamin' => 'required:pembina',
             'pekerjaan' => 'required:pembina',
             'tanggal_lahir' => 'required:pembina',
@@ -41,20 +42,14 @@ class PembinaController extends Controller
             $pembina = new pembina();
             $pembina->user_id= $request->id;
             $pembina->nim = $request->nim;
-            $pembina->nama = $request->nama;
+            $pembina->nama_pembina = strtoupper($request->nama);
             $pembina->no_hp = $request->kontak;
             $pembina->jenis_kelamin = $request->jenis_kelamin;
             $pembina->pekerjaan = $request->pekerjaan;
             $pembina->tanggal_lahir =Carbon::parse($request->tanggal_lahir);
-            $pembina->tempat_lahir = $request->tempat_lahir;
-            $pembina->alamat_asal = $request->alamat;
+            $pembina->tempat_lahir = strtoupper($request->tempat_lahir);
+            $pembina->alamat_asal = strtoupper($request->alamat);
             if($pembina->save()){
-
-                $pembina_tahun = new Pembina_tahun();
-                $pembina_tahun->pembina_id = $request->id;
-                $pembina_tahun->tahun = $request->tahun;
-                $pembina_tahun->save();
-
                 $pembina_gedung = new Pembina_gedung();
                 $pembina_gedung->pembina_id = $request->id;
                 $pembina_gedung->gedung_id = $request->gedung;

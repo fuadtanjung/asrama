@@ -19,7 +19,7 @@
 
         <div class="card">
             <div class="card-body">
-                <table class="table table-hover table-bordered table-sm" id="datatable">
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
                     <thead style="text-align: center">
                     <tr>
                         <th >No</th>
@@ -35,7 +35,7 @@
                             <td>{{ $a -> nim }}</td>
                             <td>{{ $a -> nama }}</td>
                             <td>
-                                <a class="btn btn-outline-red btn-sm legitRipple" href="{{ route('detailmahasiswa',[$a -> user_id]) }}">Detail</a>
+                                <a class="btn btn-outline-primary btn-sm legitRipple" href="{{ route('detailmahasiswa',[$a -> user_id]) }}"><i class="fa fa-eye" style="margin-right: 7px"></i>Detail</a>
                             </td>
                         </tr>
                         @endforeach

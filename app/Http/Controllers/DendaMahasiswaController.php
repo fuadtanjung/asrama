@@ -11,7 +11,7 @@ class DendaMahasiswaController extends Controller
 {
     public function index($id){
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
-        return view ('pembina.checkout.denda.dendamahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
+        return view ('pembina.kelola_mahasiswa.kartu_checkout.denda.dendamahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
     }
 
     public function ajaxtable($detail_denda){

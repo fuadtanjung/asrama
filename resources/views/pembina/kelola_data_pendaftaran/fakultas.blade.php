@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body" style="margin-right: 10%">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Fakultas</th>
                         <th>Aksi</th>
@@ -61,8 +61,9 @@
                     { "data": "nama_fakultas" },
                     {
                         render: function() {
-                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                            '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
+                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit" style="margin-right: 7px"></i> Edit</a> &nbsp' +
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash" style="margin-right: 7px"></i> Hapus</a> &nbsp' +
+                                '<a href="#" id="lihat" class="btn btn-outline-primary btn-sm legitRipple"><i class="fa fa-eye" style="margin-right: 7px"></i> Lihat Jurusan</a>'
                         }
                     }
                 ],
@@ -241,16 +242,39 @@
                             cache: false,
                             success: function (response) {
                                 var pesan = JSON.parse(response);
-                                iziToast.success({
-                                    title: 'Success notice',
-                                    position: 'topRight',
-                                    message: pesan.success,
-                                    timeout :'2500',
-                                    transitionIn: 'flipInX',
-                                    transitionOut: 'flipOutX'
-                                });
-                                table.destroy();
-                                loadData();
+                                if(pesan.error != null){
+                                    iziToast.error({
+                                        title: 'Error notice',
+                                        position: 'topRight',
+                                        message: pesan.error,
+                                        timeout :'2500',
+                                        transitionIn: 'flipInX',
+                                        transitionOut: 'flipOutX'
+                                    });
+                                    table.destroy();
+                                    loadData();
+                                }else if(pesan.success != null){
+                                    iziToast.success({
+                                        title: 'Success notice',
+                                        position: 'topRight',
+                                        message: pesan.success,
+                                        timeout :'2500',
+                                        transitionIn: 'flipInX',
+                                        transitionOut: 'flipOutX'
+                                    });
+                                    table.destroy();
+                                    loadData();
+                                }
+                            },
+                            fail: function () {
+                                iziToast.error({
+                                title: 'Error notice',
+                                message: 'Gagal Menambahkan Data pengguna',
+                                transitionOut: 'fadeOutUp',
+                                timeout :'2500',
+                                transitionIn: 'flipInX',
+                                transitionOut: 'flipOutX'
+                            });
                             },
                         });
                         instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
@@ -277,6 +301,13 @@
                     }
                 });
             });
+
+            $('#datatable tbody').on('click', '#lihat', function (e) {
+                var table = $('#datatable').DataTable();
+                var data = table.row( $(this).parents('tr') ).data();
+                var id = data.id;
+                window.location.href = "{{ url('/jurusan/')}}/"+id;
+            } );
 
             $('#input_fakultas').on('hidden.bs.modal', function () {
                 resetFormFakultas();

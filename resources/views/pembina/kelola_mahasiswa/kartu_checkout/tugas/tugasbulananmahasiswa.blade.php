@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-1">
         <div class="card">
-            <div class="card-header">Tugas Bulanan {{ $namamahasiswa->nama }}</div>
+            <div class="card-header">TUGAS BULANAN {{ $namamahasiswa->nama }}</div>
             <br>
             <div class="container-sm">
                 <button type="button" class="btn btn-primary btn-sm legitRipple" data-toggle="modal" data-target="#input_tugasbulananmhs">
@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-bordered table-green-soft table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>No</th>
                         <th>Nama Tugas</th>
@@ -22,6 +22,9 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    <tbody class="text-center">
+                    <tr></tr>
+                    </tbody>
                 </table>
             </div>
             <div class="modal fade" id="input_tugasbulananmhs" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -43,6 +46,7 @@
                                         <option value="">Pilih Tugas</option>
                                     </select>
                                 </div>
+                                    <input type="text" class="form-control" id="bulan" value="{{ $bulan }}" name="bulan" hidden>
                                     <input type="text" class="form-control" id="bulan" value="{{ $bulan }}" name="bulan" hidden>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">
@@ -88,8 +92,8 @@
                     { "data": "keterangan" },
                     {
                         render: function() {
-                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a>'
+                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit" style="margin-right: 7px"></i> Edit</a> &nbsp' +
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash" style="margin-right: 7px"></i> Hapus</a>'
                         }
                     }
                 ],

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mahasiswa_gedung;
 use App\Ruangan;
 use App\Gedung;
 use Illuminate\Http\Request;
@@ -11,15 +12,14 @@ class RuanganController extends Controller
 {
     public function index($id){
         $idgedung = Gedung::select('id','nama_gedung')->where('id',$id)->first();
-        return view('pembina.ruangan',['idgedung'=>$idgedung,'id'=>$id]);
+        return view('pembina.kelola_data_pendaftaran.ruangan',['idgedung'=>$idgedung,'id'=>$id]);
     }
 
     public function ajaxTable($ruangan){
         $ruangans =  Ruangan::join('gedungs','ruangans.gedung_id','=','gedungs.id')
-            ->select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.nama_gedung')
+            ->select('ruangans.id','ruangans.gedung_id','ruangans.nama_ruangan','gedungs.nama_gedung','ruangans.status_ruangan')
             ->where('ruangans.gedung_id',$ruangan)
             ->get();
-//            dd($ruangans);
         return Datatables::of($ruangans)->toJson();
     }
 
@@ -32,6 +32,7 @@ class RuanganController extends Controller
         ];
         return validator($data, [
             'nama_ruangan' => 'required:ruangans',
+            'status_ruangan' => 'required:ruangans',
             'id_gedung' => 'required:ruangans',
         ], $pesan);
     }
@@ -41,6 +42,7 @@ class RuanganController extends Controller
         if($validasi->passes()){
             $ruangan = new Ruangan();
             $ruangan->nama_ruangan = $request->nama_ruangan;
+            $ruangan->status_ruangan = $request->status_ruangan;
             $ruangan->gedung_id = $request->id_gedung;
             if($ruangan->save()){
                 return json_encode(array("success"=>"Berhasil Menambahkan Data Ruangan"));
@@ -63,6 +65,7 @@ class RuanganController extends Controller
         if($validasi->passes()) {
             $ruangan = Ruangan::where('id', $id)->first();
             $ruangan->nama_ruangan = $request->nama_ruangan;
+            $ruangan->status_ruangan = $request->status_ruangan;
             $ruangan->gedung_id = $request->id_gedung;
             if ($ruangan->update()) {
                 return json_encode(array("success" => "Berhasil Merubah Data Ruangan"));
@@ -81,11 +84,15 @@ class RuanganController extends Controller
     }
 
     public function delete($id){
-        $ruangan = Ruangan::where('id', $id)->first();
-        if($ruangan->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Ruangan"));
+        if (Mahasiswa_gedung::where('ruangan_id',$id)->count() === 0) {
+            $ruangan = Ruangan::where('id', $id)->first();
+            if ($ruangan->delete()) {
+                return json_encode(array("success" => "Berhasil Menghapus Data Ruangan"));
+            } else {
+                return json_encode(array("error" => "Gagal Menghapus Data Ruangan"));
+            }
         }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Ruangan"));
+                return json_encode(array("error"=>"Gagal Data Sedang Di Pakai"));
         }
     }
 

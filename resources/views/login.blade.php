@@ -92,7 +92,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="button" data-dismiss="modal" aksi="input" id="submit_pengguna">Simpan</button></div>
+                    <button class="btn btn-primary" type="button" aksi="input" id="submit_pengguna">Simpan</button></div>
             </div>
         </div>
     </div>
@@ -124,16 +124,21 @@
                     var pesan = JSON.parse(response);
                     if(pesan.error != null){
                         iziToast.error({
-                            title: 'Gagal',
+                            title: 'Error notice',
                             position: 'topRight',
                             message: pesan.error,
+                            timeout :'2500',
+                            transitionIn: 'flipInX',
+                            transitionOut: 'flipOutX'
                         });
-                        resetFormdaftar();
                     }else if(pesan.success != null){
                         iziToast.success({
                             title: 'Success notice',
                             position: 'topRight',
-                            message: pesan.success
+                            message: pesan.success,
+                            timeout :'2500',
+                            transitionIn: 'flipInX',
+                            transitionOut: 'flipOutX'
                         });
                         resetFormdaftar();
                         $('#register').modal('toggle');

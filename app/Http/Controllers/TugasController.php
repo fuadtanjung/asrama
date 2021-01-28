@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class TugasController extends Controller
 {
     public function index(){
-        return view('pembina.tugas');
+        return view('pembina.kelola_tugas_dan_denda.tugas');
     }
 
     protected function  validasiData($data){

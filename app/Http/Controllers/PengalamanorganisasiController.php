@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 class PengalamanorganisasiController extends Controller
 {
     public function index(){
-        return view('mahasiswa.pengalaman_organisasi');
+        return view('checkout_mahasiswa.pengalaman_organisasi');
     }
 
     protected function  validasiData($data){

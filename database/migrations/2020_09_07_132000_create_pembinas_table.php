@@ -16,7 +16,7 @@ class CreatePembinasTable extends Migration
         Schema::create('pembinas', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->string('nim');
-            $table->string('nama');
+            $table->string('nama_pembina');
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir',30);
             $table->date('tanggal_lahir');

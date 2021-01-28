@@ -7,19 +7,32 @@ use App\Mahasiswa;
 use App\Mahasiswa_tagihan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class TagihanMahasiswaController extends Controller
 {
-
     public function index($id){
         $nama = Mahasiswa::select('nama','user_id')->where('user_id',$id)->first();
-        return view ('pembina.checkout.tagihan.tagihanmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
+        return view ('pembina.kelola_mahasiswa.kartu_checkout.tagihan.tagihanmahasiswa',['namamahasiswa'=>$nama,'id'=>$id]);
     }
 
     public function ajaxTable($tagihan){
-        $tagihan = Mahasiswa_tagihan::with('mahasiswa')
+        $tagihan = Mahasiswa_tagihan::join('mahasiswas','mahasiswa_tagihans.mahasiswa_id','=','mahasiswas.user_id')
+            ->select('mahasiswa_tagihans.*')
             ->where('mahasiswa_id',$tagihan)->get();
-        return Datatables::of($tagihan)->toJson();
+        $no = 1;
+        $arraydata = [];
+        foreach ($tagihan as $data){
+            $arraydata[]= [
+                "no" => $no,
+                "mahasiswa_id" => $data->mahasiswa_id,
+                "bulan"=>$data->bulan,
+                "jumlah"=>$data->jumlah,
+                "keterangan"=>$data->keterangan,
+            ];
+            $no++;
+        }
+        return Datatables::of($arraydata)->toJson();
     }
 
     protected function  validasiData($data){
@@ -31,6 +44,7 @@ class TagihanMahasiswaController extends Controller
         return validator($data, [
             'bulan' => 'required:mahasiswa_tagihans',
             'keterangan' => 'required:tagihan',
+            'jumlah' => 'required:tagihan',
         ], $pesan);
     }
 
@@ -44,6 +58,7 @@ class TagihanMahasiswaController extends Controller
                     'bulan' => request()->bulan,
                     'keterangan' => request()->keterangan,
                     'mahasiswa_id' => request()->mahasiswa,
+                    'jumlah' => request()->jumlah,
                 ]);
                 if ($tagihan) {
                     return json_encode(array("success" => "Berhasil Menambahkan Data Tagihan"));
@@ -70,7 +85,8 @@ class TagihanMahasiswaController extends Controller
             ->update([
                 'bulan' => $request->bulan,
                 'keterangan' => $request->keterangan,
-                'mahasiswa_id' => $request->mahasiswa
+                'mahasiswa_id' => $request->mahasiswa,
+                'jumlah' => $request->jumlah
             ]);
         if ($tagihan) {
             return json_encode(array("success" => "Berhasil Merubah Data Tagihan"));
@@ -87,4 +103,20 @@ class TagihanMahasiswaController extends Controller
             return json_encode(array("error"=>"Gagal Menghapus Data tagihan"));
         }
     }
+
+    public function bukti($id){
+        $nama = Mahasiswa_tagihan::where('mahasiswa_id',$id)->where('keterangan','=','Lunas')->get();
+        return view ('pembina.kelola_mahasiswa.kartu_checkout.tagihan.buktitagihanmahaiswa',['namamahasiswa'=>$nama]);
+    }
+
+    public function download($id,$bulan)
+    {
+        $bukti = Mahasiswa_tagihan::where('mahasiswa_id',$id)->where('bulan',$bulan)->first();
+        $path = storage_path() . "\app\public\uploads\\$bukti->surat";
+        if ($bukti->surat == null) {
+            return redirect()->back()->with('failed','Gagal mengunduh file');
+        }
+        return response()->download($path);
+    }
+
 }

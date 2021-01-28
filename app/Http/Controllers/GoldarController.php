@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Goldar;
+use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 class GoldarController extends Controller
 {
     public function index(){
-        return view('pembina.goldar');
+        return view('pembina.kelola_data_pendaftaran.goldar');
     }
 
     protected function  validasiData($data){
@@ -61,12 +62,17 @@ class GoldarController extends Controller
         }
     }
 
-    public function delete($id){
-        $goldar = Goldar::where('id', $id)->first();
-        if($goldar->delete()){
-            return json_encode(array("success"=>"Berhasil Menghapus Data Goldar"));
-        }else{
-            return json_encode(array("error"=>"Gagal Menghapus Data Goldar"));
+    public function delete($id)
+    {
+        if (Mahasiswa::where('goldar_id', $id)->count() === 0) {
+            $goldar = Goldar::where('id', $id)->first();
+            if ($goldar->delete()) {
+                return json_encode(array("success" => "Berhasil Menghapus Data Goldar"));
+            } else {
+                return json_encode(array("error" => "Gagal Menghapus Data Goldar"));
+            }
+        } else {
+            return json_encode(array("error" => "Gagal Data Sedang Di Pakai"));
         }
     }
 }

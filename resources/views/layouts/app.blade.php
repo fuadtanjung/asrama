@@ -9,12 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>SIRAMU</title>
+    @livewireStyles
    <link rel="icon" type="image/x-icon" href="{{ url('assets/favicon.png')}}" />
     <link href="{{ url('css/styles.css')}}" rel="stylesheet" />
     <link href="{{ url('css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('plugins/izitoast/css/iziToast.min.css') }}">
     <link href="{{ url('css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ url('css/buttons.dataTables.min.css')}}">
+    <link href="{{ url('css/select2.min.css')}}" rel="stylesheet" />
     <script src="{{ url('js/font-awesome/all.js')}}"></script>
+
 
 </head>
 
@@ -33,6 +37,12 @@
     <script src="{{ url('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ url('js/custom.js') }}"></script>
     <script src="{{ url('js/datetime.js') }}"></script>
+    <script src="{{ url('js/select2.min.js')}}"></script>
+    <script src="{{ url('js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ url('js/buttons.flash.min.js')}}"></script>
+    <script src="{{ url('js/jszip.min.js')}}"></script>
+    <script src="{{ url('js/buttons.html5.min.js')}}"></script>
+    @livewireScripts
 <!-- izitoast -->
 @yield('script')
 

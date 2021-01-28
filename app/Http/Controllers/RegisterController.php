@@ -12,11 +12,13 @@ class RegisterController extends Controller
         $pesan = [
             'required' => ':attribute tidak boleh kosong',
             'unique' => ':attribute tidak boleh sama',
-            'exists' => ':attribute tidak ditemukan'
+            'exists' => ':attribute tidak ditemukan',
+            'min' => ':attribute minimal 10 nomor',
+            'max' => ':attribute maximal 10 nomor',
         ];
         return validator($data, [
             'nama' => 'required',
-            'nim' => 'required|unique:users',
+            'nim' => 'required||min:10|max:10|unique:users',
             'password' => 'required',
         ], $pesan);
     }

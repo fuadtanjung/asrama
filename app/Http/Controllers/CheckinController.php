@@ -14,16 +14,16 @@ class CheckinController extends Controller
         $ruangan = Ruangan::join('gedungs','ruangans.gedung_id','gedungs.id')
             ->join('pembina_gedungs','gedungs.id','pembina_gedungs.gedung_id')
             ->select('ruangans.id','ruangans.nama_ruangan','gedungs.nama_gedung')
-            ->where('pembina_gedungs.gedung_id',auth()->user()->pembina->pembina_tahun->pembina_gedung->gedung_id)
+            ->where('pembina_gedungs.gedung_id',auth()->user()->pembina->pembina_gedung->gedung_id)
             ->get();
-        return view('pembina.checkin.kamarmahasiswa',compact('ruangan'));
+        return view('pembina.kelola_mahasiswa.kamar_mahasiswa.kamarmahasiswa',compact('ruangan'));
     }
 
     public function choice($id){
         $mahasiswa = DB::table("mahasiswas")->whereNotIn("user_id", function($query){
             $query->select("mahasiswa_id")->from("mahasiswa_gedungs");
         })->get();
-        return view('pembina.checkin.pilihmahasiswa',compact('mahasiswa','id'));
+        return view('pembina.kelola_mahasiswa.kamar_mahasiswa.pilihmahasiswa',compact('mahasiswa','id'));
     }
 
     public function input(Request $request, $id){
@@ -45,7 +45,7 @@ class CheckinController extends Controller
         $checkroom = Mahasiswa_gedung::join('mahasiswas','mahasiswa_gedungs.mahasiswa_id','mahasiswas.user_id')
         ->join('ruangans','mahasiswa_gedungs.ruangan_id','ruangans.id')
         ->where('ruangan_id',$id)->get();
-        return view('pembina.checkin.checkroom',compact('checkroom'));
+        return view('pembina.kelola_mahasiswa.kamar_mahasiswa.checkroom',compact('checkroom'));
     }
 
     public function unduh($id,$mhs){

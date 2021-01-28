@@ -15,7 +15,7 @@ class Pembina_gedung extends Model
     public function gedung(){
         return $this->belongsTo(Gedung::class,'gedung_id','id');
     }
-    public function pembina_tahun(){
-        return $this->belongsTo(Pembina_tahun::class,'pembina_id','pembina_id');
+    public function pembina(){
+        return $this->belongsTo(Pembina::class,'pembina_id','user_id');
     }
 }

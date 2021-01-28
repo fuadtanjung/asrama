@@ -648,7 +648,7 @@
             $('#submit_mahasiswa').click(function () {
                 $("#submit_mahasiswa").attr("aksi");
                 $.ajax({
-                    url: "{{ url('/mahasiswa/input') }}",
+                    url: "{{ url('/checkout_mahasiswa/input') }}",
                     type: "post",
                     data: new FormData($('#form_mahasiswa')[0]),
                     async: false,
@@ -702,7 +702,7 @@
             });
 
             $.ajax({
-                url: '{{ url('mahasiswa/listjurusan') }}',
+                url: '{{ url('checkout_mahasiswa/listjurusan') }}',
                 dataType: "json",
                 success: function (data) {
                     var jurusan = jQuery.parseJSON(JSON.stringify(data));

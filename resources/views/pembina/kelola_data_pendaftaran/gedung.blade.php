@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-green-soft" id="datatable">
-                    <thead>
+                <table class="table table-hover table-green-soft table-bordered table-sm" id="datatable">
+                    <thead class="text-center">
                     <tr>
                         <th>Nama Gedung</th>
                         <th>Jenis Kelamin</th>
@@ -73,9 +73,9 @@
                     { "data": "gender" },
                     {
                         render: function() {
-                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit"></i> Edit</a> &nbsp' +
-                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash"></i> Hapus</a> &nbsp' +
-                                '<a href="#" id="lihat" class="btn btn-outline-info btn-sm legitRipple"><i class="fa fa-eye"></i> Lihat Ruangan</a>'
+                            return '<a href="#" id="edit" class="btn btn-outline-success btn-sm legitRipple"><i class="fa fa-edit" style="margin-right: 7px"></i> Edit</a> &nbsp' +
+                                '<a href="#" id="delete" class="btn btn-outline-danger btn-sm legitRipple"><i class="fa fa-trash" style="margin-right: 7px"></i> Hapus</a> &nbsp' +
+                                '<a href="#" id="lihat" class="btn btn-outline-info btn-sm legitRipple"><i class="fa fa-eye" style="margin-right: 7px"></i> Lihat Ruangan</a>'
                         }
                     }
                 ],
@@ -215,6 +215,7 @@
                 var table = $('#datatable').DataTable();
                 var data = table.row( $(this).parents('tr') ).data();
                 $('#nama_gedung').val(data.nama_gedung);
+                $('#jenis_kelamin').val(data.gender);
                 $("#submit_gedung").attr("aksi","edit");
                 $('#submit_gedung').attr("idgedung",data.id);
                 $('#input_gedung').modal('toggle');
